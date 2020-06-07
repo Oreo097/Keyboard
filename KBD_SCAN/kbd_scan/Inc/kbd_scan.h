@@ -51,8 +51,11 @@ void KBD_SCAN_RMJIT_TIM_STOP();
 /**
  * 键盘扫描主要逻辑算法
  * */
+
+//键盘扫描初始化相关结构
+void KBD_SCAN_SCAN_INIT();
 //整体扫描算法
-uint8_t KBD_SCAN_SCAN_MAIN(keymap_phy_t m_keymap_phy);
+void KBD_SCAN_SCAN_MAIN(keymap_phy_t m_keymap_phy);
 
 //扫描一行的算法
 uint8_t KBD_SCAN_SCAN_ROW(gpio_t *gpio_map_col, uint8_t col_num,uint8_t row_now);

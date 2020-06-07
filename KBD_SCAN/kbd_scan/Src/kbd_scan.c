@@ -110,14 +110,23 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     }
 }
 
+//键盘每次扫描归位相关索引
+void KBD_SCAN_SCAN_INIT()
+{
+    
+}
+
 //键盘扫描主要逻辑算法
-uint8_t KBD_SCAN_SCAN_MAIN(keymap_phy_t m_keymap_phy)
+void KBD_SCAN_SCAN_MAIN(keymap_phy_t m_keymap_phy)
 {
     //扫描开始
     uint8_t row_now = 0;
     for (; row_now < ROW_NUM; row_now++)
     {
-        if (KBD_SCAN_SCAN_ROW(m_keymap_phy.keymap_phy_col, m_keymap_phy.col_num[row_now], row_now) == 0)
+        //拉高ROW_GPIO
+        KBD_SCAN_GPIO_UP(&m_keymap_phy.keymap_phy_row[row_now]);
+
+        if (KBD_SCAN_SCAN_ROW(&m_keymap_phy.keymap_phy_col[row_now],m_keymap_phy.col_num[row_now], row_now) == 0)
         {
             break;
         }
@@ -128,7 +137,7 @@ uint8_t KBD_SCAN_SCAN_MAIN(keymap_phy_t m_keymap_phy)
 uint8_t KBD_SCAN_SCAN_ROW(gpio_t *m_gpio_map_col, uint8_t col_num, uint8_t row_now)
 {
     uint8_t col_now = 0;
-    uint8_t key_press_col[col_num];
+    // uint8_t key_press_col[col_num];
     for (; col_now < col_num; col_now++)
     {
         if (KBD_SCAN_GPIO_READ(m_gpio_map_col) == 1)
@@ -139,17 +148,19 @@ uint8_t KBD_SCAN_SCAN_ROW(gpio_t *m_gpio_map_col, uint8_t col_num, uint8_t row_n
             answer.answer_row_arry[answer.answer_arry_num] = row_now;
             //记录相关gpio号待会防抖用
             answer.answer_gpio_arry[answer.answer_arry_num] = m_gpio_map_col;
-            //自家变量
+            //自加变量
             answer.answer_arry_num++;
 
             //防抖计时器重载
             KBD_SCAN_RMJIT_TIM_RELOAD(kbd_info.timer_rmjit);
         }
-        if (answer.answer_arry_num > 6)
+        if (answer.answer_arry_num >= 6)
         {
             return 0;
         }
+        m_gpio_map_col++;//下一个按键
     }
+    return 0;
 }
 
 uint8_t KBD_SCAN_SCAN_EACH(gpio_t *m_answer)
@@ -165,11 +176,12 @@ void KBD_SCAN_RMJIT_MAIN()
     answer.answer_arry_num = 0; //初始化引导
     for (; answer.answer_arry_num <= sizeof(answer.answer_gpio_arry); answer.answer_arry_num++)
     {
-        if (KBD_SCAN_SCAN_EACH(answer.answer_gpio_arry[answer.answer_arry_num]) == 0)
+        if (KBD_SCAN_SCAN_EACH(&answer.answer_gpio_arry[answer.answer_arry_num]) == 0)
         {
             answer.answer_row_arry[answer.answer_arry_num] = 0;
             answer.answer_col_arry[answer.answer_arry_num] = 0;
-            answer.answer_gpio_arry[answer.answer_arry_num] = 0;
+            answer.answer_gpio_arry[answer.answer_arry_num]=NULL;
+            // answer.answer_gpio_arry[answer.answer_arry_num].gpio_pin=NULL;
         }
     }
 }
