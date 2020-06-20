@@ -59,7 +59,7 @@ void KBD_SCAN_MAIN()
                 ans->map[ans->index][1] = col_now;
                 ans->index++;
                 report_key(row_now, col_now, 1);
-                HAL_Delay(10);
+                //HAL_Delay(10);
             }
         }
         // pinDown(map_key_phy.gpio_row[row_now].gpio_group, map_key_phy.gpio_row[row_now].gpio_pin);
@@ -68,9 +68,11 @@ void KBD_SCAN_MAIN()
     }
     //report_map(ans);
     //test_free();
+    HAL_Delay(2);
     KBD_SCAN_RMJ();
 }
 
+//初始化报表的函数
 void test_free()
 {
 
@@ -90,19 +92,14 @@ void test_free()
 void KBD_SCAN_RMJ()
 {
     uint8_t checkpoint;
-		uint8_t buffer_pin;
-		//printf("0\n");
+    uint8_t buffer_pin;
     if (ans->index != 0)
     {
-			//printf("1\n");
-        for (checkpoint = 0; checkpoint <(ans->index); checkpoint++)
+        for (checkpoint = 0; checkpoint < (ans->index); checkpoint++)
         {
-						//printf("2\n");
             // pinUp(map_key_phy.gpio_row[ans->map[checkpoint][0]].gpio_group,map_key_phy.gpio_row[ans->map[checkpoint][0]].gpio_pin);
-						buffer_pin=ans->map[checkpoint][0];
-					//printf("%d\n",&buffer_pin);
+            buffer_pin = ans->map[checkpoint][0];
             pinUp(map_key_phy.gpio_row[buffer_pin]);
-            //printf("3\n");
             // if(pinRead(map_key_phy.gpio_col[ans->map[checkpoint][0]][ans->map[checkpoint][1]].gpio_group,map_key_phy.gpio_col[ans->map[checkpoint][0]][ans->map[checkpoint][1]].gpio_pin)!=1)
             if (pinRead(map_key_phy.gpio_col[ans->map[checkpoint][0]][ans->map[checkpoint][1]]) != 1)
             {
@@ -110,7 +107,6 @@ void KBD_SCAN_RMJ()
                 report_rm(ans->map[checkpoint][0], ans->map[checkpoint][1]);
             }
             pinDown(map_key_phy.gpio_row[buffer_pin]);
-						//printf("4\n");
         }
     }
     report_map(ans);

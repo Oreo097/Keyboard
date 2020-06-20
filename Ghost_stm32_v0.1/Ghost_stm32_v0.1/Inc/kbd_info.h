@@ -75,6 +75,13 @@ typedef struct
 }kbd_map_gpio_t;
 
 
+typedef struct 
+{
+    TIM_HandleTypeDef name;
+    uint16_t prescaler;
+    uint16_t period;
+    uint8_t auto_reload;
+}kbd_tim_t;
 
 
 
