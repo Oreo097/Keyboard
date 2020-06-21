@@ -1,21 +1,18 @@
 #include "kbd_tim.h"
 
-
-kbd_tim_t info_tim1={
+kbd_tim_t info_tim1 = {
     72,
     1000,
-    1
-};
+    1};
 
-kbd_tim_t info_tim2={
+kbd_tim_t info_tim2 = {
     720,
     10000,
-    0
-};
+    0};
 
-void KBD_TIM1_INIT(kbd_tim_t * timer)
+void KBD_TIM1_INIT(kbd_tim_t *timer)
 {
-      TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
 
   htim1.Instance = TIM1;
@@ -42,10 +39,9 @@ void KBD_TIM1_INIT(kbd_tim_t * timer)
   }
 }
 
-
-void KBD_TIM2_INIT(kbd_tim_t * timer)
+void KBD_TIM2_INIT(kbd_tim_t *timer)
 {
-      TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
 
   htim1.Instance = TIM2;
