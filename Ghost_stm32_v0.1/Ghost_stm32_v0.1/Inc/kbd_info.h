@@ -51,7 +51,9 @@
 typedef struct
 {
     uint8_t index;
+
     uint8_t map[ANS_NUM][2];
+
 }kbd_ans_t;
 
 
@@ -60,6 +62,7 @@ typedef struct
     type_gpio* gpio_group;
     
     uint8_t gpio_pin;
+
 }kbd_gpio_t;
 
 
@@ -77,10 +80,12 @@ typedef struct
 
 typedef struct 
 {
-    TIM_HandleTypeDef name;
     uint16_t prescaler;
+
     uint16_t period;
+
     uint8_t auto_reload;
+
 }kbd_tim_t;
 
 
