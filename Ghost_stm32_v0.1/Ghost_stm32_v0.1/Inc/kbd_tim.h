@@ -9,19 +9,18 @@
 #include "kbd_info.h"
 #endif
 
+#ifndef __TIM_H
+#include "tim.h"
+#endif
 
 #define TIM_SCAN htim1
 
 #define TIM_RMJ htim2
 
-kbd_tim_t kbd_scan_tim;
 
-kbd_tim_t kbd_rmj_tim;
+void KBD_TIM1_INIT(kbd_tim_t * timer);
 
-
-void KBD_TIM_INIT(kbd_tim_t * timer);
-
-
+void KBD_TIM1_INIT(kbd_tim_t * timer);
 
 
 

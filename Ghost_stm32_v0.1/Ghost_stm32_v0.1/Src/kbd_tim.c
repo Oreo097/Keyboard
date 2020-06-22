@@ -21,7 +21,15 @@ void KBD_TIM1_INIT(kbd_tim_t *timer)
   htim1.Init.Period = timer->period;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
-  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (timer->auto_reload)
+  {
+    htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  }
+  else
+  {
+    htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  }
+
   if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
   {
     Error_Handler();

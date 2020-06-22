@@ -88,6 +88,8 @@ typedef struct
 
 }kbd_tim_t;
 
+typedef uint8_t kbd_map_keyword_t;
 
+typedef uint8_t kbd_report_t;
 
 #endif
