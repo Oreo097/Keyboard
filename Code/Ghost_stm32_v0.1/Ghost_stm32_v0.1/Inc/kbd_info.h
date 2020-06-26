@@ -16,6 +16,9 @@
 #define ROW_MAX 5
 #define COL_MAX 4
 
+#define NUM_FKEY 1
+#define NUM_SKEY 1
+
 #define type_gpio GPIO_TypeDef
 
 /*GPIOlist*/
@@ -163,8 +166,9 @@
 
 typedef struct
 {
-    uint8_t index;
-
+    uint8_t index_fkey;
+    uint8_t index_skey;
+    uint8_t index_akey;
     uint8_t map[ANS_NUM][2];
 
 }kbd_ans_t;
@@ -202,7 +206,21 @@ typedef struct
 
 }kbd_tim_t;
 
+typedef struct {
+    uint8_t num_row[ROW_MAX];
+    uint8_t key[ROW_MAX][COL_MAX];
 
+}kbd_map_akey_t;
+
+typedef struct{
+    uint8_t num_key;
+    uint8_t key[NUM_FKEY][2];
+} kbd_map_fkey_t;
+
+typedef struct{
+    uint8_t num_key;
+    uint8_t key[NUM_SKEY][2];
+} kbd_map_skey_t;
 
 typedef uint8_t kbd_map_keyword_t;
 

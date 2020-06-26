@@ -19,11 +19,11 @@
 //kbd_report_t* report;
 
 
-void KBD_REPORT_MAKE();
+void KBD_REPORT_MAKE(void);
 
-void KBD_REPORT_MAIN();
+void KBD_REPORT_MAIN(void);
 
-void KBD_REPORT_SEND();
+void KBD_REPORT_SEND(void);
 
 
 #endif

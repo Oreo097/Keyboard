@@ -7,7 +7,7 @@ extern kbd_ans_t* ans;//pointer for kbd_ans come form kbd_scan
 void KBD_REPORT_MAKE()
 {
     uint8_t index;
-    for(index=0;index<(ans->index);index++)
+    for(index=0;index<(ans->index_akey);index++)
     {
         kbd_report[index]=kbd_map_keyword[ans->map[index][0]][ans->map[index][1]];
         if(index>=REPORT_MAX)
@@ -16,7 +16,7 @@ void KBD_REPORT_MAKE()
         }
     }
     test_free();
-    report_keyword(report);
+    report_keyword(kbd_report);
 }
 
 

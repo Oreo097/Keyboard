@@ -22,16 +22,22 @@
 #endif
 
 
-void KBD_ANS_INIT();
+void KBD_ANS_INIT(void);
 
-void KBD_SCAN_MAIN();
+void KBD_SCAN_MAIN(void);
 
-void test();
+void test(void);
 
-void test_free();
+void test_free(void);
 
-void KBD_SCAN_RMJ();
+void KBD_SCAN_RMJ(void);
 
+void KBD_SCAN_SKEY(void);
 
+void KBD_SCAN_AKEY(void);
+
+void KBD_SCAN_FKEY(void);
+
+void KBD_SCAN_GETGPIO(void);
 
 #endif 

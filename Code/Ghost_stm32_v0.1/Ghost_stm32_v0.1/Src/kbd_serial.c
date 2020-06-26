@@ -9,9 +9,9 @@ void report_map(kbd_ans_t *ans)
     uint8_t words[] = " keys pressed totally\n";
     uint8_t map[] = " , \n";
     uint8_t end[] = "******over******\n";
-    words[0] = itoc(ans->index);
+    words[0] = itoc(ans->index_akey);
     send(words);
-    for (index = 0; index < ans->index; index++)
+    for (index = 0; index < ans->index_akey; index++)
     {
         map[0] = itoc(ans->map[index][0]);
         map[2] = itoc(ans->map[index][1]);
@@ -51,13 +51,14 @@ void report_rm(uint8_t row, uint8_t col)
 int fputc(int ch,FILE *f)
 {
     HAL_UART_Transmit(&huart1,(uint8_t*)&ch,1,100);
+	return 0;
 }
 
 
 
 void report_keyword(kbd_report_t * report)
 {
-    uint8_t index;
+    //uint8_t index;
     //uint8_t words[] = " keys pressed totally\n";
     uint8_t map[] = "0,0,0,0,0,0\n";
     uint8_t end[] = "******over******\n";

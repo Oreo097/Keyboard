@@ -18,5 +18,5 @@ void pinDown(kbd_gpio_t gpio)
 
 void KBD_USB_SEND(uint8_t * report)
 {
-    USBD_HID_SendReport(&hUsbDeviceFS,report,8);
+    //USBD_HID_SendReport(&hUsbDeviceFS,report,8);
 }

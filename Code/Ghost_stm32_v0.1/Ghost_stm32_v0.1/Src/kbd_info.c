@@ -22,3 +22,36 @@ kbd_map_keyword_t kbd_map_keyword[5][4]={
     {Keypad_1_and_End,Keypad_2_and_DownArrow,Keypad_3_and_PageDn},
     {Keypad_0_and_Insert,Keypad_Dian_and_Delete,Keyboard_ENTER},
 };
+
+
+
+kbd_map_akey_t kbd_map_akey={
+    {
+        3,
+        3,
+        4,
+        3,
+        3
+    },
+    {
+        {0,1,2},
+        {0,1,2},
+        {0,1,2,3},
+        {0,1,2},
+        {0,1,3}
+    }
+};
+
+
+kbd_map_fkey_t kbd_map_fkey={
+    NUM_FKEY,
+    {{1,3}}
+};
+
+
+kbd_map_skey_t kbd_map_skey={
+    NUM_SKEY,
+    {{0,3}}
+
+};
+

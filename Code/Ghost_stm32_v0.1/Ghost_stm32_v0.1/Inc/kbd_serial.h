@@ -28,6 +28,6 @@ void report_key(uint8_t row,uint8_t col,uint8_t status);
 
 void report_rm(uint8_t row, uint8_t col);
 
-void report_keyword();
+void report_keyword(kbd_report_t * report);
 
 #endif
