@@ -16,3 +16,7 @@ void pinDown(kbd_gpio_t gpio)
     HAL_GPIO_WritePin(gpio.gpio_group,gpio.gpio_pin,0);
 }
 
+void KBD_USB_SEND(uint8_t * report)
+{
+    USBD_HID_SendReport(&hUsbDeviceFS,report,8);
+}

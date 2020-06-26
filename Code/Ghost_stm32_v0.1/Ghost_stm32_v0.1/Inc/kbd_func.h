@@ -23,7 +23,7 @@ void pinUp(kbd_gpio_t gpio);
 
 void pinDown(kbd_gpio_t gpio);
 
-
+void KBD_USB_SEND(uint8_t * report);
 
 
 

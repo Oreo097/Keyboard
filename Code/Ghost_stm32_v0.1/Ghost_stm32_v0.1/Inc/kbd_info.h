@@ -153,7 +153,8 @@
 #define Keyboard_RightShift 229
 #define Keyboard_RightAlt 230
 #define Keyboard_RightWindows 231
-
+/*special key */
+#define S_KEY 0;
 
 
 
@@ -190,6 +191,7 @@ typedef struct
 }kbd_map_gpio_t;
 
 
+
 typedef struct 
 {
     uint16_t prescaler;
@@ -199,6 +201,8 @@ typedef struct
     uint8_t auto_reload;
 
 }kbd_tim_t;
+
+
 
 typedef uint8_t kbd_map_keyword_t;
 
