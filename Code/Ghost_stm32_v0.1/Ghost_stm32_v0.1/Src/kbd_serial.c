@@ -69,7 +69,7 @@ void report_keyword(kbd_report_t * report)
     map[6]=*(++report);
     map[8]=*(++report);
     map[10]=*(++report);
-    send(map);
+    //send(map);
     printf("%d,%d,%d,%d,%d,%d\n",map[0],map[2],map[4],map[6],map[8],map[10]);
     send(end);
 }

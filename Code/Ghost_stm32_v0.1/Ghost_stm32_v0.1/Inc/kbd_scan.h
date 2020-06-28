@@ -40,4 +40,6 @@ void KBD_SCAN_FKEY(void);
 
 void KBD_SCAN_GETGPIO(void);
 
+void KBD_SCAN_ANS(void);
+
 #endif 
