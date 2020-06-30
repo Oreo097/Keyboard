@@ -15,19 +15,8 @@ void KBD_REPORT_MAKE(void)
             break;
         }
     }
-    //test_free();
     report_keyword(kbd_report);
 }
-
-
-
-// void KBD_REPORT_MAKE(void)
-// {
-//     uint8_t index;
-//     for()
-// }
-
-
 
 
 void KBD_REPORT_SEND(void)

@@ -1,8 +1,6 @@
 #include "kbd_serial.h"
 
 
-
-
 void report_map(kbd_ans_t *ans)
 {
     uint8_t index;
@@ -23,8 +21,6 @@ void report_map(kbd_ans_t *ans)
 
 uint8_t itoc(uint8_t num)
 {
-    //if(num<10)
-    //{
     return (num + 48);
 }
 
@@ -58,18 +54,14 @@ int fputc(int ch,FILE *f)
 
 void report_keyword(kbd_report_t * report)
 {
-    //uint8_t index;
-    //uint8_t words[] = " keys pressed totally\n";
     uint8_t map[] = "0,0,0,0,0,0\n";
     uint8_t end[] = "******over******\n";
-    //send(words);
     map[0]=*report;
     map[2]=*(++report);
     map[4]=*(++report);
     map[6]=*(++report);
     map[8]=*(++report);
     map[10]=*(++report);
-    //send(map);
     printf("%d,%d,%d,%d,%d,%d\n",map[0],map[2],map[4],map[6],map[8],map[10]);
     send(end);
 }
