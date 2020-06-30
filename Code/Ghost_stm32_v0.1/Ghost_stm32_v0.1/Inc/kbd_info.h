@@ -7,7 +7,7 @@
 
 #define ANS_NUM 128
 
-#define REPORT_MAX 6
+#define REPORT_MAX 8
 
 #define ROW_MAX 5
 #define COL_MAX 4

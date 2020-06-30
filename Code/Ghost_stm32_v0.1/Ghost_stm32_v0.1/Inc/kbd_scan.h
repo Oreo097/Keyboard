@@ -22,7 +22,8 @@
 #endif
 
 
-void KBD_ANS_INIT(void);
+void KBD_SCAN_ANS_INIT(void);
+void KBD_SCAN_ANS_REINIT(void);
 
 void KBD_SCAN_MAIN(void);
 

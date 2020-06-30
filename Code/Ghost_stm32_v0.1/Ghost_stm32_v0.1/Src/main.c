@@ -99,7 +99,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	KBD_ANS_INIT();
+	KBD_SCAN_ANS_INIT();
   //test();
   while (1)
   {

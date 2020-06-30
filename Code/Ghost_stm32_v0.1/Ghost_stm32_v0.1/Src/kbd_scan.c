@@ -14,14 +14,6 @@ extern kbd_map_fkey_t kbd_map_fkey;
 
 extern kbd_map_skey_t kbd_map_skey;
 
-void KBD_ANS_INIT(void)
-{
-    ans = &kbd_ans;
-    ans->map[0][0] = 0xFF;
-    ans->map[0][1] = 0xFF;
-    printf("ans inited\n");
-}
-
 void KBD_SCAN_MAIN(void)
 {
     KBD_SCAN_ANS();
@@ -36,11 +28,40 @@ void KBD_SCAN_MAIN(void)
         //HAL_Delay(100);
         KBD_REPORT_MAKE();
     }
-    HAL_Delay(1000);
+    HAL_Delay(100);
 }
 
 //初始化报表的函数
 void test_free(void)
+{
+    uint8_t index;
+
+    for (index = 0; index <= ANS_NUM; index++)
+    {
+        ans->map[index][0] = 0xFF;
+        ans->map[index][1] = 0xFF;
+    }
+    ans->index_fkey = 0;
+    ans->index_akey = 0;
+    ans->index_skey = 0;
+}
+
+void KBD_SCAN_ANS_INIT(void)
+{
+    uint8_t index;
+    ans = &kbd_ans;
+    printf("ans inited\n");
+    for (index = 0; index <= ANS_NUM; index++)
+    {
+        ans->map[index][0] = 0xFF;
+        ans->map[index][1] = 0xFF;
+    }
+    ans->index_fkey = 0;
+    ans->index_akey = 0;
+    ans->index_skey = 0;
+}
+
+void KBD_SCAN_ANS_REINIT(void)
 {
     uint8_t index;
 
@@ -128,6 +149,7 @@ void KBD_SCAN_AKEY(void)
         //printf("pinup\n");
         for (index_col = 0; index_col < kbd_map_akey.num_row[index_row]; index_col++)
         {
+			printf("%d\n",kbd_map_akey.key[index_row][index_col]);
             if (pinRead(map_key_phy.gpio_col[index_row][kbd_map_akey.key[index_row][index_col]]) == 1)
             {
                 printf("%d,%d pressed down\n", index_row, index_col);
@@ -149,19 +171,28 @@ void KBD_SCAN_ANS(void)
     uint8_t buffer_pin;
     if (ans->index_akey == REPORT_MAX)
     {
-        for (checkpoint = 0; checkpoint < (ans->index_akey); checkpoint++)
+        if ((ans->index_akey - ans->index_skey) == (REPORT_MAX - 2))
         {
-            buffer_pin = ans->map[checkpoint][0];
-            pinUp(map_key_phy.gpio_row[buffer_pin]);
-            if (pinRead(map_key_phy.gpio_col[ans->map[checkpoint][0]][ans->map[checkpoint][1]]) != 1)
+            for (checkpoint = 0; checkpoint < (ans->index_akey); checkpoint++)
             {
-                printf("ans changed\n");
-                test_free();
-                checkpoint_change = 1;
-                break;
+                buffer_pin = ans->map[checkpoint][0];
+                pinUp(map_key_phy.gpio_row[buffer_pin]);
+                if (pinRead(map_key_phy.gpio_col[ans->map[checkpoint][0]][ans->map[checkpoint][1]]) != 1)
+                {
+                    printf("ans changed\n");
+                    KBD_SCAN_ANS_REINIT();
+                    checkpoint_change = 1;
+                    break;
+                }
+                pinDown(map_key_phy.gpio_row[buffer_pin]);
+                printf("keys not changed\n");
             }
-            pinDown(map_key_phy.gpio_row[buffer_pin]);
-            printf("keys not changed\n");
+        }
+        else
+        {
+            printf("ans not enough\n");
+            checkpoint_change = 1;
+            KBD_SCAN_ANS_REINIT();
         }
     }
     else
