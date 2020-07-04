@@ -166,6 +166,14 @@ void KBD_SCAN_AKEY(void)
     printf("scan akey complete!\n");
 }
 
+
+/**
+ * 为什么要扫描上一次的扫描结果
+ * 就是为了能够减少report次数
+ * 在蓝牙或者2.4G环境下，发送report需要大量的电量，为了保证长续航时间必须减少发送次数
+ * 当检测到按键并没有变化时将不会发送report
+ * */
+
 void KBD_SCAN_ANS(void)
 {
     uint8_t checkpoint;
@@ -202,4 +210,33 @@ void KBD_SCAN_ANS(void)
         checkpoint_change = 1;
     }
     printf("scan ans complete\n");
+}
+
+
+
+void KBD_SCAN_ANS(void)
+{
+    
+
+    //先检测akey按键是否大于6个
+    if((ans->index_akey-nas->index_skey)>=(REPORT_MAX-2))
+    {
+        //再检测按键是否有变动
+       for (checkpoint = 0; checkpoint < (ans->index_akey); checkpoint++)
+            {
+                buffer_pin = ans->map[checkpoint][0];
+                pinUp(map_key_phy.gpio_row[buffer_pin]);
+                if (pinRead(map_key_phy.gpio_col[ans->map[checkpoint][0]][ans->map[checkpoint][1]]) != 1)
+                {
+                    printf("ans changed\n");
+                    KBD_SCAN_ANS_REINIT();
+                    checkpoint_change = 1;//如果检测到按键状态变化就改变参数
+                    break;//跳出循环直接开始检测
+                }
+                pinDown(map_key_phy.gpio_row[buffer_pin]);
+                printf("keys not changed\n");
+            }
+    }else{
+
+    }
 }
