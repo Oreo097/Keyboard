@@ -1,14 +1,8 @@
 #include "kbd_tim.h"
 
-kbd_tim_t info_tim1 = {
-    72,
-    1000,
-    1};
+extern kbd_tim_t info_tim1;
 
-kbd_tim_t info_tim2 = {
-    720,
-    10000,
-    0};
+extern kbd_tim_t info_tim2;
 
 void KBD_TIM1_INIT(kbd_tim_t *timer)
 {

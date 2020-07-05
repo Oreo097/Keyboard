@@ -8,6 +8,9 @@ extern kbd_map_keyword_t kbd_map_keyword_skey[5][4];
 extern kbd_ans_t *ans;
 
 
+// kbd_ans_t *ans_b;
+// kbd_ans_t kbd_ans_backup;
+
 kbd_report_t kbd_report[REPORT_MAX];
 
 
@@ -50,9 +53,6 @@ void KBD_REPORT_MAKE(void)
     //report_keyword(kbd_report);
 }
 
-void KBD_REPORT_SEND(void)
-{
-}
 
 void KBD_REPORT_MAIN(void)
 {
