@@ -4,36 +4,27 @@ kbd_map_gpio_t map_key_phy = {
     {{ROW0_G, ROW0_p}, {ROW1_G, ROW1_P}, {ROW2_G, ROW2_P}, {ROW3_G, ROW3_P}, {ROW4_G, ROW4_P}},
     {4,
      4,
-     4,
      3,
-     3},
+     4,
+     2},
     {{{COL0_G, COL0_P}, {COL1_G, COL1_P}, {COL2_G, COL2_P}, {COL3_G, COL3_P}},
      {{COL0_G, COL0_P}, {COL1_G, COL1_P}, {COL2_G, COL2_P}, {COL3_G, COL3_P}},
-     {{COL0_G, COL0_P}, {COL1_G, COL1_P}, {COL2_G, COL2_P}, {COL3_G, COL3_P}},
      {{COL0_G, COL0_P}, {COL1_G, COL1_P}, {COL2_G, COL2_P}},
-     {{COL0_G, COL0_P}, {COL1_G, COL1_P}, {COL3_G, COL3_P}}}};
+     {{COL0_G, COL0_P}, {COL1_G, COL1_P}, {COL2_G, COL2_P}, {COL3_G, COL3_P}},
+     {{COL0_G, COL0_P}, {COL1_G, COL1_P}}}};
 
 kbd_map_keyword_t kbd_map_keyword_akey[5][4] = {
-    {
-        Keypad_NumLock,
-        Keypad_ChuHao,
-        Keypad_ChengHao,
-    },
-    {
-        Keypad_7_and_Home,
-        Keypad_8_and_UpArrow,
-        Keypad_9_and_PageUp,
-    },
-    {Keypad_4_and_LeftArrow, Keypad_5, Keypad_6_and_RightArrow, Keypad_JiaHao},
-    {Keypad_1_and_End, Keypad_2_and_DownArrow, Keypad_3_and_PageDn},
-    {Keypad_0_and_Insert, Keypad_Dian_and_Delete, Keyboard_ENTER},
+    {Keypad_NumLock, Keypad_ChuHao, Keypad_ChengHao, Keypad_JianHao},
+    {Keypad_7_and_Home, Keypad_8_and_UpArrow, Keypad_9_and_PageUp, Keypad_JiaHao},
+    {Keypad_4_and_LeftArrow, Keypad_5, Keypad_6_and_RightArrow},
+    {Keypad_1_and_End, Keypad_2_and_DownArrow, Keypad_3_and_PageDn, Keyboard_ENTER},
+    {Keypad_0_and_Insert, Keypad_Dian_and_Delete},
 };
-
 
 //这里指的是在MAP_GPIO_PHY的位置
 
 kbd_map_keyword_t kbd_map_keyword_skey[5][4] = {
-    {0, 0, 0, Keyboard_ESCAPE},
+    {0, 0, 0, 0},
     {0},
     {0},
     {0},
@@ -41,22 +32,22 @@ kbd_map_keyword_t kbd_map_keyword_skey[5][4] = {
 
 kbd_map_keyword_t kbd_map_keyword_fkey[5][4] = {
     {0},
-    {0, 0, 0, Keypad_JianHao},
+    {0, 0, 0, 0},
     {0},
     {0},
     {0}};
 
 kbd_map_akey_t kbd_map_akey = {
-    {3,
-     3,
+    {4,
      4,
      3,
-     3},
-    {{0, 1, 2},
-     {0, 1, 2},
+     4,
+     2},
+    {{0, 1, 2, 3},
      {0, 1, 2, 3},
      {0, 1, 2},
-     {0, 1, 2}}};
+     {0, 1, 2, 3},
+     {0, 1}}};
 
 kbd_map_fkey_t kbd_map_fkey = {
     NUM_FKEY,

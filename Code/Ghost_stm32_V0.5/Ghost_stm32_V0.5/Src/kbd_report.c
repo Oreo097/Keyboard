@@ -56,9 +56,9 @@ void KBD_REPORT_MAKE(void)
 
 void KBD_REPORT_MAIN(void)
 {
-    KBD_REPORT_MAKE();
+    //KBD_REPORT_MAKE();
 
-    KBD_REPORT_SEND();
+    //KBD_REPORT_SEND();
 }
 
 void KBD_REPORT_SELECT(void)

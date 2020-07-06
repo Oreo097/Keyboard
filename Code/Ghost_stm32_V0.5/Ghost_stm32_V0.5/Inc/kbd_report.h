@@ -23,7 +23,7 @@ void KBD_REPORT_MAKE(void);
 
 void KBD_REPORT_MAIN(void);
 
-void KBD_REPORT_SEND(void);
+//void KBD_REPORT_SEND(void);
 
 void KBD_REPORT_INIT(void);
 
