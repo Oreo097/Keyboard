@@ -1,3 +1,10 @@
+/**
+ * USB功能实现
+ * 包括HID report发送
+ * */
+
+
+
 #include "kbd_usb.h"
 
 // __ALIGN_BEGIN static uint8_t HID_KEYBOARD_ReportDesc[HID_KEYBOARD_REPORT_DESC_SIZE]  __ALIGN_END =
@@ -38,6 +45,8 @@
 
 extern kbd_report_t kbd_report[REPORT_MAX];
 
+
+//发送报告的函数，把报告通过USB发送到上机位
 void KBD_USB_SEND_REPORT(void)
 {
     printf("send report!\n");

@@ -1,3 +1,12 @@
+/**
+ * 有关报告生成的函数全在这里
+ * 本文件中的函数主要用于解析扫描结果和生成报告
+ * */
+
+
+
+
+
 #include "kbd_report.h"
 #include "kbd_usb.h"
 
@@ -15,7 +24,7 @@ kbd_report_t kbd_report[REPORT_MAX];
 
 
 
-
+//生成报告的函数，用来从kbd_ans中解析出键值并生成报告
 void KBD_REPORT_MAKE(void)
 {
 

@@ -1,3 +1,9 @@
+/**
+ * 本文件主要用于实现键盘矩阵的扫描
+ * */
+
+
+
 #include "kbd_scan.h"
 #include "stdlib.h"
 
@@ -11,33 +17,36 @@ uint8_t checkpoint_change = 0;
 
 uint8_t kbd_sacn_other[6][2];//这是用来存储扫描的其他按键的
 
-extern kbd_map_gpio_t map_key_phy;
+extern kbd_map_gpio_t map_key_phy;//物理接盘的GPIO矩阵
 
-extern kbd_map_akey_t kbd_map_akey;
+extern kbd_map_akey_t kbd_map_akey;//普通按键的矩阵
 
-extern kbd_map_fkey_t kbd_map_fkey;
+extern kbd_map_fkey_t kbd_map_fkey;//功能按键的矩阵
 
-extern kbd_map_skey_t kbd_map_skey;
+extern kbd_map_skey_t kbd_map_skey;//特殊按键的矩阵
 
+
+
+//扫描过程主函数
 void KBD_SCAN_MAIN(void)
 {
     KBD_SCAN_ANS();
     if (checkpoint_change == 1)
     {
-        KBD_SCAN_FKEY();
+        KBD_SCAN_FKEY();//扫描功能键
         //HAL_Delay(100);
-        KBD_SCAN_SKEY();
+        KBD_SCAN_SKEY();//扫描特殊键
         //HAL_Delay(100);
-        KBD_SCAN_AKEY();
+        KBD_SCAN_AKEY();//扫描普通键
         KBD_SCAN_RMJ();
         //HAL_Delay(100);
-        KBD_REPORT_MAKE();
-        KBD_USB_SEND_REPORT();
+        KBD_REPORT_MAKE();//生成报告
+        KBD_USB_SEND_REPORT();//发送报告
     }
     //HAL_Delay(100);
 }
 
-//初始化报表的函数
+//初始化报表的函数，仅用于测试
 void test_free(void)
 {
     uint8_t index;
@@ -52,6 +61,8 @@ void test_free(void)
     ans->index_skey = 0;
 }
 
+
+//扫描结果初始化函数，仅用于程序初始化时
 void KBD_SCAN_ANS_INIT(void)
 {
     uint8_t index;
@@ -67,6 +78,7 @@ void KBD_SCAN_ANS_INIT(void)
     ans->index_skey = 0;
 }
 
+//扫描结果过程中初始化函数，主要用于程序执行过程中的初始化
 void KBD_SCAN_ANS_REINIT(void)
 {
     uint8_t index;
@@ -81,6 +93,8 @@ void KBD_SCAN_ANS_REINIT(void)
     ans->index_skey = 0;
 }
 
+
+//键盘防抖函数，按键按下过程中并不是线性的，可能存在反复现象，所以需要防抖
 void KBD_SCAN_RMJ(void)
 {
     uint8_t checkpoint;
@@ -102,6 +116,7 @@ void KBD_SCAN_RMJ(void)
     printf("rmjit complete\n");
 }
 
+//扫描功能按键的函数
 void KBD_SCAN_FKEY(void)
 {
     uint8_t index;
@@ -122,6 +137,7 @@ void KBD_SCAN_FKEY(void)
     printf("scan fkey complete!\n");
 }
 
+//扫描特殊按键的函数
 void KBD_SCAN_SKEY(void)
 {
     uint8_t index;
@@ -142,6 +158,8 @@ void KBD_SCAN_SKEY(void)
     printf("scan skey complete!\n");
 }
 
+
+//扫描普通按键的函数
 void KBD_SCAN_AKEY(void)
 {
     uint8_t index_row;
@@ -177,7 +195,7 @@ void KBD_SCAN_AKEY(void)
  * 在蓝牙或者2.4G环境下，发送report需要大量的电量，为了保证长续航时间必须减少发送次数
  * 当检测到按键并没有变化时将不会发送report
  * */
-
+//扫描上一次扫描结果的函数
 void KBD_SCAN_ANS(void)
 {
     uint8_t checkpoint;

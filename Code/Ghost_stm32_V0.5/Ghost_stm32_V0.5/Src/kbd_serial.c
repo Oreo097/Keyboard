@@ -1,3 +1,10 @@
+/**
+ * 这里存放的是串口DEBUG的函数实现
+ * */
+
+
+
+
 #include "kbd_serial.h"
 
 void report_map(kbd_ans_t *ans)

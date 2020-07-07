@@ -1,3 +1,8 @@
+/*
+* 这里主要是计时器参数定义和计时器初始函数的实现
+**/
+
+
 #include "kbd_tim.h"
 
 kbd_tim_t info_tim1 = {
