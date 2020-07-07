@@ -1,15 +1,12 @@
 /*
- * @Descripttion: 
+ * @Descripttion: USB功能实现
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-07 17:39:38
  * @LastEditors: Oreo097
  * @LastEditTime: 2020-07-07 19:28:34
  */ 
-/**
- * USB功能实现
- * 包括HID report发送
- * */
+
 
 #include "kbd_usb.h"
 

@@ -1,5 +1,5 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 串口函数，用来debug
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59

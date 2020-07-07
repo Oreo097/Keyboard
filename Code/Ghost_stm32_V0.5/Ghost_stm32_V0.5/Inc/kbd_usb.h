@@ -1,10 +1,10 @@
 /*
- * @Descripttion: 
+ * @Descripttion: USB相关函数
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 19:28:11
+ * @LastEditTime: 2020-07-07 21:46:19
  */ 
 #ifndef __KBD_USB_H
 #define __KBD_USB_H

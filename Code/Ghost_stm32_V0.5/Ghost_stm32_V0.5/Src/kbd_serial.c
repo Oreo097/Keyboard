@@ -1,15 +1,11 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 这里存放的是串口DEBUG的函数实现
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-07 17:39:38
  * @LastEditors: Oreo097
  * @LastEditTime: 2020-07-07 19:28:29
  */ 
-/**
- * 这里存放的是串口DEBUG的函数实现
- * */
-
 
 
 

@@ -1,10 +1,10 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 对基础函数进行二次封装
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 19:27:56
+ * @LastEditTime: 2020-07-07 21:38:44
  */ 
 
 #ifndef __KBD_FUNC_H

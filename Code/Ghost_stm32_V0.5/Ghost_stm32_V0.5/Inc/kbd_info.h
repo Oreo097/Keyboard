@@ -1,5 +1,5 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 一些键盘关键参数的定义
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59

@@ -1,14 +1,11 @@
 /*
- * @Descripttion: 
+ * @Descripttion:键盘矩阵扫描的函数实现
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-07 17:39:38
  * @LastEditors: Oreo097
  * @LastEditTime: 2020-07-07 19:28:24
  */ 
-/**
- * 本文件主要用于实现键盘矩阵的扫描
- * */
 
 #include "kbd_scan.h"
 #include "stdlib.h"

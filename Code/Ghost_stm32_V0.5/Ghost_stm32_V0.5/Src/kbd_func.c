@@ -1,5 +1,5 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 对基础函数二次封装的函数实现
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-07 17:39:38

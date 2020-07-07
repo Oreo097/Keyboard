@@ -1,14 +1,11 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 这里主要是计时器参数定义和计时器初始函数的实现
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-07 17:39:38
  * @LastEditors: Oreo097
  * @LastEditTime: 2020-07-07 19:28:32
  */ 
-/*
-* 这里主要是计时器参数定义和计时器初始函数的实现
-**/
 
 
 #include "kbd_tim.h"

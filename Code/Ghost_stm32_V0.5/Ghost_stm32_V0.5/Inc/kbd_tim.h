@@ -1,10 +1,10 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 计时器初始化
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 19:28:09
+ * @LastEditTime: 2020-07-07 22:06:58
  */ 
 #ifndef __KBD_TIM_H
 #define __KBD_TIM_H

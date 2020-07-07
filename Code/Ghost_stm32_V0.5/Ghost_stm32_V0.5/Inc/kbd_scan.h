@@ -1,5 +1,5 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 键盘扫描的相关函数
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59

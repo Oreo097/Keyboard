@@ -1,15 +1,11 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 有关报告生成的函数全在这里，本文件中的函数主要用于解析扫描结果和生成报告
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-07 17:39:38
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 19:28:21
- */ 
-/**
- * 有关报告生成的函数全在这里
- * 本文件中的函数主要用于解析扫描结果和生成报告
- * */
+ * @LastEditTime: 2020-07-07 22:06:42
+ */
 
 #include "kbd_report.h"
 #include "kbd_usb.h"

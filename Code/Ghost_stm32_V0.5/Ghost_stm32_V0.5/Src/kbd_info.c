@@ -1,19 +1,11 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 本文件主要用于实现各种矩阵，包括 物理上的GPIO矩阵--供扫描使用功能键、特殊键、普通键的矩阵
  * @version: 
  * @Author: Oreo097
  * @Date: 2020-07-07 17:39:38
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 19:28:18
+ * @LastEditTime: 2020-07-07 21:48:23
  */ 
-/**
- * 本文件主要用于实现各种矩阵
- * 包括 物理上的GPIO矩阵--供扫描使用
- * 功能键、特殊键、普通键的矩阵
- * */
-
-
-
 
 #include "kbd_info.h"
 
