@@ -26,6 +26,11 @@
 #include "kbd_report.h"
 #endif
 
+#ifndef __KBD_CONFIG_H
+#include "kbd_config.h"
+#endif
+
+
 #define HID_KEYBOARD_REPORT_DESC_SIZE 63U
 
 

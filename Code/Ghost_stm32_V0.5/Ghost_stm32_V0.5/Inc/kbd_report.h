@@ -1,6 +1,11 @@
 #ifndef __KBD_KEYWORD_H
 #define __KBD_KEYWORD_H
 
+
+#ifndef __KBD_CONFIG_H
+#include "kbd_config.h"
+#endif
+
 #ifndef __KBD_INFO_H
 #include "kbd_info.h"
 #endif 

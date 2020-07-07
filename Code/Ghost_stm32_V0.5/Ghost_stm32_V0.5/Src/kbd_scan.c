@@ -2,8 +2,6 @@
  * 本文件主要用于实现键盘矩阵的扫描
  * */
 
-
-
 #include "kbd_scan.h"
 #include "stdlib.h"
 
@@ -15,17 +13,15 @@ kbd_ans_t kbd_ans;
 
 uint8_t checkpoint_change = 0;
 
-uint8_t kbd_sacn_other[6][2];//这是用来存储扫描的其他按键的
+uint8_t kbd_sacn_other[6][2]; //这是用来存储扫描的其他按键的
 
-extern kbd_map_gpio_t map_key_phy;//物理接盘的GPIO矩阵
+extern kbd_map_gpio_t map_key_phy; //物理接盘的GPIO矩阵
 
-extern kbd_map_akey_t kbd_map_akey;//普通按键的矩阵
+extern kbd_map_akey_t kbd_map_akey; //普通按键的矩阵
 
-extern kbd_map_fkey_t kbd_map_fkey;//功能按键的矩阵
+extern kbd_map_fkey_t kbd_map_fkey; //功能按键的矩阵
 
-extern kbd_map_skey_t kbd_map_skey;//特殊按键的矩阵
-
-
+extern kbd_map_skey_t kbd_map_skey; //特殊按键的矩阵
 
 //扫描过程主函数
 void KBD_SCAN_MAIN(void)
@@ -33,15 +29,15 @@ void KBD_SCAN_MAIN(void)
     KBD_SCAN_ANS();
     if (checkpoint_change == 1)
     {
-        KBD_SCAN_FKEY();//扫描功能键
+        KBD_SCAN_FKEY(); //扫描功能键
         //HAL_Delay(100);
-        KBD_SCAN_SKEY();//扫描特殊键
+        KBD_SCAN_SKEY(); //扫描特殊键
         //HAL_Delay(100);
-        KBD_SCAN_AKEY();//扫描普通键
+        KBD_SCAN_AKEY(); //扫描普通键
         KBD_SCAN_RMJ();
         //HAL_Delay(100);
-        KBD_REPORT_MAKE();//生成报告
-        KBD_USB_SEND_REPORT();//发送报告
+        KBD_REPORT_MAKE();     //生成报告
+        KBD_USB_SEND_REPORT(); //发送报告
     }
     //HAL_Delay(100);
 }
@@ -61,13 +57,14 @@ void test_free(void)
     ans->index_skey = 0;
 }
 
-
 //扫描结果初始化函数，仅用于程序初始化时
 void KBD_SCAN_ANS_INIT(void)
 {
     uint8_t index;
     ans = &kbd_ans;
+#ifdef DBG_MODE
     printf("ans inited\n");
+#endif
     for (index = 0; index <= ANS_NUM; index++)
     {
         ans->map[index][0] = 0xFF;
@@ -93,7 +90,6 @@ void KBD_SCAN_ANS_REINIT(void)
     ans->index_skey = 0;
 }
 
-
 //键盘防抖函数，按键按下过程中并不是线性的，可能存在反复现象，所以需要防抖
 void KBD_SCAN_RMJ(void)
 {
@@ -108,12 +104,16 @@ void KBD_SCAN_RMJ(void)
             if (pinRead(map_key_phy.gpio_col[ans->map[checkpoint][0]][ans->map[checkpoint][1]]) != 1)
             {
                 ans->map[checkpoint][0] = ans->map[checkpoint][1] = 0xFF;
+#ifdef DBG_MODE
                 report_rm(ans->map[checkpoint][0], ans->map[checkpoint][1]);
+#endif
             }
             pinDown(map_key_phy.gpio_row[buffer_pin]);
         }
     }
+#ifdef DBG_MODE
     printf("rmjit complete\n");
+#endif
 }
 
 //扫描功能按键的函数
@@ -127,14 +127,18 @@ void KBD_SCAN_FKEY(void)
         pinUp(map_key_phy.gpio_row[kbd_map_fkey.key[index][0]]);
         if (pinRead(map_key_phy.gpio_col[kbd_map_fkey.key[index][0]][kbd_map_fkey.key[index][1]]) == 1)
         {
+#ifdef DBG_MODE
             printf("fkey pressed down\n");
+#endif
             ans->map[ans->index_fkey][0] = kbd_map_fkey.key[index][0];
             ans->map[ans->index_fkey][1] = kbd_map_fkey.key[index][1];
             ans->index_fkey++;
         }
         pinDown(map_key_phy.gpio_row[kbd_map_fkey.key[index][0]]);
     }
+#ifdef DBG_MODE
     printf("scan fkey complete!\n");
+#endif
 }
 
 //扫描特殊按键的函数
@@ -148,16 +152,19 @@ void KBD_SCAN_SKEY(void)
         pinUp(map_key_phy.gpio_row[kbd_map_skey.key[index][0]]);
         if (pinRead(map_key_phy.gpio_col[kbd_map_skey.key[index][0]][kbd_map_skey.key[index][1]]) == 1)
         {
+#ifdef DBG_MODE
             printf("skey pressed down\n");
+#endif
             ans->map[ans->index_skey][0] = kbd_map_skey.key[index][0];
             ans->map[ans->index_skey][1] = kbd_map_skey.key[index][1];
             ans->index_skey++;
         }
         pinDown(map_key_phy.gpio_row[kbd_map_skey.key[index][0]]);
     }
+#ifdef DBG_MODE
     printf("scan skey complete!\n");
+#endif
 }
-
 
 //扫描普通按键的函数
 void KBD_SCAN_AKEY(void)
@@ -186,7 +193,9 @@ void KBD_SCAN_AKEY(void)
         //printf("pindown\n");
     }
     checkpoint_change = 0;
+#ifdef DBG_MODE
     printf("scan akey complete!\n");
+#endif
 }
 
 /**
@@ -201,20 +210,21 @@ void KBD_SCAN_ANS(void)
     uint8_t checkpoint;
     uint8_t buffer_pin;
 
-
-    if (ans->index_akey != 0)//检测扫描结果是否为空
+    if (ans->index_akey != 0) //检测扫描结果是否为空
     {
         if (((ans->index_akey) - (ans->index_skey)) == (REPORT_MAX - 2)) //检测报表是否写满
         {
-            for (checkpoint = 0; checkpoint < 8; checkpoint++)//循环检测每个按键
+            for (checkpoint = 0; checkpoint < 8; checkpoint++) //循环检测每个按键
             {
                 buffer_pin = ans->map[checkpoint][0];
                 pinUp(map_key_phy.gpio_row[ans->map[checkpoint][0]]);
                 if (pinRead(map_key_phy.gpio_col[ans->map[checkpoint][0]][ans->map[checkpoint][1]]) != 1)
                 {
+#ifdef DBG_MODE
                     printf("ans changed\n");
+#endif
                     KBD_SCAN_ANS_REINIT();
-                    checkpoint_change = 1;//触发扳机
+                    checkpoint_change = 1; //触发扳机
                     pinDown(map_key_phy.gpio_row[buffer_pin]);
                     break;
                 }
@@ -223,17 +233,23 @@ void KBD_SCAN_ANS(void)
         }
         else
         {
+#ifdef DBG_MODE
             printf("ans not enough\n");
+#endif
             checkpoint_change = 1;
             KBD_SCAN_ANS_REINIT();
         }
     }
     else
     {
+#ifdef DBG_MODE
         printf("no ans\n");
+#endif
         checkpoint_change = 1;
     }
+#ifdef DBG_MODE
     printf("scan ans complete\n");
+#endif
 }
 
 // void KBD_SCAN_ANS(void)

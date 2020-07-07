@@ -17,6 +17,11 @@
 #include "stdio.h"
 #endif
 
+
+#ifndef __KBD_CONFIG_H
+#include "kbd_config.h"
+#endif
+
 #define send(words) HAL_UART_Transmit(&huart1,(words),sizeof((words)),100)
 
 

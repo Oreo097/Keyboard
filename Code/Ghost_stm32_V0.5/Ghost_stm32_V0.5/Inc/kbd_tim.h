@@ -13,6 +13,11 @@
 #include "tim.h"
 #endif
 
+
+#ifndef __KBD_CONFIG_H
+#include "kbd_config.h"
+#endif
+
 #define TIM_SCAN htim1
 
 #define TIM_RMJ htim2

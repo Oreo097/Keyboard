@@ -1,6 +1,14 @@
 #ifndef __KBD_FUNC_H
 #define __KBD_FUNC_H
 
+#ifndef __KBD_CONFIG_H
+#include "kbd_config.h"
+#endif
+
+
+
+
+
 #ifndef __MAIN_H
 #include "main.h"
 #endif

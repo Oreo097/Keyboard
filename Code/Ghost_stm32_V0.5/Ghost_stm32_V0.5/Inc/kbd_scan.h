@@ -26,6 +26,12 @@
 #include "kbd_usb.h"
 #endif
 
+
+#ifndef __KBD_CONFIG_H
+#include "kbd_config.h"
+#endif
+
+
 void KBD_SCAN_ANS_INIT(void);
 
 void KBD_SCAN_ANS_REINIT(void);
