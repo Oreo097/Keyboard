@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: Oreo097
+ * @Date: 2020-07-07 17:39:38
+ * @LastEditors: Oreo097
+ * @LastEditTime: 2020-07-07 19:28:14
+ */ 
 /**
  * 本文件中的函数是对STM32 HAL库中的底层函数进行二次封装
  * 方便日后移植和修改
