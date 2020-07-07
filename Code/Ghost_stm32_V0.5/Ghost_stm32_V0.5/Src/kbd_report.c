@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-07 17:39:38
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 22:06:42
+ * @LastEditTime: 2020-07-07 22:53:52
  */
 
 #include "kbd_report.h"
@@ -70,10 +70,6 @@ void KBD_REPORT_MAIN(void)
     //KBD_REPORT_SEND();
 }
 
-void KBD_REPORT_SELECT(void)
-{
-}
-
 void KBD_REPORT_INIT(void)
 {
     uint8_t index_report;
@@ -85,3 +81,15 @@ void KBD_REPORT_INIT(void)
     printf("init complete\n");
 #endif
 }
+
+/**
+ * @name: Oreo097
+ * @msg: 检查按键是否在report中
+ * @param {type} 
+ * @return: 
+ */
+void KBD_REPORT_CHECK(void)
+{
+    
+}
+
