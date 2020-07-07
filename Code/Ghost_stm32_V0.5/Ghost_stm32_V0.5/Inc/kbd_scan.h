@@ -4,8 +4,8 @@
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 19:28:04
- */ 
+ * @LastEditTime: 2020-07-07 23:33:49
+ */
 #ifndef __KBD_SCAN_H
 #define __KBD_SCAN_H
 
@@ -29,16 +29,13 @@
 #include "kbd_func.h"
 #endif
 
-
 #ifndef __KBD_USB_H
 #include "kbd_usb.h"
 #endif
 
-
 #ifndef __KBD_CONFIG_H
 #include "kbd_config.h"
 #endif
-
 
 void KBD_SCAN_ANS_INIT(void);
 
@@ -52,14 +49,20 @@ void test_free(void);
 
 void KBD_SCAN_RMJ(void);
 
-void KBD_SCAN_SKEY(void);
-
+#if (NUM_AKEY != 0)
 void KBD_SCAN_AKEY(void);
+#endif
 
+#if (NUM_FKEY != 0)
 void KBD_SCAN_FKEY(void);
+#endif
+
+#if (NUM_SKEY != 0)
+void KBD_SCAN_SKEY(void);
+#endif
 
 void KBD_SCAN_GETGPIO(void);
 
 void KBD_SCAN_ANS(void);
 
-#endif 
+#endif

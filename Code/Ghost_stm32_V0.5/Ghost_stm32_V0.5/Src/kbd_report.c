@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-07 17:39:38
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 22:53:52
+ * @LastEditTime: 2020-07-07 23:41:47
  */
 
 #include "kbd_report.h"
@@ -19,7 +19,7 @@ extern kbd_ans_t *ans;
 // kbd_ans_t *ans_b;
 // kbd_ans_t kbd_ans_backup;
 
-kbd_report_t kbd_report[REPORT_MAX];
+kbd_report_t kbd_report[REPORT_MAX+2];//8个报告长度
 
 //生成报告的函数，用来从kbd_ans中解析出键值并生成报告
 void KBD_REPORT_MAKE(void)
@@ -32,17 +32,21 @@ void KBD_REPORT_MAKE(void)
     report_map(ans);
 #endif
     uint8_t index_report;
-
+#if (NUM_FKEY != 0)
     for (index = 0; index < (ans->index_fkey); index++)
     {
         fkey |= kbd_map_keyword_fkey[ans->map[index][0]][ans->map[index][1]];
     }
+#endif
 
+#if (NUM_SKEY != 0)
     for (; index < (ans->index_skey); index++)
     {
         kbd_report[1] |= kbd_map_keyword_skey[ans->map[index][0]][ans->map[index][1]];
     }
+#endif
 
+#if (NUM_AKEY != 0)
     for (index_report = 2; index_report < REPORT_MAX; index_report++)
     {
         if (index_report - 2 >= (ans->index_akey - ans->index_skey))
@@ -56,6 +60,8 @@ void KBD_REPORT_MAKE(void)
         kbd_report[index_report] = kbd_map_keyword_akey[ans->map[index][0]][ans->map[index][1]];
         index++;
     }
+#endif
+
 #ifdef DBG_MODE
     report_keyword(kbd_report);
 #endif
@@ -63,14 +69,13 @@ void KBD_REPORT_MAKE(void)
     //report_keyword(kbd_report);
 }
 
-void KBD_REPORT_MAIN(void)
-{
-    //KBD_REPORT_MAKE();
-
-    //KBD_REPORT_SEND();
-}
-
-void KBD_REPORT_INIT(void)
+/**
+ * @name: Oreo097
+ * @msg: 初始化报告
+ * @param {type} 
+ * @return: void
+ */
+void KBD_REPORT_INIT_6KRO(void)
 {
     uint8_t index_report;
     for (index_report = 0; index_report <= REPORT_MAX; index_report++)
@@ -84,12 +89,10 @@ void KBD_REPORT_INIT(void)
 
 /**
  * @name: Oreo097
- * @msg: 检查按键是否在report中
+ * @msg: 检查按键是否在report中_6键模式，主要用于检测普通按键
  * @param {type} 
- * @return: 
+ * @return: 如果存在返回true 如果不存在返回false
  */
-void KBD_REPORT_CHECK(void)
+bool KBD_REPORT_CHECK_6KRO(uint8_t key)
 {
-    
 }
-

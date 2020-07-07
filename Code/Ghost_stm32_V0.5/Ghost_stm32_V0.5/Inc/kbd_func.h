@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 21:38:44
+ * @LastEditTime: 2020-07-07 23:32:39
  */ 
 
 #ifndef __KBD_FUNC_H
@@ -38,6 +38,15 @@
 
 // #define pinDown(gpio_group,gpio_pin) HAL_GPIO_WritePin((gpio_group),(gpio_pin),0)
 
+
+
+/**
+ * @name: Oreo097
+ * @msg: 使用宏定义来写HAL库中的延迟函数
+ * @param {type} 
+ * @return: 
+ */
+#define KBD_DELAY(time) HAL_Delay((time))
 
 uint8_t pinRead(kbd_gpio_t gpio);
 

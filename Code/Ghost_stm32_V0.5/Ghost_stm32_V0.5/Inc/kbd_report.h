@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 21:39:58
+ * @LastEditTime: 2020-07-07 23:27:46
  */ 
 #ifndef __KBD_KEYWORD_H
 #define __KBD_KEYWORD_H
@@ -27,6 +27,7 @@
 #include "kbd_scan.h"
 #endif
 
+#include <stdbool.h>
 
 //kbd_report_t kbd_report;
 //kbd_report_t* report;
@@ -34,10 +35,9 @@
 
 void KBD_REPORT_MAKE(void);
 
-void KBD_REPORT_MAIN(void);
-
-//void KBD_REPORT_SEND(void);
 
 void KBD_REPORT_INIT(void);
 
+
+void KBD_REPORT_CHECK_6KRO(uint8_t key);
 #endif

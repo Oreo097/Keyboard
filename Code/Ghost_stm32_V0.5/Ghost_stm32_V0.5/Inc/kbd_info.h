@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 19:27:59
+ * @LastEditTime: 2020-07-07 23:41:08
  */ 
 #ifndef __KBD_INFO_H
 #define __KBD_INFO_H
@@ -23,13 +23,14 @@
 
 #define ANS_NUM 128
 
-#define REPORT_MAX 8
+#define REPORT_MAX 6
 
 #define ROW_MAX 5
 #define COL_MAX 4
 
 #define NUM_FKEY 1
 #define NUM_SKEY 1
+#define NUM_AKEY 104
 
 #define type_gpio GPIO_TypeDef
 
@@ -172,10 +173,18 @@
 
 typedef struct
 {
+    #if(NUM_FKEY!=0)
     uint8_t index_fkey;
+    uint8_t map_fkey[NUM_FKEY][2];
+    #endif
+    #if(NUM_SKEY!=0)
     uint8_t index_skey;
+    uint8_t map_skey[NUM_SKEY][2];
+    #endif
+    #if(NUM_AKEY!=0)
     uint8_t index_akey;
-    uint8_t map[ANS_NUM][2];
+    uint8_t map_akey[NUM_AKEY][2];
+    #endif
 
 } kbd_ans_t;
 
@@ -207,24 +216,33 @@ typedef struct
 
 } kbd_tim_t;
 
+
+#if(NUM_AKEY!=0)
 typedef struct
 {
     uint8_t num_row[ROW_MAX];
     uint8_t key[ROW_MAX][COL_MAX];
 
 } kbd_map_akey_t;
+#endif
 
+#if(NUM_FKEY!=0)
 typedef struct
 {
     uint8_t num_key;
     uint8_t key[NUM_FKEY][2];
 } kbd_map_fkey_t;
+#endif
 
+#if(NUM_SKEY!=0)
 typedef struct
 {
     uint8_t num_key;
     uint8_t key[NUM_SKEY][2];
 } kbd_map_skey_t;
+#endif
+
+
 
 typedef uint8_t kbd_map_keyword_t;
 
