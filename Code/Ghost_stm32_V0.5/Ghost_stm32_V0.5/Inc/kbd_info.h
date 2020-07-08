@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 23:41:08
+ * @LastEditTime: 2020-07-08 11:49:44
  */ 
 #ifndef __KBD_INFO_H
 #define __KBD_INFO_H
@@ -171,20 +171,24 @@
 /*special key */
 #define S_KEY 0;
 
+/**
+ * @name: Oreo097
+ * @msg: 这是关于扫描结果的定义
+ * @param {type} 
+ * @return: 
+ */
 typedef struct
 {
     #if(NUM_FKEY!=0)
     uint8_t index_fkey;
-    uint8_t map_fkey[NUM_FKEY][2];
     #endif
     #if(NUM_SKEY!=0)
     uint8_t index_skey;
-    uint8_t map_skey[NUM_SKEY][2];
     #endif
     #if(NUM_AKEY!=0)
     uint8_t index_akey;
-    uint8_t map_akey[NUM_AKEY][2];
     #endif
+    uint8_t map[(NUM_AKEY+NUM_FKEY+NUM_SKEY)][2];
 
 } kbd_ans_t;
 

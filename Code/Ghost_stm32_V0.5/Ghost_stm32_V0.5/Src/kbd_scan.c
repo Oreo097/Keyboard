@@ -4,11 +4,12 @@
  * @Author: Oreo097
  * @Date: 2020-07-07 17:39:38
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 23:50:03
+ * @LastEditTime: 2020-07-08 12:26:25
  */
 
 #include "kbd_scan.h"
 #include "stdlib.h"
+#include <stdbool.h>
 
 kbd_ans_t *ans;
 kbd_ans_t kbd_ans;
@@ -16,7 +17,10 @@ kbd_ans_t kbd_ans;
 // kbd_ans_t *ans_b;
 // kbd_ans_t kbd_ans_backup;
 
-uint8_t checkpoint_change = 0;
+uint8_t checkpoint_change_akey;
+bool checkpoint_change_skey = false;
+bool checkpoint_change_fkey = false;
+uint8_t blank_akey; //这是空白键的数量
 
 uint8_t kbd_sacn_other[6][2]; //这是用来存储扫描的其他按键的
 
@@ -109,7 +113,12 @@ void KBD_SCAN_ANS_REINIT(void)
     ans->index_skey = 0;
 }
 
-//键盘防抖函数，按键按下过程中并不是线性的，可能存在反复现象，所以需要防抖
+/**
+ * @name: Oreo097
+ * @msg: 键盘防抖函数，按键按下过程中并不是线性的，可能存在反复现象，所以需要防抖
+ * @param {type} 
+ * @return: void
+ */
 void KBD_SCAN_RMJ(void)
 {
     uint8_t checkpoint;
@@ -120,7 +129,7 @@ void KBD_SCAN_RMJ(void)
         {
             buffer_pin = ans->map[checkpoint][0];
             pinUp(map_key_phy.gpio_row[buffer_pin]);
-            if (pinRead(map_key_phy.gpio_col[ans->map[checkpoint][0]][ans->map[checkpoint][1]]) != 1)
+            if (pinRead(map_key_phy.gpio_col[ans->map[checkpoint][0]][ans->map[checkpoint][1]]) != true)
             {
                 ans->map[checkpoint][0] = ans->map[checkpoint][1] = 0xFF;
 #ifdef DBG_MODE
@@ -135,23 +144,28 @@ void KBD_SCAN_RMJ(void)
 #endif
 }
 
-//扫描功能按键的函数
+/**
+ * @name: Oreo097
+ * @msg:扫描功能按键的函数 
+ * @param {type} 
+ * @return: void
+ */
 #if (NUM_FKEY != 0)
 void KBD_SCAN_FKEY(void)
 {
     uint8_t index;
     //printf("scan fkey!\n");
-    ans->index_fkey = 0;
+    ans->index_fkey = 0; //初始化fkey的索引
     for (index = 0; index < kbd_map_fkey.num_key; index++)
     {
         pinUp(map_key_phy.gpio_row[kbd_map_fkey.key[index][0]]);
-        if (pinRead(map_key_phy.gpio_col[kbd_map_fkey.key[index][0]][kbd_map_fkey.key[index][1]]) == 1)
+        if (pinRead(map_key_phy.gpio_col[kbd_map_fkey.key[index][0]][kbd_map_fkey.key[index][1]]) == true)
         {
 #ifdef DBG_MODE
             printf("fkey pressed down\n");
 #endif
-            ans->map_fkey[ans->index_fkey][0] = kbd_map_fkey.key[index][0];
-            ans->map_fkey[ans->index_fkey][1] = kbd_map_fkey.key[index][1];
+            ans->map[ans->index_fkey][0] = kbd_map_fkey.key[index][0];
+            ans->map[ans->index_fkey][1] = kbd_map_fkey.key[index][1];
             ans->index_fkey++;
         }
         pinDown(map_key_phy.gpio_row[kbd_map_fkey.key[index][0]]);
@@ -162,23 +176,28 @@ void KBD_SCAN_FKEY(void)
 }
 #endif
 
-//扫描特殊按键的函数
+/**
+ * @name: Oreo097
+ * @msg: 扫描特殊按键的函数
+ * @param {type} 
+ * @return: void
+ */
 #if (NUM_SKEY != 0)
 void KBD_SCAN_SKEY(void)
 {
     uint8_t index;
     //printf("scan skey!\n");
-    ans->index_skey = 0;
+    ans->index_skey = ans->index_fkey; //把fkey的索引值传递到skey的索引上
     for (index = 0; index < kbd_map_skey.num_key; index++)
     {
         pinUp(map_key_phy.gpio_row[kbd_map_skey.key[index][0]]);
-        if (pinRead(map_key_phy.gpio_col[kbd_map_skey.key[index][0]][kbd_map_skey.key[index][1]]) == 1)
+        if (pinRead(map_key_phy.gpio_col[kbd_map_skey.key[index][0]][kbd_map_skey.key[index][1]]) == true)
         {
 #ifdef DBG_MODE
             printf("skey pressed down\n");
 #endif
-            ans->map_skey[ans->index_skey][0] = kbd_map_skey.key[index][0];
-            ans->map_skey[ans->index_skey][1] = kbd_map_skey.key[index][1];
+            ans->map[ans->index_skey][0] = kbd_map_skey.key[index][0];
+            ans->map[ans->index_skey][1] = kbd_map_skey.key[index][1];
             ans->index_skey++;
         }
         pinDown(map_key_phy.gpio_row[kbd_map_skey.key[index][0]]);
@@ -189,14 +208,19 @@ void KBD_SCAN_SKEY(void)
 }
 #endif
 
-//扫描普通按键的函数
+/**
+ * @name: Oreo097
+ * @msg: 扫描普通按键的函数
+ * @param {type} 
+ * @return: void
+ */
 #if (NUM_AKEY != 0)
 void KBD_SCAN_AKEY(void)
 {
     uint8_t index_row;
     uint8_t index_col;
     //printf("scan akey!\n");
-    ans->index_akey = 0;
+    ans->index_akey = ans->index_skey; //把skey的索引值传递到akey上
     for (index_row = 0; index_row < ROW_MAX; index_row++)
     {
         //printf("scan row %d\n", index_row);
@@ -205,18 +229,17 @@ void KBD_SCAN_AKEY(void)
         for (index_col = 0; index_col < kbd_map_akey.num_row[index_row]; index_col++)
         {
             //printf("%d\n",kbd_map_akey.key[index_row][index_col]);
-            if (pinRead(map_key_phy.gpio_col[index_row][kbd_map_akey.key[index_row][index_col]]) == 1)
+            if (pinRead(map_key_phy.gpio_col[index_row][kbd_map_akey.key[index_row][index_col]]) == true)
             {
                 printf("%d,%d pressed down\n", index_row, index_col);
-                ans->map_akey[ans->index_akey][0] = index_row;
-                ans->map_akey[ans->index_akey][1] = index_col;
+                ans->map[ans->index_akey][0] = index_row;
+                ans->map[ans->index_akey][1] = index_col;
                 ans->index_akey++;
             }
         }
         pinDown(map_key_phy.gpio_row[index_row]);
         //printf("pindown\n");
     }
-    checkpoint_change = 0;
 #ifdef DBG_MODE
     printf("scan akey complete!\n");
 #endif
@@ -229,9 +252,64 @@ void KBD_SCAN_AKEY(void)
  * 在蓝牙或者2.4G环境下，发送report需要大量的电量，为了保证长续航时间必须减少发送次数
  * 当检测到按键并没有变化时将不会发送report
  * */
-//扫描上一次扫描结果的函数
+/**
+ * @name: Oreo097
+ * @msg: 检查上次扫描的答案
+ * @param {type} 
+ * @return: void 只改变全局变量checkpoint_change的值
+ */
 void KBD_SCAN_ANS(void)
 {
-    uint8_t index_ans_skey;
-    for(index_ans=0;index_ans<)
+    if ((ans->index_akey) == 0) //先判断上次答案是否为0
+    {
+        checkpoint_change_akey = true;
+        return;
+    }
+    else
+    {
+#if (NUM_FKEY != 0)
+        for (uint8_t index = 0; index < (ans->index_fkey); index++) //先检查fkey有没有变化
+        {
+            uint8_t buffer_pin = ans->map[index][0];
+            pinUp(map_key_phy.gpio_row[buffer_pin]);
+            if (pinRead(map_key_phy.gpio_col[ans->map[index][0]][ans->map[index][1]]) != true)
+            {
+                ans->map[index][0] = ans->map[index][1] = 0xFF; //清空ans的值
+                checkpoint_change_fkey = true;
+                pinDown(map_key_phy.gpio_row[buffer_pin]);
+                break;
+            }
+            pinDown(map_key_phy.gpio_row[buffer_pin]);
+        }
+#endif
+#if (NUM_SKEY != 0)
+        for (uint8_t index = (ans->index_fkey); index < (ans->index_skey); index++) //检查skey
+        {
+            uint8_t buffer_pin = ans->map[index][0];
+            pinUp(map_key_phy.gpio_row[buffer_pin]);
+            if (pinRead(map_key_phy.gpio_col[ans->map[index][0]][ans->map[index][1]]) != true)
+            {
+                ans->map[index][0] = ans->map[index][1] = 0xFF; //清空ans的值
+                checkpoint_change_skey = true;
+                pinDown(map_key_phy.gpio_row[buffer_pin]);
+                break;
+            }
+            pinDown(map_key_phy.gpio_row[buffer_pin]);
+        }
+#endif
+#if (NUM_AKEY != 0)
+        checkpoint_change_akey = 0;//初始化计数值
+        for (uint8_t index = (ans->index_skey); index < (ans->index_akey); index++) //检查akey
+        {
+            uint8_t buffer_pin = ans->map[index][0];
+            pinUp(map_key_phy.gpio_row[buffer_pin]);
+            if (pinRead(map_key_phy.gpio_col[ans->map[index][0]][ans->map[index][1]]) != true)
+            {
+                ans->map[index][0] = ans->map[index][1] = 0xFF; //清空ans的值
+                
+            }
+            pinDown(map_key_phy.gpio_row[buffer_pin]);
+        }
+#endif
+    }
 }

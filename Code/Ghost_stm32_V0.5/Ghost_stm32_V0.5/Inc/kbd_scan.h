@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 23:33:49
+ * @LastEditTime: 2020-07-08 11:30:52
  */
 #ifndef __KBD_SCAN_H
 #define __KBD_SCAN_H
@@ -36,6 +36,7 @@
 #ifndef __KBD_CONFIG_H
 #include "kbd_config.h"
 #endif
+
 
 void KBD_SCAN_ANS_INIT(void);
 

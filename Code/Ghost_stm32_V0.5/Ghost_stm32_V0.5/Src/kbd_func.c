@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-07 17:39:38
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-07 19:28:14
+ * @LastEditTime: 2020-07-08 11:45:50
  */ 
 /**
  * 本文件中的函数是对STM32 HAL库中的底层函数进行二次封装
@@ -15,12 +15,12 @@
 
 
 #include "kbd_func.h"
-
+#include <stdbool.h>
 
 
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
-uint8_t pinRead(kbd_gpio_t gpio)
+bool pinRead(kbd_gpio_t gpio)
 {
     return HAL_GPIO_ReadPin(gpio.gpio_group,gpio.gpio_pin);
 }
