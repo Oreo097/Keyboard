@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-08 11:30:52
+ * @LastEditTime: 2020-07-08 21:47:01
  */
 #ifndef __KBD_SCAN_H
 #define __KBD_SCAN_H
@@ -66,4 +66,6 @@ void KBD_SCAN_GETGPIO(void);
 
 void KBD_SCAN_ANS(void);
 
+
+bool KBD_SCAN_CHECK(uint8_t row, uint8_t col);
 #endif
