@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-01 22:07:59
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-08 11:49:44
+ * @LastEditTime: 2020-07-08 16:30:52
  */ 
 #ifndef __KBD_INFO_H
 #define __KBD_INFO_H
@@ -173,7 +173,29 @@
 
 /**
  * @name: Oreo097
- * @msg: 这是关于扫描结果的定义
+ * @msg: 这是关于扫描结果的定义,用于6KRO
+ * @param {type} 
+ * @return: 
+ */
+typedef struct
+{
+    #if(NUM_FKEY!=0)
+    uint8_t index_fkey;
+    #endif
+    #if(NUM_SKEY!=0)
+    uint8_t index_skey;
+    #endif
+    #if(NUM_AKEY!=0)
+    uint8_t index_akey;
+    #endif
+    uint8_t map[(REPORT_MAX+NUM_FKEY+NUM_SKEY)][2];
+
+} kbd_ans_t_6;
+
+
+/**
+ * @name: Oreo097
+ * @msg: 这是用于NKRO的扫描结果
  * @param {type} 
  * @return: 
  */
@@ -190,7 +212,7 @@ typedef struct
     #endif
     uint8_t map[(NUM_AKEY+NUM_FKEY+NUM_SKEY)][2];
 
-} kbd_ans_t;
+} kbd_ans_t_N;
 
 typedef struct
 {

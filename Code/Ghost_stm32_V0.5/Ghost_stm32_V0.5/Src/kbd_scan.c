@@ -4,15 +4,15 @@
  * @Author: Oreo097
  * @Date: 2020-07-07 17:39:38
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-08 12:26:25
+ * @LastEditTime: 2020-07-08 16:36:17
  */
 
 #include "kbd_scan.h"
 #include "stdlib.h"
 #include <stdbool.h>
 
-kbd_ans_t *ans;
-kbd_ans_t kbd_ans;
+kbd_ans_t_6 *ans;
+kbd_ans_t_6 kbd_ans;
 
 // kbd_ans_t *ans_b;
 // kbd_ans_t kbd_ans_backup;
@@ -144,13 +144,14 @@ void KBD_SCAN_RMJ(void)
 #endif
 }
 
+
+#if (NUM_FKEY != 0)
 /**
  * @name: Oreo097
  * @msg:扫描功能按键的函数 
  * @param {type} 
  * @return: void
  */
-#if (NUM_FKEY != 0)
 void KBD_SCAN_FKEY(void)
 {
     uint8_t index;
@@ -176,13 +177,15 @@ void KBD_SCAN_FKEY(void)
 }
 #endif
 
+
+
+#if (NUM_SKEY != 0)
 /**
  * @name: Oreo097
  * @msg: 扫描特殊按键的函数
  * @param {type} 
  * @return: void
  */
-#if (NUM_SKEY != 0)
 void KBD_SCAN_SKEY(void)
 {
     uint8_t index;
