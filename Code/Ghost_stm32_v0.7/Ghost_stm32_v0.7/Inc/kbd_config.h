@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:49:24
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-09 11:57:02
+ * @LastEditTime: 2020-07-09 16:49:23
  */ 
 #ifndef __KBD_CONFIG_H
 #define __KBD_CONFIG_H
@@ -56,6 +56,14 @@
  * @return: 
  */
 #define SKEY_MAX 1
+
+/**
+ * @name: Oreo097
+ * @msg: 定义普通按键（AKEY）个数
+ * @param {type} 
+ * @return: 
+ */
+#define AKEY_MAX 1
 
 
 
