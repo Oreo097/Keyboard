@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:47:57
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-09 16:50:21
+ * @LastEditTime: 2020-07-09 23:42:42
  */
 
 #ifndef __KBD_PARAM_H
@@ -12,7 +12,7 @@
 
 #include "kbd_func.h"
 #include "kbd_config.h"
-
+#include "kbd_gpio.h"
 /**
  * @name: Oreo097
  * @msg:定义GPIO信息的类型 
@@ -36,7 +36,7 @@ typedef struct
     kbd_gpio_t gpio_row[ROW_MAX];
     uint8_t col_num[ROW_MAX]; //记录每一行有多少个按键的数组
     kbd_gpio_t gpio_col[ROW_MAX][COL_MAX];
-};
+}kbd_map_gpio_t;
 
 /**
  * @name: Oreo097
@@ -48,7 +48,7 @@ typedef struct
 typedef struct
 {
     uint8_t key_map[FKEY_MAX][2];
-} kbd_map_fkey_t;
+} kbd_map_fkey_logic_t;
 #endif
 
 /**
@@ -61,7 +61,7 @@ typedef struct
 typedef struct
 {
     uint8_t key_map[SKEY_MAX][2];
-} kbd_map_skey_t;
+} kbd_map_skey_logic_t;
 #endif
 
 /**
@@ -74,9 +74,25 @@ typedef struct
 typedef struct
 {
     uint8_t num_row[ROW_MAX];
-    uint8_t key[ROW_MAX][COL_MAX];
+    uint8_t key_map[ROW_MAX][COL_MAX];
 
-} kbd_map_akey_t;
+} kbd_map_akey_logic_t;
 #endif
+
+/**
+ * @name: Oreo097
+ * @msg: 定义扫描结果的结构体，主要用于存储扫描结果方便后边生成report，6KRO专用
+ * @param {前FKEY_MAX个是功能键扫描结果，中间SKEY_MAX个是特殊键扫描结果，后边REPORT_MAX-2个是普通按键扫描结果} 
+ * @return: 
+ */
+typedef struct
+{
+    uint8_t number;
+#define ANS_MAX FKEY_MAX + SKEY_MAX + (REPORT_MAX_6 - 2)
+    uint8_t array[ANS_MAX][2];
+    uint8_t index_fkey;
+    uint8_t index_skey;
+    uint8_t index_akey;
+} kbd_scan_ans_t;
 
 #endif
