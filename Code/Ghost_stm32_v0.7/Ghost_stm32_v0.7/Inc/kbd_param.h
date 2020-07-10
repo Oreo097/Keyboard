@@ -10,9 +10,15 @@
 #ifndef __KBD_PARAM_H
 #define __KBD_PARAM_H
 
-#include "kbd_func.h"
+#include "main.h"
+#include <stdbool.h>
 #include "kbd_config.h"
 #include "kbd_gpio.h"
+#include "usb_device.h"
+
+#define USBD USBD_HandleTypeDef//usb的数据类型
+#define GPIO_GROUP GPIO_TypeDef
+
 /**
  * @name: Oreo097
  * @msg:定义GPIO信息的类型 

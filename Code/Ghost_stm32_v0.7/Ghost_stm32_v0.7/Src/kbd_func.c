@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:45:26
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-10 10:37:50
+ * @LastEditTime: 2020-07-10 23:30:27
  */ 
 
 
@@ -58,4 +58,22 @@ void pinDown(kbd_gpio_t gpio)
 void KBD_USB_SEND(uint8_t * report)
 {
     USBD_HID_SendReport(&hUsbDeviceFS,report,8);
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 实现memset函数
+ * @param {type} 
+ * @return: 
+ */
+void* memset(void* s, int c, size_t n)
+{
+    unsigned char* p = (unsigned char*) s;
+
+    while (n > 0) {
+    *p++ = (unsigned char) c;
+    --n;
+    }
+
+    return s;
 }

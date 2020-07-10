@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:41:53
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-09 12:12:25
+ * @LastEditTime: 2020-07-10 23:30:20
  */ 
 
 
@@ -12,7 +12,7 @@
 #define __KBD_FUNC_H
 #include <stdbool.h>
 #include "main.h"
-
+#include "kbd_param.h"
 
 /**
  * @name: Oreo097
@@ -20,10 +20,6 @@
  * @param {type} 
  * @return: 
  */
-#define GPIO_GROUP GPIO_TypeDef//gpio组的数据类型
-#define USBD USBD_HandleTypeDef//usb的数据类型
-
-
 
 #define KBD_DELAY(time) HAL_Delay((time))
 
@@ -35,7 +31,7 @@ void pinDown(kbd_gpio_t gpio);
 
 void KBD_USB_SEND(uint8_t * report);
 
-
+void* memset(void* s, int c, size_t n);
 
 
 

@@ -12,16 +12,15 @@
 #define __KBD_SCAN_H
 #include <stdbool.h>
 #include "kbd_param.h"
-#include "kdb_func.h"
-#include <memory.h>
+#include "kbd_func.h"
 
 
 
 
-void KBD_SCAN_INIT_6KRO(void)
 
+void KBD_SCAN_INIT_6KRO(void);
 
-void KBD_SCAN_INIT_NKRO(void)
+void KBD_SCAN_INIT_NKRO(void);
 
 
 #endif

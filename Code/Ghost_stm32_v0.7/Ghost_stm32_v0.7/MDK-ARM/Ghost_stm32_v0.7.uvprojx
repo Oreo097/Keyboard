@@ -10,6 +10,7 @@
       <TargetName>Ghost_stm32_v0.7</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::.\ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -133,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4107</DriverSelection>
+            <DriverSelection>4101</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>STLink\ST-LINKIII-KEIL_SWO.dll</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -390,9 +391,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
           <GroupName>Application/User</GroupName>
           <Files>
             <File>
@@ -449,6 +447,26 @@
               <FileName>stm32f1xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/stm32f1xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>kbd_debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\kbd_debug.c</FilePath>
+            </File>
+            <File>
+              <FileName>kbd_func.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\kbd_func.c</FilePath>
+            </File>
+            <File>
+              <FileName>kbd_param.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\kbd_param.c</FilePath>
+            </File>
+            <File>
+              <FileName>kbd_scan.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\kbd_scan.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -581,6 +599,104 @@
               <FilePath>../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>Inc</GroupName>
+          <Files>
+            <File>
+              <FileName>gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>kbd_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\kbd_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>kbd_debug.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\kbd_debug.h</FilePath>
+            </File>
+            <File>
+              <FileName>kbd_func.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\kbd_func.h</FilePath>
+            </File>
+            <File>
+              <FileName>kbd_gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\kbd_gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>kbd_keyword.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\kbd_keyword.h</FilePath>
+            </File>
+            <File>
+              <FileName>kbd_param.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\kbd_param.h</FilePath>
+            </File>
+            <File>
+              <FileName>kbd_scan.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\kbd_scan.h</FilePath>
+            </File>
+            <File>
+              <FileName>main.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\main.h</FilePath>
+            </File>
+            <File>
+              <FileName>spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\spi.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f1xx_hal_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\stm32f1xx_hal_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f1xx_it.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\stm32f1xx_it.h</FilePath>
+            </File>
+            <File>
+              <FileName>tim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\tim.h</FilePath>
+            </File>
+            <File>
+              <FileName>usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\usart.h</FilePath>
+            </File>
+            <File>
+              <FileName>usb_device.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\usb_device.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\usbd_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_custom_hid_if.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\usbd_custom_hid_if.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_desc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\usbd_desc.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>
     </Target>
