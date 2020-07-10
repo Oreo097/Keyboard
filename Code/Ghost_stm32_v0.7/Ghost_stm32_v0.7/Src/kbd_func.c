@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:45:26
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-09 12:05:43
+ * @LastEditTime: 2020-07-10 10:37:50
  */ 
 
 
@@ -19,7 +19,7 @@ extern USBD hUsbDeviceFS;
 /**
  * @name: Oreo097
  * @msg: 读取引脚电平
- * @param {type} 
+ * @param {kbd_gpio_t GPIO} 
  * @return: 
  */
 bool pinRead(kbd_gpio_t gpio)

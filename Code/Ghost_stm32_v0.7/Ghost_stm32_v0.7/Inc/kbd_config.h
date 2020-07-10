@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:49:24
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-09 16:49:23
+ * @LastEditTime: 2020-07-10 11:44:09
  */ 
 #ifndef __KBD_CONFIG_H
 #define __KBD_CONFIG_H
@@ -65,6 +65,12 @@
  */
 #define AKEY_MAX 1
 
-
+/**
+ * @name: Oreo097
+ * @msg:键盘全键无冲模式开关 
+ * @param {type} 
+ * @return:1为开，0为关 
+ */
+#define NKRO_MODE 0
 
 #endif

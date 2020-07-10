@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 21:15:07
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-09 23:42:29
+ * @LastEditTime: 2020-07-10 11:47:26
  */
 
 #include "kbd_scan.h"
@@ -55,8 +55,8 @@ void KBD_SCAN_INIT_NKRO(void)
 void KBD_SCAN_REINIT_6KRO(kbd_sacn_ans_t *ans)
 {
     ans->index_fkey = 0;
-    ans->index_skey = 0;
-    ans->index_akey = 0;
+    ans->index_skey = FKEY_MAX;
+    ans->index_akey = SKEY_MAX + FKEY_MAX;
     memset(ans->array, 0xff, sizeof(ans->array));
 }
 
@@ -142,7 +142,6 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
 #endif
 }
 
-#if (FKEY_MAX != 0)
 /**
  * @name: Oreo097
  * @msg: 扫描补充功能键（FKEY）函数，主要过程是根据检查结果再扫描相应不在新的ans中的功能按键（FKEY），6KRO专用
@@ -151,6 +150,7 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
  */
 void KBD_SCAN_ADD_FKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_logic_fkey_t *logmap, kbd_scan_ans_t *ans)
 {
+#if (FKEY_MAX != 0)
     for (uint8_t index = 0; index < FKEY_MAX; index++)
     {
         if (ans->index_fkey < FKEY_MAX)
@@ -158,9 +158,12 @@ void KBD_SCAN_ADD_FKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_logic_fkey_t *logm
             pinUp(gpio_map->gpio_row[logmap->keymap[index][0]]); //拉高目标行
             if (pinRead(gpio_map->gpio_col[logmap->keymap[index][0]][logmap->keymap]) == true)
             {
-                ans->array[ans->index_fkey][0] = logmap->key_map[index][0];
-                ans->array[ans->index_fkey][1] = logmap->key_map[index][1];
-                ans->index_fkey++;
+                if (KBD_SCAN_CHECK_KEY_6KRO(logmap->keymap[index][0], logmap->keymap[index][1]) != true)
+                {
+                    ans->array[ans->index_fkey][0] = logmap->key_map[index][0];
+                    ans->array[ans->index_fkey][1] = logmap->key_map[index][1];
+                    ans->index_fkey++;
+                }
             }
             pinDown(gpio_map->gpio_row[logmap->keymap[index][0]]); //拉低目标行
         }
@@ -169,10 +172,9 @@ void KBD_SCAN_ADD_FKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_logic_fkey_t *logm
             break;
         }
     }
-}
 #endif
+}
 
-#if(SKEY_MAX!=0)
 /**
  * @name: Oreo097
  * @msg:  扫描补充特殊键（SKEY）函数，主要过程是根据检查结果再扫描相应不在新的ans中的功能按键（FKEY），6KRO专用
@@ -181,16 +183,20 @@ void KBD_SCAN_ADD_FKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_logic_fkey_t *logm
  */
 void KBD_SCAN_ADD_SKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_logic_skey_t *logmap, kbd_scan_ans_t *ans)
 {
+#if (SKEY_MAX != 0)
     for (uint8_t index = 0; index < SKEY_MAX; index++)
     {
-        if (ans->index_skey < (SKEY_MAX+FKEY_MAX))
+        if (ans->index_skey < (SKEY_MAX + FKEY_MAX))
         {
             pinUp(gpio_map->gpio_row[logmap->keymap[index][0]]); //拉高目标行
             if (pinRead(gpio_map->gpio_col[logmap->keymap[index][0]][logmap->keymap]) == true)
             {
-                ans->array[ans->index_skey][0] = logmap->key_map[index][0];
-                ans->array[ans->index_skey][1] = logmap->key_map[index][1];
-                ans->index_skey++;
+                if (KBD_SCAN_CHECK_KEY_6KRO(logmap->keymap[index][0], logmap->keymap[index][1]) != true)
+                {
+                    ans->array[ans->index_skey][0] = logmap->key_map[index][0];
+                    ans->array[ans->index_skey][1] = logmap->key_map[index][1];
+                    ans->index_skey++;
+                }
             }
             pinDown(gpio_map->gpio_row[logmap->keymap[index][0]]); //拉低目标行
         }
@@ -199,10 +205,9 @@ void KBD_SCAN_ADD_SKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_logic_skey_t *logm
             break;
         }
     }
-}
 #endif
+}
 
-#if(SKEY_MAX!=0)
 /**
  * @name: Oreo097
  * @msg: 扫描补充普通键（AKEY）函数，主要过程是根据检查结果再扫描相应不在新的ans中的普通按键（AKEY），6KRO专用
@@ -211,6 +216,46 @@ void KBD_SCAN_ADD_SKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_logic_skey_t *logm
  */
 void KBD_SCAN_ADD_AKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_logic_skey_t *logmap, kbd_scan_ans_t *ans)
 {
-
-}
+#if (AKEY_MAX != 0)
+    for (uint8_t index_row = 0; index_row < ROW_MAX; index_row++)
+    {
+        if (logmap->num_row[index_row] == 0xFF)
+        {
+            continue; //如果这一行普通键（AKEY）个数为0，跳过本次循环
+        }
+        pinUp(gpio_map->gpio_row[index_row]);
+        for (uint8_t index_col = 0; index_col < COL_MAX; index_col++)
+        {
+            if ((ans->index_akey) > ANS_MAX)
+            {
+                pinDown(gpio_map->gpio_row[index_row]);
+                return;
+            }
+            if (pinRead(gpio_map->gpio_col[index_row][logmap->keymap[index_row][index_col]] == true))
+            {
+                if (KBD_SCAN_CHECK_KEY_6KRO(index_row, logmap->keymap[index_row][index_col]) != true)
+                {
+                    ans->array[ans->index_akey][0] = index_row;
+                    ans->array[ans->index_akey][1] = log->map[index_row][index_col];
+                    ans->index_akey++;
+                }
+            }
+        }
+        pinDown(gpio_map->gpio_row[index_row]);
+    }
 #endif
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 扫描的主逻辑函数，主要用于扫描键盘的GIPIO矩阵，并生成扫描结果，采用两个扫描结果交替记录的方式，这样可以高效的相互对照
+ * @param {void} 
+ * @return: void
+ */
+void KBD_SCAN_MAIN(void)
+{
+#if (NKRO_MODE == 0)
+KBD_SCAN_REINIT_6KRO()
+#else
+#endif
+}
