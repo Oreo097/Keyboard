@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 21:15:07
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-10 11:47:26
+ * @LastEditTime: 2020-07-10 15:55:53
  */
 
 #include "kbd_scan.h"
@@ -58,6 +58,7 @@ void KBD_SCAN_REINIT_6KRO(kbd_sacn_ans_t *ans)
     ans->index_skey = FKEY_MAX;
     ans->index_akey = SKEY_MAX + FKEY_MAX;
     memset(ans->array, 0xff, sizeof(ans->array));
+    ans->occupied = false;
 }
 
 /**
@@ -84,11 +85,16 @@ bool KBD_SCAN_CHECK_KEY_6KRO(uint8_t row, uint8_t row, kbd_scan_ans_t *ans)
 /**
  * @name: Oreo097
  * @msg: 扫描上次的扫描结果，并求出多少个按键空余,并把信息复制到新的ans中,扫描顺序是先扫描功能键（FKEY）在扫描特殊键（SKEY）最后扫描普通键（AKEY）
- * @param {旧的扫描的答案,新的扫描的答案,扫描矩阵} 
+ * @param {kbd_scan_ans_t 旧的扫描的答案,kbd_scan_ans_t 新的扫描的答案,kbd_map_gpio_t 扫描矩阵} 
  * @return: void
  */
 void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map)
 {
+    //if((ans1->array[0][0]==0xff)&&(ans1->array[FKEY_MAX][0])&&(ans1->array[FKEY_MAX+SKEY_MAX][0]==0xff))
+    if (ans1->occupied == false)
+    {
+        return;
+    }
 #if (FKEY_MAX != 0)
     if (ans1->array[0][0] != 0xff)
     {
@@ -140,6 +146,7 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
         }
     }
 #endif
+    KBD_SCAN_REINIT_6KRO(ans1);
 }
 
 /**
@@ -163,6 +170,7 @@ void KBD_SCAN_ADD_FKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_logic_fkey_t *logm
                     ans->array[ans->index_fkey][0] = logmap->key_map[index][0];
                     ans->array[ans->index_fkey][1] = logmap->key_map[index][1];
                     ans->index_fkey++;
+                    ans->occupied = true;
                 }
             }
             pinDown(gpio_map->gpio_row[logmap->keymap[index][0]]); //拉低目标行
@@ -196,6 +204,7 @@ void KBD_SCAN_ADD_SKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_logic_skey_t *logm
                     ans->array[ans->index_skey][0] = logmap->key_map[index][0];
                     ans->array[ans->index_skey][1] = logmap->key_map[index][1];
                     ans->index_skey++;
+                    ans->occupied = true;
                 }
             }
             pinDown(gpio_map->gpio_row[logmap->keymap[index][0]]); //拉低目标行
@@ -236,8 +245,9 @@ void KBD_SCAN_ADD_AKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_logic_skey_t *logm
                 if (KBD_SCAN_CHECK_KEY_6KRO(index_row, logmap->keymap[index_row][index_col]) != true)
                 {
                     ans->array[ans->index_akey][0] = index_row;
-                    ans->array[ans->index_akey][1] = log->map[index_row][index_col];
+                    ans->array[ans->index_akey][1] = logmap->map[index_row][index_col];
                     ans->index_akey++;
+                    ans->occupied = true;
                 }
             }
         }
@@ -255,7 +265,23 @@ void KBD_SCAN_ADD_AKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_logic_skey_t *logm
 void KBD_SCAN_MAIN(void)
 {
 #if (NKRO_MODE == 0)
-KBD_SCAN_REINIT_6KRO()
+    if (ans_1->occupied == true) //检查0xff是不是空的，如果是空的就用
+    {
+        //KBD_SCAN_REINIT_6KRO(ans_1);//初始化ans_1
+        KBD_SCAN_CALCU_KEY_6KRO(ans_2, ans_1, gpio_map);
+        KBD_SCAN_ADD_FKEY_6KRO(gpio_map, logicmap_fkey, ans_1);
+        KBD_SCAN_ADD_SKEY_6KRO(gpio_map, logicmap_skey, ans_1);
+        KBD_SCAN_ADD_AKEY_6KRO(gpio_map, logicmap_akey, ans_1);
+    }
+    else
+    {
+        //KBD_SCAN_REINIT_6KRO(ans_2);//初始化ans_2
+        KBD_SCAN_CALCU_KEY_6KRO(ans_1, ans_2, gpio_map);
+        KBD_SCAN_ADD_FKEY_6KRO(gpio_map, logicmap_fkey, ans_2);
+        KBD_SCAN_ADD_SKEY_6KRO(gpio_map, logicmap_skey, ans_2);
+        KBD_SCAN_ADD_AKEY_6KRO(gpio_map, logicmap_akey, ans_2);
+    }
+
 #else
 #endif
 }

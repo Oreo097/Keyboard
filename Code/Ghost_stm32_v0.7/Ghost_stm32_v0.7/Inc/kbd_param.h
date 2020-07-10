@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:47:57
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-10 11:47:47
+ * @LastEditTime: 2020-07-10 15:56:10
  */
 
 #ifndef __KBD_PARAM_H
@@ -36,7 +36,7 @@ typedef struct
     kbd_gpio_t gpio_row[ROW_MAX];
     uint8_t col_num[ROW_MAX]; //记录每一行有多少个按键的数组
     kbd_gpio_t gpio_col[ROW_MAX][COL_MAX];
-}kbd_map_gpio_t;
+} kbd_map_gpio_t;
 
 /**
  * @name: Oreo097
@@ -87,6 +87,7 @@ typedef struct
  */
 typedef struct
 {
+    bool occupied;
     uint8_t number;
 #define ANS_MAX FKEY_MAX + SKEY_MAX + (REPORT_MAX_6 - 2)
     uint8_t array[ANS_MAX][2];
