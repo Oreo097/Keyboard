@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 21:15:07
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-10 23:49:55
+ * @LastEditTime: 2020-07-11 09:46:02
  */
 
 #include "kbd_scan.h"
@@ -34,6 +34,16 @@ void KBD_SCAN_INIT_6KRO(void)
     ans_1->number = 1;
     ans_2 = &kbd_scan_ans_2;
     ans_2->number = 2;
+    ans_1->index_fkey = 0;
+    ans_1->index_skey = FKEY_MAX;
+    ans_1->index_akey = SKEY_MAX + FKEY_MAX;
+    memset(ans_1->array, 0xff, sizeof(ans_1->array));
+    ans_1->occupied = false;
+    ans_2->index_fkey = 0;
+    ans_2->index_skey = FKEY_MAX;
+    ans_2->index_akey = SKEY_MAX + FKEY_MAX;
+    memset(ans_2->array, 0xff, sizeof(ans_2->array));
+    ans_2->occupied = false;
 }
 
 /**
@@ -108,7 +118,11 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
                 ans2->array[index_new_ans][1] = ans1->array[index][1];
                 index_new_ans++;
                 ans2->index_fkey++;
-                ans2->occupied=true;
+                ans2->occupied = true;
+            }
+            else
+            {
+                ans2->changed = true;
             }
         }
     }
@@ -126,7 +140,11 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
                 ans2->array[index_new_ans][1] = ans1->array[index][1];
                 index_new_ans++;
                 ans2->index_skey++;
-                ans2->occupied=true;
+                ans2->occupied = true;
+            }
+            else
+            {
+                ans2->changed = true;
             }
         }
     }
@@ -144,7 +162,11 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
                 ans2->array[index_new_ans][1] = ans1->array[index][1];
                 index_new_ans++;
                 ans2->index_akey++;
-                ans2->occupied=true;
+                ans2->occupied = true;
+            }
+            else
+            {
+                ans2->changed = true;
             }
         }
     }
@@ -167,12 +189,13 @@ void KBD_SCAN_ADD_FKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_fkey_logic_t *logm
             pinUp(gpio_map->gpio_row[logmap->key_map[index][0]]); //拉高目标行
             if (pinRead(gpio_map->gpio_col[logmap->key_map[index][0]][logmap->key_map[index][1]]) == true)
             {
-                if (KBD_SCAN_CHECK_KEY_6KRO(logmap->key_map[index][0], logmap->key_map[index][1],ans) != true)
+                if (KBD_SCAN_CHECK_KEY_6KRO(logmap->key_map[index][0], logmap->key_map[index][1], ans) != true)
                 {
                     ans->array[ans->index_fkey][0] = logmap->key_map[index][0];
                     ans->array[ans->index_fkey][1] = logmap->key_map[index][1];
                     ans->index_fkey++;
                     ans->occupied = true;
+                    ans->changed = true;
                 }
             }
             pinDown(gpio_map->gpio_row[logmap->key_map[index][0]]); //拉低目标行
@@ -201,12 +224,13 @@ void KBD_SCAN_ADD_SKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_skey_logic_t *logm
             pinUp(gpio_map->gpio_row[logmap->key_map[index][0]]); //拉高目标行
             if (pinRead(gpio_map->gpio_col[logmap->key_map[index][0]][logmap->key_map[index][1]]) == true)
             {
-                if (KBD_SCAN_CHECK_KEY_6KRO(logmap->key_map[index][0], logmap->key_map[index][1],ans) != true)
+                if (KBD_SCAN_CHECK_KEY_6KRO(logmap->key_map[index][0], logmap->key_map[index][1], ans) != true)
                 {
                     ans->array[ans->index_skey][0] = logmap->key_map[index][0];
                     ans->array[ans->index_skey][1] = logmap->key_map[index][1];
                     ans->index_skey++;
                     ans->occupied = true;
+                    ans->changed = true;
                 }
             }
             pinDown(gpio_map->gpio_row[logmap->key_map[index][0]]); //拉低目标行
@@ -244,12 +268,13 @@ void KBD_SCAN_ADD_AKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_akey_logic_t *logm
             }
             if (pinRead(gpio_map->gpio_col[index_row][logmap->key_map[index_row][index_col]]) == true)
             {
-                if (KBD_SCAN_CHECK_KEY_6KRO(index_row, logmap->key_map[index_row][index_col],ans) != true)
+                if (KBD_SCAN_CHECK_KEY_6KRO(index_row, logmap->key_map[index_row][index_col], ans) != true)
                 {
                     ans->array[ans->index_akey][0] = index_row;
                     ans->array[ans->index_akey][1] = logmap->key_map[index_row][index_col];
                     ans->index_akey++;
                     ans->occupied = true;
+                    ans->changed = true;
                 }
             }
         }
@@ -304,5 +329,54 @@ void KBD_SCAN_MAIN(void)
         }
     }
 #else
+#endif
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 键盘防抖的函数，通过再次扫描扫描结果来去除抖动
+ * @param {kbd_map_gpio_t * 物理GPIO表，kbd_scan_ans_t * 扫描结果} 
+ * @return: void
+ */
+void KBD_SCAN_RMJ(kbd_map_gpio_t *gpio_map, kbd_scan_ans_t *ans)
+{
+#if (FKEY_MAX != 0)
+    for (uint8_t index_fkey = 0; index_fkey < ans->index_fkey; index_fkey++)
+    {
+        uint8_t pin_buffer_row = 0;
+        pin_buffer_row = ans->array[index_fkey][0];
+        pinUp(gpio_map->gpio_row[pin_buffer_row]);
+        if (pinRead(gpio_map->gpio_row[ans->array[index_fkey][1]]) != true)
+        {
+            ans->array[index_fkey][0] = ans->array[index_fkey][1] = 0xff; //改变ans的值
+        }
+        pinDown(gpio_map->gpio_row[pin_buffer_row]);
+    }
+#endif
+#if (SKEY_MAX != 0)
+    for (uint8_t index_skey = FKEY_MAX; index_skey < ans->index_skey; index_skey++)
+    {
+        uint8_t pin_buffer_row = 0;
+        pin_buffer_row = ans->array[index_skey][0];
+        pinUp(gpio_map->gpio_row[pin_buffer_row]);
+        if (pinRead(gpio_map->gpio_row[ans->array[index_skey][1]]) != true)
+        {
+            ans->array[index_skey][0] = ans->array[index_skey][1] = 0xff; //改变ans的值
+        }
+        pinDown(gpio_map->gpio_row[pin_buffer_row]);
+    }
+#endif
+#if (AKEY_MAX != 0)
+    for (uint8_t index_akey = (FKEY_MAX+SKEY_MAX); index_akey < ans->index_akey; index_akey++)
+    {
+        uint8_t pin_buffer_row = 0;
+        pin_buffer_row = ans->array[index_akey][0];
+        pinUp(gpio_map->gpio_row[pin_buffer_row]);
+        if (pinRead(gpio_map->gpio_row[ans->array[index_akey][1]]) != true)
+        {
+            ans->array[index_akey][0] = ans->array[index_akey][1] = 0xff; //改变ans的值
+        }
+        pinDown(gpio_map->gpio_row[pin_buffer_row]);
+    }
 #endif
 }

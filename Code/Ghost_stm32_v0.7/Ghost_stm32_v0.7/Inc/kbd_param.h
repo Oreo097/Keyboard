@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:47:57
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-10 15:56:10
+ * @LastEditTime: 2020-07-11 09:15:09
  */
 
 #ifndef __KBD_PARAM_H
@@ -17,7 +17,8 @@
 #include "usb_device.h"
 
 #define USBD USBD_HandleTypeDef//usb的数据类型
-#define GPIO_GROUP GPIO_TypeDef
+#define GPIO_GROUP GPIO_TypeDef//GPIO组的数据类型
+
 
 /**
  * @name: Oreo097
@@ -94,6 +95,7 @@ typedef struct
 typedef struct
 {
     bool occupied;
+    bool changed;
     uint8_t number;
 #define ANS_MAX FKEY_MAX + SKEY_MAX + (REPORT_MAX_6 - 2)
     uint8_t array[ANS_MAX][2];

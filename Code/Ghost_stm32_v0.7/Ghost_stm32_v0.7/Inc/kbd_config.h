@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:49:24
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-10 11:44:09
+ * @LastEditTime: 2020-07-11 09:15:50
  */ 
 #ifndef __KBD_CONFIG_H
 #define __KBD_CONFIG_H
@@ -72,5 +72,13 @@
  * @return:1为开，0为关 
  */
 #define NKRO_MODE 0
+
+/**
+ * @name: Oreo097
+ * @msg: 定义debug的串口
+ * @param {type} 
+ * @return: 
+ */
+#define UART_DBG huart1
 
 #endif
