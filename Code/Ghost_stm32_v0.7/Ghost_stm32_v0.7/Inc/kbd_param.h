@@ -4,17 +4,19 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:47:57
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-11 09:15:09
+ * @LastEditTime: 2020-07-11 16:47:34
  */
 
 #ifndef __KBD_PARAM_H
 #define __KBD_PARAM_H
 
 #include "main.h"
-#include <stdbool.h>
 #include "kbd_config.h"
 #include "kbd_gpio.h"
 #include "usb_device.h"
+#include "kbd_keyword.h"
+
+#include <stdbool.h>
 
 #define USBD USBD_HandleTypeDef//usb的数据类型
 #define GPIO_GROUP GPIO_TypeDef//GPIO组的数据类型
@@ -103,5 +105,16 @@ typedef struct
     uint8_t index_skey;
     uint8_t index_akey;
 } kbd_scan_ans_t;
+
+/**
+ * @name: Oreo097
+ * @msg: 按键的键值矩阵类型，用来从中找出对应的键值
+ * @param {type} 
+ * @return: 
+ */
+typedef uint8_t kbd_map_keyword_t;
+
+
+typedef 
 
 #endif
