@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-10 15:56:31
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-11 09:25:01
+ * @LastEditTime: 2020-07-12 10:49:59
  */
 #include "kbd_debug.h"
 
@@ -28,22 +28,42 @@ int fputc(int ch, FILE *f)
  */
 void KBD_DBG_KEY(uint8_t row,uint8_t col,bool status)
 {
-    uint8_t words[21] = " ,  is pressed down\n";
     if (status == 1)
     {
-        words[0] = itoc(row);
-        words[2] = itoc(col);
-        send(words);
+        printf("%d,%d is pressed down\n",row,col);
     }
 }
 
 /**
  * @name: Oreo097
- * @msg: 输出扫描结果的DBG函数，用来输出扫描结果
- * @param {kbd_scan_ans_t 答案名称} 
+ * @msg: 输出扫描结果的DBG函数，用来输出扫描结果，仅限6KRO
+ * @param {kbd_scan_ans_t * 答案名称} 
  * @return: void
  */
-void KBD_DBG_ANS()
+void KBD_DBG_ANS_6KRO(kbd_scan_ans_t * ans)
+{
+    printf("%d keys ware pressed down\n",ans->index_akey);
+    printf();
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 用于通过串口输出输出防抖移除的按键
+ * @param {(uint8_t 行，uint8_t 列} 
+ * @return: void
+ */
+void KBD_DBG_RMJ(uint8_t row,uint8_t col)
+{
+    printf("%d,%d is removed\n",row,col);
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 用于使用串口输出report的函数，仅限6KRO
+ * @param {uint8_t * 报告}} 
+ * @return: void
+ */
+void KBD_DBG_REP_6KRO(uint8_t * report)
 {
     
 }
