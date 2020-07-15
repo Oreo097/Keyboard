@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 22:28:21
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-11 16:48:45
+ * @LastEditTime: 2020-07-15 12:01:40
  */
 
 #include "kbd_param.h"
@@ -79,7 +79,7 @@ kbd_map_akey_logic_t * logicmap_akey = &kbd_map_akey;
  * @param {type} 
  * @return: 
  */
-kbd_map_keyword_t kbd_map_keyword_akey[ROW_MAX][COL_MAX] = {
+kbd_map_keyword_t kbd_map_keyword_key[ROW_MAX][COL_MAX] = {
     {Keypad_NumLock, Keypad_ChuHao, Keypad_ChengHao, Keypad_JianHao},
     {Keypad_7_and_Home, Keypad_8_and_UpArrow, Keypad_9_and_PageUp, Keypad_JiaHao},
     {Keypad_4_and_LeftArrow, Keypad_5, Keypad_6_and_RightArrow},
@@ -87,4 +87,11 @@ kbd_map_keyword_t kbd_map_keyword_akey[ROW_MAX][COL_MAX] = {
     {Keypad_0_and_Insert, Keypad_Dian_and_Delete},
 };
 
+/**
+ * @name: Oreo097
+ * @msg: 功能按键的键值定义
+ * @param {type} 
+ * @return: 
+ */
+kbd_map_keyword_t kbd_map_keyword_fkey[FKEY_MAX][2];
 #endif
