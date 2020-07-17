@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 21:15:07
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-11 09:46:02
+ * @LastEditTime: 2020-07-17 08:04:12
  */
 
 #include "kbd_scan.h"
@@ -105,7 +105,17 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
     {
         return;
     }
+}
+
 #if (FKEY_MAX != 0)
+/**
+ * @name: Oreo097
+ * @msg: 计算FKEY的改变
+ * @param {type} 
+ * @return: 
+ */
+void KBD_SCAN_CALU_FKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2)
+{
     if (ans1->array[0][0] != 0xff)
     {
         uint8_t index_new_ans = 0;
@@ -126,8 +136,18 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
             }
         }
     }
+}
 #endif
+
 #if (SKEY_MAX != 0)
+/**
+     * @name: Oreo097
+     * @msg: 
+     * @param {type} 
+     * @return: 
+     */
+void KBD_SCAN_CALU_SKEY(kbs_scan_ans_t *ans1, kbs_scan_ans_t *ans2)
+{
     if (ans1->array[FKEY_MAX][0] != 0xff)
     {
         uint8_t index_new_ans = FKEY_MAX;
@@ -148,8 +168,18 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
             }
         }
     }
+}
 #endif
+
 #if (AKEY_MAX != 0)
+/**
+     * @name: Oreo097
+     * @msg: 
+     * @param {type} 
+     * @return: 
+     */
+void KBD_SCAN_CALU_AKEY_6KRO(kbd_scan_ans_t *ans1, kbd_sacn_ans_t *ans2)
+{
     if (ans1->array[SKEY_MAX][0] != 0xff)
     {
         uint8_t index_new_ans = SKEY_MAX;
@@ -170,8 +200,9 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
             }
         }
     }
-#endif
 }
+
+#endif
 
 /**
  * @name: Oreo097
@@ -367,7 +398,7 @@ void KBD_SCAN_RMJ(kbd_map_gpio_t *gpio_map, kbd_scan_ans_t *ans)
     }
 #endif
 #if (AKEY_MAX != 0)
-    for (uint8_t index_akey = (FKEY_MAX+SKEY_MAX); index_akey < ans->index_akey; index_akey++)
+    for (uint8_t index_akey = (FKEY_MAX + SKEY_MAX); index_akey < ans->index_akey; index_akey++)
     {
         uint8_t pin_buffer_row = 0;
         pin_buffer_row = ans->array[index_akey][0];
