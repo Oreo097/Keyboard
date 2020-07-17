@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 21:15:07
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-17 08:04:12
+ * @LastEditTime: 2020-07-17 11:37:00
  */
 
 #include "kbd_scan.h"
@@ -95,7 +95,7 @@ bool KBD_SCAN_CHECK_KEY_6KRO(uint8_t row, uint8_t col, kbd_scan_ans_t *ans)
 /**
  * @name: Oreo097
  * @msg: 扫描上次的扫描结果，并求出多少个按键空余,并把信息复制到新的ans中,扫描顺序是先扫描功能键（FKEY）在扫描特殊键（SKEY）最后扫描普通键（AKEY）
- * @param {kbd_scan_ans_t 旧的扫描的答案,kbd_scan_ans_t 新的扫描的答案,kbd_map_gpio_t 扫描矩阵} 
+ * @param {kbd_scan_ans_t 旧的扫描的答案,kbd_scan_ans_t 新的扫描的答案,kbd_map_gpio_t * 扫描矩阵} 
  * @return: void
  */
 void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map)
@@ -111,10 +111,10 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
 /**
  * @name: Oreo097
  * @msg: 计算FKEY的改变
- * @param {type} 
- * @return: 
+ * @param {kbd_scan_ans_t * 上一次扫描结果, kbd_sacn_ans_t * 本次扫描结果，kbd_map_gpio_t * 扫描矩阵} 
+ * @return: void
  */
-void KBD_SCAN_CALU_FKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2)
+void KBD_SCAN_CALU_FKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map)
 {
     if (ans1->array[0][0] != 0xff)
     {
@@ -142,11 +142,11 @@ void KBD_SCAN_CALU_FKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2)
 #if (SKEY_MAX != 0)
 /**
      * @name: Oreo097
-     * @msg: 
-     * @param {type} 
-     * @return: 
+     * @msg: 扫描并计算特殊按键（SKEY）修改的值的函数，仅限6KRO
+     * @param {kbd_scan_ans_t * 上一次扫描结果, kbd_sacn_ans_t * 本次扫描结果,kbd_map_gpio_t * 扫描矩阵} 
+     * @return: void
      */
-void KBD_SCAN_CALU_SKEY(kbs_scan_ans_t *ans1, kbs_scan_ans_t *ans2)
+void KBD_SCAN_CALU_SKEY(kbs_scan_ans_t *ans1, kbs_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map)
 {
     if (ans1->array[FKEY_MAX][0] != 0xff)
     {
@@ -174,11 +174,11 @@ void KBD_SCAN_CALU_SKEY(kbs_scan_ans_t *ans1, kbs_scan_ans_t *ans2)
 #if (AKEY_MAX != 0)
 /**
      * @name: Oreo097
-     * @msg: 
-     * @param {type} 
-     * @return: 
+     * @msg: 扫描并计算普通按键（AKEY）修改的值的函数，仅限6KRO
+     * @param {kbd_scan_ans_t * 上一次扫描结果, kbd_sacn_ans_t * 本次扫描结果, kbd_map_gpio_t * 扫描矩阵} 
+     * @return: void
      */
-void KBD_SCAN_CALU_AKEY_6KRO(kbd_scan_ans_t *ans1, kbd_sacn_ans_t *ans2)
+void KBD_SCAN_CALU_AKEY_6KRO(kbd_scan_ans_t *ans1, kbd_sacn_ans_t *ans2, kbd_map_gpio_t *gpio_map)
 {
     if (ans1->array[SKEY_MAX][0] != 0xff)
     {
