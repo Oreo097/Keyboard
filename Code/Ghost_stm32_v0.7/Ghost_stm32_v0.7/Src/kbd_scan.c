@@ -4,10 +4,11 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 21:15:07
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-17 11:37:00
+ * @LastEditTime: 2020-07-18 17:51:21
  */
 
 #include "kbd_scan.h"
+
 
 kbd_scan_ans_t kbd_scan_ans_1;
 kbd_scan_ans_t kbd_scan_ans_2;
@@ -94,8 +95,8 @@ bool KBD_SCAN_CHECK_KEY_6KRO(uint8_t row, uint8_t col, kbd_scan_ans_t *ans)
 
 /**
  * @name: Oreo097
- * @msg: 扫描上次的扫描结果，并求出多少个按键空余,并把信息复制到新的ans中,扫描顺序是先扫描功能键（FKEY）在扫描特殊键（SKEY）最后扫描普通键（AKEY）
- * @param {kbd_scan_ans_t 旧的扫描的答案,kbd_scan_ans_t 新的扫描的答案,kbd_map_gpio_t * 扫描矩阵} 
+ * @msg: 扫描上次的扫描结果，并求出多少个按键空余,并把信息复制到新的ans中,扫描顺序是先扫描功能键（FKEY）再扫描特殊键（SKEY）最后扫描普通键（AKEY）
+ * @param {kbd_scan_ans_t * 旧的扫描的答案,kbd_scan_ans_t * 新的扫描的答案,kbd_map_gpio_t * 扫描矩阵} 
  * @return: void
  */
 void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map)
@@ -105,86 +106,97 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
     {
         return;
     }
+    KBD_SCAN_CALU_FKEY_6KRO(ans1, ans2, gpio_map);
+    KBD_SCAN_CALU_SKEY_6KRO(ans1, ans2, gpio_map);
+    KBD_SCAN_CALU_AKEY_6KRO(ans1, ans2, gpio_map);
 }
 
-#if (FKEY_MAX != 0)
 /**
  * @name: Oreo097
  * @msg: 计算FKEY的改变
- * @param {kbd_scan_ans_t * 上一次扫描结果, kbd_sacn_ans_t * 本次扫描结果，kbd_map_gpio_t * 扫描矩阵} 
+ * @param {kbd_scan_ans_t * 上一次扫描结果, kbd_scan_ans_t * 本次扫描结果，kbd_map_gpio_t * 扫描矩阵} 
  * @return: void
  */
 void KBD_SCAN_CALU_FKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map)
 {
-    if (ans1->array[0][0] != 0xff)
+#if (FKEY_MAX != 0)
+
+    uint8_t index_new_ans = 0;
+    for (uint8_t index = 0; index < FKEY_MAX; index++)
     {
-        uint8_t index_new_ans = 0;
-        for (uint8_t index = 0; index < FKEY_MAX; index++)
+        if (ans1->array[index][0] != 0xff)
         {
-            pinUp(gpio_map->gpio_row[ans1->array[index][0]]); //拉高目标行
-            if (pinRead(gpio_map->gpio_col[ans1->array[index][0]][ans1->array[index][1]]) == 1)
-            {
-                ans2->array[index_new_ans][0] = ans1->array[index][0];
-                ans2->array[index_new_ans][1] = ans1->array[index][1];
-                index_new_ans++;
-                ans2->index_fkey++;
-                ans2->occupied = true;
-            }
-            else
-            {
-                ans2->changed = true;
-            }
+            continue;
+        }
+        pinUp(gpio_map->gpio_row[ans1->array[index][0]]); //拉高目标行
+        if (pinRead(gpio_map->gpio_col[ans1->array[index][0]][ans1->array[index][1]]) == 1)
+        {
+            ans2->array[index_new_ans][0] = ans1->array[index][0];
+            ans2->array[index_new_ans][1] = ans1->array[index][1];
+            index_new_ans++;
+            ans2->index_fkey++;
+            ans2->occupied = true;
+        }
+        else
+        {
+            ans2->changed = true;
         }
     }
-}
 #endif
+}
 
-#if (SKEY_MAX != 0)
 /**
      * @name: Oreo097
      * @msg: 扫描并计算特殊按键（SKEY）修改的值的函数，仅限6KRO
-     * @param {kbd_scan_ans_t * 上一次扫描结果, kbd_sacn_ans_t * 本次扫描结果,kbd_map_gpio_t * 扫描矩阵} 
+     * @param {kbd_scan_ans_t * 上一次扫描结果, kbd_scan_ans_t * 本次扫描结果,kbd_map_gpio_t * 扫描矩阵} 
      * @return: void
      */
-void KBD_SCAN_CALU_SKEY(kbs_scan_ans_t *ans1, kbs_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map)
+void KBD_SCAN_CALU_SKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map)
 {
-    if (ans1->array[FKEY_MAX][0] != 0xff)
+#if (SKEY_MAX != 0)
+
+    uint8_t index_new_ans = FKEY_MAX;
+    for (uint8_t index = FKEY_MAX; index < (FKEY_MAX + SKEY_MAX); index++)
     {
-        uint8_t index_new_ans = FKEY_MAX;
-        for (uint8_t index = FKEY_MAX; index < (FKEY_MAX + SKEY_MAX); index++)
+        if (ans1->array[index_new_ans][0] != 0xff)
         {
-            pinUp(gpio_map->gpio_row[ans1->array[index][0]]); //拉高目标行
-            if (pinRead(gpio_map->gpio_col[ans1->array[index][0]][ans1->array[index][1]]) == 1)
-            {
-                ans2->array[index_new_ans][0] = ans1->array[index][0];
-                ans2->array[index_new_ans][1] = ans1->array[index][1];
-                index_new_ans++;
-                ans2->index_skey++;
-                ans2->occupied = true;
-            }
-            else
-            {
-                ans2->changed = true;
-            }
+            continue;
+        }
+        pinUp(gpio_map->gpio_row[ans1->array[index][0]]); //拉高目标行
+        if (pinRead(gpio_map->gpio_col[ans1->array[index][0]][ans1->array[index][1]]) == 1)
+        {
+            ans2->array[index_new_ans][0] = ans1->array[index][0];
+            ans2->array[index_new_ans][1] = ans1->array[index][1];
+            index_new_ans++;
+            ans2->index_skey++;
+            ans2->occupied = true;
+        }
+        else
+        {
+            ans2->changed = true;
         }
     }
-}
 #endif
+}
 
-#if (AKEY_MAX != 0)
 /**
      * @name: Oreo097
      * @msg: 扫描并计算普通按键（AKEY）修改的值的函数，仅限6KRO
-     * @param {kbd_scan_ans_t * 上一次扫描结果, kbd_sacn_ans_t * 本次扫描结果, kbd_map_gpio_t * 扫描矩阵} 
+     * @param {kbd_scan_ans_t * 上一次扫描结果, kbd_scan_ans_t * 本次扫描结果, kbd_map_gpio_t * 扫描矩阵} 
      * @return: void
      */
-void KBD_SCAN_CALU_AKEY_6KRO(kbd_scan_ans_t *ans1, kbd_sacn_ans_t *ans2, kbd_map_gpio_t *gpio_map)
+void KBD_SCAN_CALU_AKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map)
 {
+#if (AKEY_MAX != 0)
     if (ans1->array[SKEY_MAX][0] != 0xff)
     {
         uint8_t index_new_ans = SKEY_MAX;
         for (uint8_t index = SKEY_MAX; index < (ANS_MAX); index++)
         {
+            if (ans1->array[index_new_ans][0] != 0xff)
+            {
+                continue;
+            }
             pinUp(gpio_map->gpio_row[ans1->array[index][0]]); //拉高目标行
             if (pinRead(gpio_map->gpio_col[ans1->array[index][0]][ans1->array[index][1]]) == 1)
             {
@@ -200,14 +212,13 @@ void KBD_SCAN_CALU_AKEY_6KRO(kbd_scan_ans_t *ans1, kbd_sacn_ans_t *ans2, kbd_map
             }
         }
     }
-}
-
 #endif
+}
 
 /**
  * @name: Oreo097
  * @msg: 扫描补充功能键（FKEY）函数，主要过程是根据检查结果再扫描相应不在新的ans中的功能按键（FKEY），6KRO专用
- * @param {kbd_map_gpio_t GPIO表，kdb_map_fkey_logic_t fkey的扫描逻辑层，kbd_scan_ans_t * 扫描结果asn的指针} 
+ * @param {kbd_map_gpio_t * GPIO表，kdb_map_fkey_logic_t * fkey的扫描逻辑层，kbd_scan_ans_t * 扫描结果asn的指针} 
  * @return: void
  */
 void KBD_SCAN_ADD_FKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_fkey_logic_t *logmap, kbd_scan_ans_t *ans)
@@ -242,7 +253,7 @@ void KBD_SCAN_ADD_FKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_fkey_logic_t *logm
 /**
  * @name: Oreo097
  * @msg:  扫描补充特殊键（SKEY）函数，主要过程是根据检查结果再扫描相应不在新的ans中的功能按键（FKEY），6KRO专用
- * @param {kbd_map_gpio_t GPIO表，kdb_map_skey_logic_t skey的扫描逻辑层，kbd_scan_ans_t * 扫描结果asn的指针} 
+ * @param {kbd_map_gpio_t * GPIO表，kdb_map_skey_logic_t * skey的扫描逻辑层，kbd_scan_ans_t * 扫描结果asn的指针} 
  * @return: void
  */
 void KBD_SCAN_ADD_SKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_skey_logic_t *logmap, kbd_scan_ans_t *ans)
@@ -277,7 +288,7 @@ void KBD_SCAN_ADD_SKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_skey_logic_t *logm
 /**
  * @name: Oreo097
  * @msg: 扫描补充普通键（AKEY）函数，主要过程是根据检查结果再扫描相应不在新的ans中的普通按键（AKEY），6KRO专用
- * @param {kbd_map_gpio_t GPIO表，kdb_map_akey_logic_t akey的扫描逻辑层，kbd_scan_ans_t * 扫描结果asn的指针} 
+ * @param {kbd_map_gpio_t * GPIO表，kdb_map_akey_logic_t * akey的扫描逻辑层，kbd_scan_ans_t * 扫描结果asn的指针} 
  * @return: void
  */
 void KBD_SCAN_ADD_AKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_akey_logic_t *logmap, kbd_scan_ans_t *ans)
@@ -310,6 +321,55 @@ void KBD_SCAN_ADD_AKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_akey_logic_t *logm
             }
         }
         pinDown(gpio_map->gpio_row[index_row]);
+    }
+#endif
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 键盘防抖的函数，通过再次扫描扫描结果来去除抖动
+ * @param {kbd_map_gpio_t * 物理GPIO表，kbd_scan_ans_t * 扫描结果} 
+ * @return: void
+ */
+void KBD_SCAN_RMJ(kbd_map_gpio_t *gpio_map, kbd_scan_ans_t *ans)
+{
+#if (FKEY_MAX != 0)
+    for (uint8_t index_fkey = 0; index_fkey < ans->index_fkey; index_fkey++)
+    {
+        uint8_t pin_buffer_row = 0;
+        pin_buffer_row = ans->array[index_fkey][0];
+        pinUp(gpio_map->gpio_row[pin_buffer_row]);
+        if (pinRead(gpio_map->gpio_row[ans->array[index_fkey][1]]) != true)
+        {
+            ans->array[index_fkey][0] = ans->array[index_fkey][1] = 0xff; //改变ans的值
+        }
+        pinDown(gpio_map->gpio_row[pin_buffer_row]);
+    }
+#endif
+#if (SKEY_MAX != 0)
+    for (uint8_t index_skey = FKEY_MAX; index_skey < ans->index_skey; index_skey++)
+    {
+        uint8_t pin_buffer_row = 0;
+        pin_buffer_row = ans->array[index_skey][0];
+        pinUp(gpio_map->gpio_row[pin_buffer_row]);
+        if (pinRead(gpio_map->gpio_row[ans->array[index_skey][1]]) != true)
+        {
+            ans->array[index_skey][0] = ans->array[index_skey][1] = 0xff; //改变ans的值
+        }
+        pinDown(gpio_map->gpio_row[pin_buffer_row]);
+    }
+#endif
+#if (AKEY_MAX != 0)
+    for (uint8_t index_akey = (FKEY_MAX + SKEY_MAX); index_akey < ans->index_akey; index_akey++)
+    {
+        uint8_t pin_buffer_row = 0;
+        pin_buffer_row = ans->array[index_akey][0];
+        pinUp(gpio_map->gpio_row[pin_buffer_row]);
+        if (pinRead(gpio_map->gpio_row[ans->array[index_akey][1]]) != true)
+        {
+            ans->array[index_akey][0] = ans->array[index_akey][1] = 0xff; //改变ans的值
+        }
+        pinDown(gpio_map->gpio_row[pin_buffer_row]);
     }
 #endif
 }
@@ -363,51 +423,3 @@ void KBD_SCAN_MAIN(void)
 #endif
 }
 
-/**
- * @name: Oreo097
- * @msg: 键盘防抖的函数，通过再次扫描扫描结果来去除抖动
- * @param {kbd_map_gpio_t * 物理GPIO表，kbd_scan_ans_t * 扫描结果} 
- * @return: void
- */
-void KBD_SCAN_RMJ(kbd_map_gpio_t *gpio_map, kbd_scan_ans_t *ans)
-{
-#if (FKEY_MAX != 0)
-    for (uint8_t index_fkey = 0; index_fkey < ans->index_fkey; index_fkey++)
-    {
-        uint8_t pin_buffer_row = 0;
-        pin_buffer_row = ans->array[index_fkey][0];
-        pinUp(gpio_map->gpio_row[pin_buffer_row]);
-        if (pinRead(gpio_map->gpio_row[ans->array[index_fkey][1]]) != true)
-        {
-            ans->array[index_fkey][0] = ans->array[index_fkey][1] = 0xff; //改变ans的值
-        }
-        pinDown(gpio_map->gpio_row[pin_buffer_row]);
-    }
-#endif
-#if (SKEY_MAX != 0)
-    for (uint8_t index_skey = FKEY_MAX; index_skey < ans->index_skey; index_skey++)
-    {
-        uint8_t pin_buffer_row = 0;
-        pin_buffer_row = ans->array[index_skey][0];
-        pinUp(gpio_map->gpio_row[pin_buffer_row]);
-        if (pinRead(gpio_map->gpio_row[ans->array[index_skey][1]]) != true)
-        {
-            ans->array[index_skey][0] = ans->array[index_skey][1] = 0xff; //改变ans的值
-        }
-        pinDown(gpio_map->gpio_row[pin_buffer_row]);
-    }
-#endif
-#if (AKEY_MAX != 0)
-    for (uint8_t index_akey = (FKEY_MAX + SKEY_MAX); index_akey < ans->index_akey; index_akey++)
-    {
-        uint8_t pin_buffer_row = 0;
-        pin_buffer_row = ans->array[index_akey][0];
-        pinUp(gpio_map->gpio_row[pin_buffer_row]);
-        if (pinRead(gpio_map->gpio_row[ans->array[index_akey][1]]) != true)
-        {
-            ans->array[index_akey][0] = ans->array[index_akey][1] = 0xff; //改变ans的值
-        }
-        pinDown(gpio_map->gpio_row[pin_buffer_row]);
-    }
-#endif
-}

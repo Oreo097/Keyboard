@@ -408,10 +408,52 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5F06E5E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x5F06E5E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x5F06E5E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x5F06E5E2)
-F (..\Src\kbd_debug.c)(0x5F08398A)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Ghost_stm32_v0.7-IC:\Users\ztdey\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ztdey\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o ghost_stm32_v0.7\kbd_debug.o --omf_browse ghost_stm32_v0.7\kbd_debug.crf --depend ghost_stm32_v0.7\kbd_debug.d)
-I (../Inc/kbd_debug.h)(0x5F08398A)
-F (..\Src\kbd_func.c)(0x5F0889B1)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Ghost_stm32_v0.7-IC:\Users\ztdey\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ztdey\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o ghost_stm32_v0.7\kbd_func.o --omf_browse ghost_stm32_v0.7\kbd_func.crf --depend ghost_stm32_v0.7\kbd_func.d)
-I (../Inc/kbd_func.h)(0x5F0889B1)
+F (..\Src\kbd_debug.c)(0x5F12C4A4)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Ghost_stm32_v0.7-IC:\Users\ztdey\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ztdey\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o ghost_stm32_v0.7\kbd_debug.o --omf_browse ghost_stm32_v0.7\kbd_debug.crf --depend ghost_stm32_v0.7\kbd_debug.d)
+I (../Inc/kbd_debug.h)(0x5F12BF83)
+I (../Inc/main.h)(0x5F06E5E3)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5F06E5E2)
+I (../Inc/stm32f1xx_hal_conf.h)(0x5F06E5E3)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x5F06E5E2)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x5F06E5E2)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h)(0x5F06E5E2)
+I (../Drivers/CMSIS/Include/core_cm3.h)(0x5F06E5E2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E53505C)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F06E5E2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F06E5E2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F06E5E2)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x5F06E5E2)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5E53505C)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x5F06E5E2)
+I (../Inc/kbd_param.h)(0x5F12C2B7)
+I (../Inc/kbd_config.h)(0x5F12BF81)
+I (../Inc/kbd_gpio.h)(0x5F12BF85)
+I (../Inc/usb_device.h)(0x5F06E5E3)
+I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x5F06E5E3)
+I (../Inc/usbd_conf.h)(0x5F06E5E3)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E53505C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E53505C)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E53505C)
+I (../Inc/kbd_keyword.h)(0x5F12C00F)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E53505C)
+F (..\Src\kbd_func.c)(0x5F12BF7D)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Ghost_stm32_v0.7-IC:\Users\ztdey\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ztdey\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o ghost_stm32_v0.7\kbd_func.o --omf_browse ghost_stm32_v0.7\kbd_func.crf --depend ghost_stm32_v0.7\kbd_func.d)
+I (../Inc/kbd_func.h)(0x5F12BF83)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E53505C)
 I (../Inc/main.h)(0x5F06E5E3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5F06E5E2)
@@ -444,17 +486,18 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5F06E5E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x5F06E5E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x5F06E5E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x5F06E5E2)
-I (../Inc/kbd_param.h)(0x5F088A88)
-I (../Inc/kbd_config.h)(0x5F08876A)
-I (../Inc/kbd_gpio.h)(0x5F08876A)
+I (../Inc/kbd_param.h)(0x5F12C2B7)
+I (../Inc/kbd_config.h)(0x5F12BF81)
+I (../Inc/kbd_gpio.h)(0x5F12BF85)
 I (../Inc/usb_device.h)(0x5F06E5E3)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x5F06E5E3)
 I (../Inc/usbd_conf.h)(0x5F06E5E3)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E53505C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E53505C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E53505C)
-F (..\Src\kbd_param.c)(0x5F088634)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Ghost_stm32_v0.7-IC:\Users\ztdey\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ztdey\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o ghost_stm32_v0.7\kbd_param.o --omf_browse ghost_stm32_v0.7\kbd_param.crf --depend ghost_stm32_v0.7\kbd_param.d)
-I (../Inc/kbd_param.h)(0x5F088A88)
+I (../Inc/kbd_keyword.h)(0x5F12C00F)
+F (..\Src\kbd_param.c)(0x5F12BF7E)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Ghost_stm32_v0.7-IC:\Users\ztdey\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ztdey\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o ghost_stm32_v0.7\kbd_param.o --omf_browse ghost_stm32_v0.7\kbd_param.crf --depend ghost_stm32_v0.7\kbd_param.d)
+I (../Inc/kbd_param.h)(0x5F12C2B7)
 I (../Inc/main.h)(0x5F06E5E3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5F06E5E2)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5F06E5E3)
@@ -486,19 +529,20 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5F06E5E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x5F06E5E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x5F06E5E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x5F06E5E2)
-I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E53505C)
-I (../Inc/kbd_config.h)(0x5F08876A)
-I (../Inc/kbd_gpio.h)(0x5F08876A)
+I (../Inc/kbd_config.h)(0x5F12BF81)
+I (../Inc/kbd_gpio.h)(0x5F12BF85)
 I (../Inc/usb_device.h)(0x5F06E5E3)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x5F06E5E3)
 I (../Inc/usbd_conf.h)(0x5F06E5E3)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E53505C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E53505C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E53505C)
-F (..\Src\kbd_scan.c)(0x5F088D05)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Ghost_stm32_v0.7-IC:\Users\ztdey\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ztdey\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o ghost_stm32_v0.7\kbd_scan.o --omf_browse ghost_stm32_v0.7\kbd_scan.crf --depend ghost_stm32_v0.7\kbd_scan.d)
-I (../Inc/kbd_scan.h)(0x5F088BAF)
+I (../Inc/kbd_keyword.h)(0x5F12C00F)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E53505C)
-I (../Inc/kbd_param.h)(0x5F088A88)
+F (..\Src\kbd_scan.c)(0x5F12C619)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Ghost_stm32_v0.7-IC:\Users\ztdey\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ztdey\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o ghost_stm32_v0.7\kbd_scan.o --omf_browse ghost_stm32_v0.7\kbd_scan.crf --depend ghost_stm32_v0.7\kbd_scan.d)
+I (../Inc/kbd_scan.h)(0x5F12C65C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E53505C)
+I (../Inc/kbd_param.h)(0x5F12C2B7)
 I (../Inc/main.h)(0x5F06E5E3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5F06E5E2)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5F06E5E3)
@@ -530,15 +574,62 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5F06E5E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x5F06E5E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x5F06E5E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x5F06E5E2)
-I (../Inc/kbd_config.h)(0x5F08876A)
-I (../Inc/kbd_gpio.h)(0x5F08876A)
+I (../Inc/kbd_config.h)(0x5F12BF81)
+I (../Inc/kbd_gpio.h)(0x5F12BF85)
 I (../Inc/usb_device.h)(0x5F06E5E3)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x5F06E5E3)
 I (../Inc/usbd_conf.h)(0x5F06E5E3)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E53505C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E53505C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E53505C)
-I (../Inc/kbd_func.h)(0x5F0889B1)
+I (../Inc/kbd_keyword.h)(0x5F12C00F)
+I (../Inc/kbd_func.h)(0x5F12BF83)
+F (..\Src\kbd_report.c)(0x5F12C499)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Ghost_stm32_v0.7-IC:\Users\ztdey\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ztdey\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o ghost_stm32_v0.7\kbd_report.o --omf_browse ghost_stm32_v0.7\kbd_report.crf --depend ghost_stm32_v0.7\kbd_report.d)
+I (../Inc/kbd_report.h)(0x5F12C3AE)
+I (../Inc/kbd_config.h)(0x5F12BF81)
+I (../Inc/kbd_param.h)(0x5F12C2B7)
+I (../Inc/main.h)(0x5F06E5E3)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5F06E5E2)
+I (../Inc/stm32f1xx_hal_conf.h)(0x5F06E5E3)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x5F06E5E2)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x5F06E5E2)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h)(0x5F06E5E2)
+I (../Drivers/CMSIS/Include/core_cm3.h)(0x5F06E5E2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E53505C)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5F06E5E2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5F06E5E2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5F06E5E2)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x5F06E5E2)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5E53505C)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x5F06E5E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x5F06E5E2)
+I (../Inc/kbd_gpio.h)(0x5F12BF85)
+I (../Inc/usb_device.h)(0x5F06E5E3)
+I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x5F06E5E3)
+I (../Inc/usbd_conf.h)(0x5F06E5E3)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E53505C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E53505C)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E53505C)
+I (../Inc/kbd_keyword.h)(0x5F12C00F)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E53505C)
+I (../Inc/kbd_scan.h)(0x5F12C65C)
+I (../Inc/kbd_func.h)(0x5F12BF83)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c)(0x5F06E5E3)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Ghost_stm32_v0.7-IC:\Users\ztdey\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ztdey\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o ghost_stm32_v0.7\stm32f1xx_hal_gpio_ex.o --omf_browse ghost_stm32_v0.7\stm32f1xx_hal_gpio_ex.crf --depend ghost_stm32_v0.7\stm32f1xx_hal_gpio_ex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5F06E5E2)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5F06E5E3)
@@ -1290,13 +1381,13 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x5F06E5E2)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x5F06E5E3)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x5F06E5E3)
 F (..\Inc\gpio.h)(0x5F06E5E3)()
-F (..\Inc\kbd_config.h)(0x5F08876A)()
-F (..\Inc\kbd_debug.h)(0x5F08398A)()
-F (..\Inc\kbd_func.h)(0x5F0889B1)()
-F (..\Inc\kbd_gpio.h)(0x5F08876A)()
-F (..\Inc\kbd_keyword.h)(0x5F06E5E3)()
-F (..\Inc\kbd_param.h)(0x5F088A88)()
-F (..\Inc\kbd_scan.h)(0x5F088BAF)()
+F (..\Inc\kbd_config.h)(0x5F12BF81)()
+F (..\Inc\kbd_debug.h)(0x5F12BF83)()
+F (..\Inc\kbd_func.h)(0x5F12BF83)()
+F (..\Inc\kbd_gpio.h)(0x5F12BF85)()
+F (..\Inc\kbd_keyword.h)(0x5F12C00F)()
+F (..\Inc\kbd_param.h)(0x5F12C2B7)()
+F (..\Inc\kbd_scan.h)(0x5F12C65C)()
 F (..\Inc\main.h)(0x5F06E5E3)()
 F (..\Inc\spi.h)(0x5F06E5E3)()
 F (..\Inc\stm32f1xx_hal_conf.h)(0x5F06E5E3)()
@@ -1307,3 +1398,4 @@ F (..\Inc\usb_device.h)(0x5F06E5E3)()
 F (..\Inc\usbd_conf.h)(0x5F06E5E3)()
 F (..\Inc\usbd_custom_hid_if.h)(0x5F06E5E3)()
 F (..\Inc\usbd_desc.h)(0x5F06E5E3)()
+F (..\Inc\kbd_report.h)(0x5F12C3AE)()

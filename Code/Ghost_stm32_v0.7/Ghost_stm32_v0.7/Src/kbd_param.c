@@ -4,10 +4,11 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 22:28:21
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-15 12:01:40
+ * @LastEditTime: 2020-07-18 16:23:13
  */
 
 #include "kbd_param.h"
+
 
 /**
  * @name: Oreo097
@@ -72,6 +73,7 @@ kbd_map_akey_logic_t kbd_map_akey = {
      {0, 1, 2, 3},
      {0, 1}}};
 kbd_map_akey_logic_t * logicmap_akey = &kbd_map_akey;
+#endif
 
 /**
  * @name: Oreo097
@@ -94,4 +96,3 @@ kbd_map_keyword_t kbd_map_keyword_key[ROW_MAX][COL_MAX] = {
  * @return: 
  */
 kbd_map_keyword_t kbd_map_keyword_fkey[FKEY_MAX][2];
-#endif

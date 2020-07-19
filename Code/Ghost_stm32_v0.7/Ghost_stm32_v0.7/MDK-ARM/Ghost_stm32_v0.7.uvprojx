@@ -468,6 +468,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\kbd_scan.c</FilePath>
             </File>
+            <File>
+              <FileName>kbd_report.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\kbd_report.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -692,6 +697,11 @@
               <FileName>usbd_desc.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Inc\usbd_desc.h</FilePath>
+            </File>
+            <File>
+              <FileName>kbd_report.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\kbd_report.h</FilePath>
             </File>
           </Files>
         </Group>

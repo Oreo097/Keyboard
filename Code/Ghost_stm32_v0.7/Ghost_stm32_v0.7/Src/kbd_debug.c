@@ -4,9 +4,10 @@
  * @Author: Oreo097
  * @Date: 2020-07-10 15:56:31
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-12 10:49:59
+ * @LastEditTime: 2020-07-18 16:47:38
  */
 #include "kbd_debug.h"
+
 
 /**
  * @name: Oreo097
@@ -26,11 +27,11 @@ int fputc(int ch, FILE *f)
  * @param {uint8_t 行，uint8_t 列，bool 状态} 
  * @return:void 
  */
-void KBD_DBG_KEY(uint8_t row,uint8_t col,bool status)
+void KBD_DBG_KEY(uint8_t row, uint8_t col, bool status)
 {
     if (status == 1)
     {
-        printf("%d,%d is pressed down\n",row,col);
+        printf("%d,%d is pressed down\n", row, col);
     }
 }
 
@@ -40,10 +41,19 @@ void KBD_DBG_KEY(uint8_t row,uint8_t col,bool status)
  * @param {kbd_scan_ans_t * 答案名称} 
  * @return: void
  */
-void KBD_DBG_ANS_6KRO(kbd_scan_ans_t * ans)
+void KBD_DBG_ANS_6KRO(kbd_scan_ans_t *ans)
 {
-    printf("%d keys ware pressed down\n",ans->index_akey);
-    printf();
+    printf("%d keys ware pressed down\n", ans->index_akey);
+    printf("FKEY ANS:\n");
+    for (uint8_t index=0;index< ans->index_fkey; index++)
+    {
+        if (ans->array[index][0] == 0xff)
+        {
+            continue;
+        }
+        printf("%d,%d\n", ans->array[index][0], ans->array[index][1]);
+    }
+    printf("*FKEY END*\n");
 }
 
 /**
@@ -52,9 +62,9 @@ void KBD_DBG_ANS_6KRO(kbd_scan_ans_t * ans)
  * @param {(uint8_t 行，uint8_t 列} 
  * @return: void
  */
-void KBD_DBG_RMJ(uint8_t row,uint8_t col)
+void KBD_DBG_RMJ(uint8_t row, uint8_t col)
 {
-    printf("%d,%d is removed\n",row,col);
+    printf("%d,%d is removed\n", row, col);
 }
 
 /**
@@ -63,7 +73,18 @@ void KBD_DBG_RMJ(uint8_t row,uint8_t col)
  * @param {uint8_t * 报告}} 
  * @return: void
  */
-void KBD_DBG_REP_6KRO(uint8_t * report)
+void KBD_DBG_REP_6KRO(uint8_t *report)
 {
-    
+    uint8_t map[] = "0,0,0,0,0,0,0,0\n";
+    uint8_t end[] = "******over******\n";
+    map[0] = *report;
+    map[2] = *(++report);
+    map[4] = *(++report);
+    map[6] = *(++report);
+    map[8] = *(++report);
+    map[10] = *(++report);
+    map[12] = *(++report);
+    map[14] = *(++report);
+    printf("%d,%d,%d,%d,%d,%d,%d,%d\n", map[0], map[2], map[4], map[6], map[8], map[10], map[12], map[14]);
+    send(end);
 }

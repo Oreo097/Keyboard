@@ -4,28 +4,19 @@
  * @Author: Oreo097
  * @Date: 2020-07-11 16:26:25
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-15 12:55:34
+ * @LastEditTime: 2020-07-18 17:55:50
  */ 
 #include "kbd_report.h"
 
 
 
-
-
-
 /**
  * @name: Oreo097
- * @msg: 生成report的函数,6KRO专用
- * @param {kbd_scan_ans_t * 扫描结果} 
- * @return: void
+ * @msg: 6KRO的报告，用于USB HID发送
+ * @param {type} 
+ * @return: 
  */
-void KBD_REPROT_MAKE_6KRO(kbd_scan_ans_t * ans,kbd_map_keyword_t keyword)
-{
-    for(uint8_t index_fkey;index_fkey<ans->index_fkey;index_fkey++)
-    {
-
-    }
-}
+kbd_report_t kbd_report_6[8];
 
 /**
  * @name: Oreo097
@@ -34,6 +25,102 @@ void KBD_REPROT_MAKE_6KRO(kbd_scan_ans_t * ans,kbd_map_keyword_t keyword)
  * @return: 如果需要生成并发送reprot返回true，否则返回false
  */
 bool KBD_REPORT_CHECK_ANS_FKEY(kbd_scan_ans_t * ans)
+{
+    if(ans->changed==true)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 生成report的函数,6KRO专用
+ * @param {kbd_scan_ans_t * 扫描结果} 
+ * @return: void
+ */
+void KBD_REPROT_MAKE_6KRO(kbd_scan_ans_t * ans,kbd_map_keywords_t keyword)
+{
+
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 生成SKEY的report的函数,6KRO专用
+ * @param {kbd_scan_ans_t * 扫描结果,kbd_map_keyword_t * 键值表,kbd_report_t* 报表} 
+ * @return: void
+ */
+void KBD_REPROT_MAKE_SKEY_6KRO(kbd_scan_ans_t * ans,kbd_map_keywords_t * keyword,kbd_report_t * report)
+{
+    for(uint8_t index_skey=0;index_skey<ans->index_fkey;index_skey++)
+    {
+        //*report;
+    }
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 生成AKEY的report的函数，6KRO专用
+ * @param {kbd_scan_ans_t * 扫描结果,kbd_map_keyword_t * 键值表,kbd_report_t * 报告} 
+ * @return: 
+ */
+void KBD_REPORT_MAKE_AKEY_6KRO(kbd_scan_ans_t * ans,kbd_map_keywords_t * keyword,kbd_report_t * report)
+{
+    report+=(2*sizeof(uint8_t));
+    for(uint8_t index_akey=(SKEY_MAX+FKEY_MAX);index_akey<REPORT_MAX_6;index_akey++)
+    {
+        if(ans->array[index_akey][0]==0xff)
+        {
+            continue;
+        }
+        *report=keyword->keymap[ans->array[index_akey][0]][ans->array[index_akey][1]];
+        report++;
+    }
+}
+
+/**
+ * @name: Oreo097
+ * @msg: FKEY的循环切换，6KRO专用
+ * @param {kbd_scan_ans_t * 结果,kbd_map_keyword_t 键值表,kbd_report_t * 报告} 
+ * @return: 
+ */
+void KBD_REPORT_KMAP_SWITCH_6KRO(kbd_scan_ans_t * ans,kbd_map_keywords_t keyword,kbd_report_t * report)
+{
+
+}
+
+/**
+ * @name: Oreo097
+ * @msg: FKEY的多键键层切换，6KRO专用
+ * @param {kbd_scan_ans_t * 结果,kbd_map_keyword_t 键值表,kbd_report_t * 报告} 
+ * @return: void
+ */
+void KBD_REPORT_KEMAP_SWITCHS_6KRO(kbd_scan_ans_t * ans,kbd_map_keywords_t * keyword,kbd_report_t * report)
+{
+
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 通过USB hid发送report的函数
+ * @param {kbd_scan_ans_t * 结果,kbd_map_keyword_t 键值表,kbd_report_t * 报告} 
+ * @return: void
+ */
+void KBD_REPORT_SEND(kbd_report_t report)
+{
+
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 
+ * @param {type} 
+ * @return: 
+ */
+void KBD_REPORT_MAIN(void)
 {
     
 }

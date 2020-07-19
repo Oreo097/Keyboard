@@ -32,7 +32,6 @@ ghost_stm32_v0.7\kbd_param.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_
 ghost_stm32_v0.7\kbd_param.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h
 ghost_stm32_v0.7\kbd_param.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h
 ghost_stm32_v0.7\kbd_param.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h
-ghost_stm32_v0.7\kbd_param.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 ghost_stm32_v0.7\kbd_param.o: ../Inc/kbd_config.h
 ghost_stm32_v0.7\kbd_param.o: ../Inc/kbd_gpio.h
 ghost_stm32_v0.7\kbd_param.o: ../Inc/usb_device.h
@@ -41,3 +40,5 @@ ghost_stm32_v0.7\kbd_param.o: ../Inc/usbd_conf.h
 ghost_stm32_v0.7\kbd_param.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ghost_stm32_v0.7\kbd_param.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ghost_stm32_v0.7\kbd_param.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+ghost_stm32_v0.7\kbd_param.o: ../Inc/kbd_keyword.h
+ghost_stm32_v0.7\kbd_param.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

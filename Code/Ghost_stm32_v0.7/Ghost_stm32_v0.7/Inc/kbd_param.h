@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:47:57
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-11 16:47:34
+ * @LastEditTime: 2020-07-18 17:36:00
  */
 
 #ifndef __KBD_PARAM_H
@@ -113,8 +113,16 @@ typedef struct
  * @return: 
  */
 typedef uint8_t kbd_map_keyword_t;
+typedef struct{
+    kbd_map_keyword_t keymap[ROW_MAX][COL_MAX];
+}kbd_map_keywords_t;
 
-
-typedef 
+/**
+ * @name: Oreo097
+ * @msg: 按键报告的定义
+ * @param {type} 
+ * @return: 
+ */
+typedef uint8_t kbd_report_t;
 
 #endif
