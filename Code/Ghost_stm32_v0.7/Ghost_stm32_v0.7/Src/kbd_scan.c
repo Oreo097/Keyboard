@@ -4,11 +4,10 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 21:15:07
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-28 21:53:35
+ * @LastEditTime: 2020-07-28 23:58:41
  */
 
 #include "kbd_scan.h"
-
 
 kbd_scan_ans_t kbd_scan_ans_1;
 kbd_scan_ans_t kbd_scan_ans_2;
@@ -333,20 +332,20 @@ void KBD_SCAN_ADD_AKEY_6KRO(kbd_map_gpio_t *gpio_map, kbd_map_akey_logic_t *logm
  */
 void KBD_SCAN_RMJ(kbd_map_gpio_t *gpio_map, kbd_scan_ans_t *ans)
 {
-#if (FKEY_MAX != 0)
-    for (uint8_t index_fkey = 0; index_fkey < ans->index_fkey; index_fkey++)
-    {
-        uint8_t pin_buffer_row = 0;
-        pin_buffer_row = ans->array[index_fkey][0];
-        pinUp(gpio_map->gpio_row[pin_buffer_row]);
-        if (pinRead(gpio_map->gpio_row[ans->array[index_fkey][1]]) != true)
+    if (FKEY_MAX != 0)
+        for (uint8_t index_fkey = 0; index_fkey < ans->index_fkey; index_fkey++)
         {
-            ans->array[index_fkey][0] = ans->array[index_fkey][1] = 0xff; //改变ans的值
+            uint8_t pin_buffer_row = 0;
+            pin_buffer_row = ans->array[index_fkey][0];
+            pinUp(gpio_map->gpio_row[pin_buffer_row]);
+            if (pinRead(gpio_map->gpio_row[ans->array[index_fkey][1]]) != true)
+            {
+                ans->array[index_fkey][0] = ans->array[index_fkey][1] = 0xff; //改变ans的值
+            }
+            pinDown(gpio_map->gpio_row[pin_buffer_row]);
         }
-        pinDown(gpio_map->gpio_row[pin_buffer_row]);
-    }
-#endif
-#if (SKEY_MAX != 0)
+}
+if (SKEY_MAX != 0)
     for (uint8_t index_skey = FKEY_MAX; index_skey < ans->index_skey; index_skey++)
     {
         uint8_t pin_buffer_row = 0;
@@ -358,8 +357,9 @@ void KBD_SCAN_RMJ(kbd_map_gpio_t *gpio_map, kbd_scan_ans_t *ans)
         }
         pinDown(gpio_map->gpio_row[pin_buffer_row]);
     }
-#endif
-#if (AKEY_MAX != 0)
+}
+if (AKEY_MAX != 0)
+{
     for (uint8_t index_akey = (FKEY_MAX + SKEY_MAX); index_akey < ans->index_akey; index_akey++)
     {
         uint8_t pin_buffer_row = 0;
@@ -371,7 +371,7 @@ void KBD_SCAN_RMJ(kbd_map_gpio_t *gpio_map, kbd_scan_ans_t *ans)
         }
         pinDown(gpio_map->gpio_row[pin_buffer_row]);
     }
-#endif
+}
 }
 
 /**
@@ -400,7 +400,6 @@ void KBD_SCAN_MAIN(void)
         {
             KBD_SCAN_ADD_AKEY_6KRO(gpio_map, logicmap_akey, ans_1);
         }
-        
     }
     else
     {
@@ -423,4 +422,3 @@ void KBD_SCAN_MAIN(void)
 #else
 #endif
 }
-
