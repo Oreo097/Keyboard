@@ -4,11 +4,10 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 22:28:21
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-18 16:23:13
+ * @LastEditTime: 2020-07-28 21:44:20
  */
 
 #include "kbd_param.h"
-
 
 /**
  * @name: Oreo097
@@ -72,7 +71,7 @@ kbd_map_akey_logic_t kbd_map_akey = {
      {0, 1, 2},
      {0, 1, 2, 3},
      {0, 1}}};
-kbd_map_akey_logic_t * logicmap_akey = &kbd_map_akey;
+kbd_map_akey_logic_t *logicmap_akey = &kbd_map_akey;
 #endif
 
 /**
@@ -81,13 +80,16 @@ kbd_map_akey_logic_t * logicmap_akey = &kbd_map_akey;
  * @param {type} 
  * @return: 
  */
-kbd_map_keyword_t kbd_map_keyword_key[ROW_MAX][COL_MAX] = {
-    {Keypad_NumLock, Keypad_ChuHao, Keypad_ChengHao, Keypad_JianHao},
-    {Keypad_7_and_Home, Keypad_8_and_UpArrow, Keypad_9_and_PageUp, Keypad_JiaHao},
-    {Keypad_4_and_LeftArrow, Keypad_5, Keypad_6_and_RightArrow},
-    {Keypad_1_and_End, Keypad_2_and_DownArrow, Keypad_3_and_PageDn, Keyboard_ENTER},
-    {Keypad_0_and_Insert, Keypad_Dian_and_Delete},
+kbd_map_keywords_t kbd_map_keywords_key = {
+    {
+        {Keypad_NumLock, Keypad_ChuHao, Keypad_ChengHao, Keypad_JianHao},
+        {Keypad_7_and_Home, Keypad_8_and_UpArrow, Keypad_9_and_PageUp, Keypad_JiaHao},
+        {Keypad_4_and_LeftArrow, Keypad_5, Keypad_6_and_RightArrow},
+        {Keypad_1_and_End, Keypad_2_and_DownArrow, Keypad_3_and_PageDn, Keyboard_ENTER},
+        {Keypad_0_and_Insert, Keypad_Dian_and_Delete}
+    }
 };
+kbd_map_keywords_t * kbd_map_keywords_key_ptr=kbd_map_keywords_key;
 
 /**
  * @name: Oreo097

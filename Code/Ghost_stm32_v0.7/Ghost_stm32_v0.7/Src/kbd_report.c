@@ -4,10 +4,9 @@
  * @Author: Oreo097
  * @Date: 2020-07-11 16:26:25
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-18 17:55:50
+ * @LastEditTime: 2020-07-28 21:52:49
  */ 
 #include "kbd_report.h"
-
 
 
 /**
@@ -16,7 +15,24 @@
  * @param {type} 
  * @return: 
  */
-kbd_report_t kbd_report_6[8];
+kbd_report_t kbd_report_report_6[8];
+
+/**
+ * @name: Oreo097
+ * @msg: 6KRO的扫描结果的指针
+ * @param {type} 
+ * @return: 
+ */
+extern kbd_scan_ans_t * kbd_scan_ans_ptr;
+
+/**
+ * @name: Oreo097
+ * @msg: akey的键值表
+ * @param {type} 
+ * @return: 
+ */
+extern kdb_map_keywords_t * kbd_map_keywords_key_ptr;
+
 
 /**
  * @name: Oreo097
@@ -24,7 +40,7 @@ kbd_report_t kbd_report_6[8];
  * @param {kbd_scan_ans_t * 扫描结果} 
  * @return: 如果需要生成并发送reprot返回true，否则返回false
  */
-bool KBD_REPORT_CHECK_ANS_FKEY(kbd_scan_ans_t * ans)
+bool KBD_REPORT_CHECK_ANS(kbd_scan_ans_t * ans)
 {
     if(ans->changed==true)
     {
@@ -116,11 +132,16 @@ void KBD_REPORT_SEND(kbd_report_t report)
 
 /**
  * @name: Oreo097
- * @msg: 
+ * @msg: 生成Report的主函数，主要写的是生成report的主逻辑过程
  * @param {type} 
- * @return: 
+ * @return: void
  */
 void KBD_REPORT_MAIN(void)
 {
-    
+    KBD_REPORT_CHECK_ANS(kbd_scan_ans_ptr);
+    KBD_REPORT_MAKE_AKEY_6KRO(kbd_scan_ans_ptr,kbd_map_keywords_key_ptr,&kbd_report_report_6);
+    #if(DBG_MODE==1)
+    KBD_DBG_REP_6KRO(&kbd_report_report_6);
+    #endif
+    //KBD_REPORT_SEND(kbd_report_report_6);
 }

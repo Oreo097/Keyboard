@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-10 15:57:05
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-18 17:19:51
+ * @LastEditTime: 2020-07-28 21:49:35
  */ 
 #ifndef __KBD_DEBUG_H
 #define __KBD_DEBUG_H
@@ -31,4 +31,11 @@
  */
 #define KBD_SEND_FUNC_NAME() printf("%s: ",__func__)
 
+void KBD_DBG_KEY(uint8_t row, uint8_t col, bool status);
+
+void KBD_DBG_ANS_6KRO(kbd_scan_ans_t *ans);
+
+void KBD_DBG_RMJ(uint8_t row, uint8_t col);
+
+void KBD_DBG_REP_6KRO(uint8_t *report);
 #endif

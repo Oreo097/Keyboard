@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:49:24
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-11 09:15:50
+ * @LastEditTime: 2020-07-28 21:47:17
  */ 
 #ifndef __KBD_CONFIG_H
 #define __KBD_CONFIG_H
@@ -80,5 +80,13 @@
  * @return: 
  */
 #define UART_DBG huart1
+
+/**
+ * @name: Oreo097
+ * @msg: 定义DBG开关
+ * @param {0为关，1为开} 
+ * @return: 
+ */
+#define DBG_MODE 1
 
 #endif

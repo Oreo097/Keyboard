@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 21:15:07
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-18 17:51:21
+ * @LastEditTime: 2020-07-28 21:53:35
  */
 
 #include "kbd_scan.h"
@@ -400,6 +400,7 @@ void KBD_SCAN_MAIN(void)
         {
             KBD_SCAN_ADD_AKEY_6KRO(gpio_map, logicmap_akey, ans_1);
         }
+        
     }
     else
     {
