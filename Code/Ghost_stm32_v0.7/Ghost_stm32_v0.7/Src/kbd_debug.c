@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-10 15:56:31
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-18 16:47:38
+ * @LastEditTime: 2020-07-28 20:41:01
  */
 #include "kbd_debug.h"
 
@@ -85,6 +85,6 @@ void KBD_DBG_REP_6KRO(uint8_t *report)
     map[10] = *(++report);
     map[12] = *(++report);
     map[14] = *(++report);
-    printf("%d,%d,%d,%d,%d,%d,%d,%d\n", map[0], map[2], map[4], map[6], map[8], map[10], map[12], map[14]);
+    send(map);
     send(end);
 }
