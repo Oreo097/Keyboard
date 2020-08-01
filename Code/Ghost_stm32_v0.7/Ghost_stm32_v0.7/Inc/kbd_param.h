@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:47:57
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-18 17:36:00
+ * @LastEditTime: 2020-08-01 21:10:53
  */
 
 #ifndef __KBD_PARAM_H
@@ -18,9 +18,8 @@
 
 #include <stdbool.h>
 
-#define USBD USBD_HandleTypeDef//usb的数据类型
-#define GPIO_GROUP GPIO_TypeDef//GPIO组的数据类型
-
+#define USBD USBD_HandleTypeDef //usb的数据类型
+#define GPIO_GROUP GPIO_TypeDef //GPIO组的数据类型
 
 /**
  * @name: Oreo097
@@ -53,12 +52,11 @@ typedef struct
  * @param {type} 
  * @return: 
  */
-#if (FKEY_MAX != 0)
 typedef struct
 {
-    uint8_t key_map[FKEY_MAX][2];
+    uint8_t key_numb; //存储按键数量
+    uint8_t key_map[KEY_MAX][2];
 } kbd_map_fkey_logic_t;
-#endif
 
 /**
  * @name: Oreo097
@@ -66,12 +64,11 @@ typedef struct
  * @param {type} 
  * @return: 
  */
-#if (SKEY_MAX != 0)
 typedef struct
 {
-    uint8_t key_map[SKEY_MAX][2];
+    uint8_t key_numb; //用来存储按键数量
+    uint8_t key_map[KEY_MAX][2];
 } kbd_map_skey_logic_t;
-#endif
 
 /**
  * @name: Oreo097
@@ -79,18 +76,17 @@ typedef struct
  * @param {type} 
  * @return: 
  */
-#if (AKEY_MAX != 0)
 typedef struct
 {
+    uint8_t key_numb;
     uint8_t num_row[ROW_MAX];
     uint8_t key_map[ROW_MAX][COL_MAX];
 
 } kbd_map_akey_logic_t;
-#endif
 
 /**
  * @name: Oreo097
- * @msg: 定义扫描结果的结构体，主要用于存储扫描结果方便后边生成report，6KRO专用
+ * @msg: 定义扫描结果的结构体，主要用于存储扫描结果方便后边生成report
  * @param {前FKEY_MAX个是功能键扫描结果，中间SKEY_MAX个是特殊键扫描结果，后边REPORT_MAX-2个是普通按键扫描结果} 
  * @return: 
  */
@@ -99,8 +95,9 @@ typedef struct
     bool occupied;
     bool changed;
     uint8_t number;
-#define ANS_MAX FKEY_MAX + SKEY_MAX + (REPORT_MAX_6 - 2)
-    uint8_t array[ANS_MAX][2];
+    uint8_t fkey_array[KEY_MAX][2];
+    uint8_t skey_array[KEY_MAX][2];
+    uint8_t akey_array[KEY_MAX][2];
     uint8_t index_fkey;
     uint8_t index_skey;
     uint8_t index_akey;
@@ -113,9 +110,10 @@ typedef struct
  * @return: 
  */
 typedef uint8_t kbd_map_keyword_t;
-typedef struct{
+typedef struct
+{
     kbd_map_keyword_t keymap[ROW_MAX][COL_MAX];
-}kbd_map_keywords_t;
+} kbd_map_keywords_t;
 
 /**
  * @name: Oreo097
