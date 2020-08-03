@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 21:15:07
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-08-01 21:13:46
+ * @LastEditTime: 2020-08-02 09:18:56
  */
 
 #include "kbd_scan.h"
@@ -100,6 +100,12 @@ bool KBD_SCAN_CHECK_FKEY_6KRO(uint8_t row, uint8_t col, kbd_scan_ans_t *ans)
     return false;
 }
 
+/**
+ * @name: Oreo097
+ * @msg: 
+ * @param {type} 
+ * @return: 
+ */
 bool KBD_SCAN_CHECK_SKEY_6KRO(uint8_t row, uint8_t col, kbd_scan_ans_t *ans)
 {
     for (uint8_t index = 0; index < KEY_MAX; index++)
@@ -115,7 +121,13 @@ bool KBD_SCAN_CHECK_SKEY_6KRO(uint8_t row, uint8_t col, kbd_scan_ans_t *ans)
     return false;
 }
 
-bool KBD_SCAN_CHECK_FKEY_6KRO(uint8_t row, uint8_t col, kbd_scan_ans_t *ans)
+/**
+ * @name: Oreo097
+ * @msg: 
+ * @param {type} 
+ * @return: 
+ */
+bool KBD_SCAN_CHECK_AKEY_6KRO(uint8_t row, uint8_t col, kbd_scan_ans_t *ans)
 {
     for (uint8_t index = 0; index < KEY_MAX; index++)
     {
@@ -136,16 +148,16 @@ bool KBD_SCAN_CHECK_FKEY_6KRO(uint8_t row, uint8_t col, kbd_scan_ans_t *ans)
  * @param {kbd_scan_ans_t * 旧的扫描的答案,kbd_scan_ans_t * 新的扫描的答案,kbd_map_gpio_t * 扫描矩阵} 
  * @return: void
  */
-void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map)
+void KBD_SCAN_CALU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map)
 {
     //if((ans1->array[0][0]==0xff)&&(ans1->array[FKEY_MAX][0])&&(ans1->array[FKEY_MAX+SKEY_MAX][0]==0xff))
     if (ans1->occupied == false)
     {
         return;
     }
-    KBD_SCAN_CALU_FKEY_6KRO(ans1, ans2, gpio_map,logicmap_fkey->key_numb);
-    KBD_SCAN_CALU_SKEY_6KRO(ans1, ans2, gpio_map,logicmap_skey->key_numb);
-    KBD_SCAN_CALU_AKEY_6KRO(ans1, ans2, gpio_map,logicmap_akey->key_numb);
+    KBD_SCAN_CALU_FKEY_6KRO(ans1, ans2, gpio_map, logicmap_fkey->key_numb);
+    KBD_SCAN_CALU_SKEY_6KRO(ans1, ans2, gpio_map, logicmap_skey->key_numb);
+    KBD_SCAN_CALU_AKEY_6KRO(ans1, ans2, gpio_map, logicmap_akey->key_numb);
 }
 
 /**
@@ -157,7 +169,7 @@ void KBD_SCAN_CALCU_KEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
 void KBD_SCAN_CALU_FKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map, uint8_t key_numb)
 {
     uint8_t index_new_ans = 0;
-    for (uint8_t index = 0; index < key_numb; index++)
+    for (uint8_t index = 0; index < ans1->index_fkey; index++)
     {
         if (ans1->fkey_array[index][0] != 0xff)
         {
@@ -171,11 +183,13 @@ void KBD_SCAN_CALU_FKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
             index_new_ans++;
             ans2->index_fkey++;
             ans2->occupied = true;
+            KBD_DBG_SCAN_CALU_NUM(ans1->fkey_array[index][0], ans1->fkey_array[index][1]);
         }
         else
         {
             ans2->changed = true;
         }
+        pinDown(gpio_map->gpio_row[ans1->fkey_array[index][0]]);
     }
 }
 
@@ -188,25 +202,27 @@ void KBD_SCAN_CALU_FKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
 void KBD_SCAN_CALU_SKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map_gpio_t *gpio_map, uint8_t key_numb)
 {
     uint8_t index_new_ans = 0;
-    for (uint8_t index = 0; index < key_numb; index++)
+    for (uint8_t index = 0; index < ans1->index_skey; index++)
     {
         if (ans1->skey_array[index_new_ans][0] != 0xff)
         {
             continue;
         }
-        pinUp(gpio_map->gpio_row[ans1->skey_array[index][0]]); //拉高目标行
-        if (pinRead(gpio_map->gpio_col[ans1->skey_array[index][0]][ans1->skey_array[index][1]]) == 1)
-        {
-            ans2->skey_array[index_new_ans][0] = ans1->skey_array[index][0];
-            ans2->skey_array[index_new_ans][1] = ans1->skey_array[index][1];
-            index_new_ans++;
-            ans2->index_skey++;
-            ans2->occupied = true;
-        }
-        else
-        {
-            ans2->changed = true;
-        }
+            pinUp(gpio_map->gpio_row[ans1->skey_array[index][0]]); //拉高目标行
+            if (pinRead(gpio_map->gpio_col[ans1->skey_array[index][0]][ans1->skey_array[index][1]]) == 1)
+            {
+                ans2->skey_array[index_new_ans][0] = ans1->skey_array[index][0];
+                ans2->skey_array[index_new_ans][1] = ans1->skey_array[index][1];
+                index_new_ans++;
+                ans2->index_skey++;
+                ans2->occupied = true;
+                KBD_DBG_SCAN_CALU_NUM(ans1->skey_array[index][0], ans1->skey_array[index][1]);
+            }
+            else
+            {
+                ans2->changed = true;
+            }
+            pinDown(gpio_map->gpio_row[ans1->skey_array[index][0]]);
     }
 }
 
@@ -221,7 +237,7 @@ void KBD_SCAN_CALU_AKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
     if (ans1->akey_array[0][0] != 0xff)
     {
         uint8_t index_new_ans = 0;
-        for (uint8_t index = 0; index < key_numb; index++)
+        for (uint8_t index = 0; index < ans1->index_akey; index++)
         {
             if (ans1->akey_array[index_new_ans][0] != 0xff)
             {
@@ -235,11 +251,13 @@ void KBD_SCAN_CALU_AKEY_6KRO(kbd_scan_ans_t *ans1, kbd_scan_ans_t *ans2, kbd_map
                 index_new_ans++;
                 ans2->index_akey++;
                 ans2->occupied = true;
+                KBD_DBG_SCAN_CALU_NUM(ans1->akey_array[index][0], ans1->akey_array[index][1]);
             }
             else
             {
                 ans2->changed = true;
             }
+            pinDown(gpio_map->gpio_row[ans1->akey_array[index][0]]);
         }
     }
 }
@@ -421,53 +439,4 @@ void KBD_SCAN_RMJ_AKEY(kbd_map_gpio_t *gpio_map, kbd_scan_ans_t *ans, uint8_t ke
             pinDown(gpio_map->gpio_row[pin_buffer_row]);
         }
     }
-}
-
-/**
- * @name: Oreo097
- * @msg: 扫描的主逻辑函数，主要用于扫描键盘的GIPIO矩阵，并生成扫描结果，采用两个扫描结果交替记录的方式，这样可以高效的相互对照
- * @param {void} 
- * @return: void
- */
-void KBD_SCAN_MAIN(void)
-{
-#if (NKRO_MODE == 0)
-    if (ans_1->occupied == true) //检查ans1是不是空的，如果是空的就用
-    {
-        //KBD_SCAN_REINIT_6KRO(ans_1);//初始化ans_1
-        KBD_SCAN_CALCU_KEY_6KRO(ans_2, ans_1, gpio_map);
-        KBD_SCAN_REINIT_6KRO(ans_2);
-        if (ans_1->index_fkey != logicmap_fkey->key_numb)
-        {
-            KBD_SCAN_ADD_FKEY_6KRO(gpio_map, logicmap_fkey, ans_1, logicmap_fkey->key_numb);
-        }
-        if (ans_1->index_skey != logicmap_skey->key_numb)
-        {
-            KBD_SCAN_ADD_SKEY_6KRO(gpio_map, logicmap_skey, ans_1, logicmap_skey->key_numb);
-        }
-        if (ans_1->index_akey != logicmap_akey->key_numb)
-        {
-            KBD_SCAN_ADD_AKEY_6KRO(gpio_map, logicmap_akey, ans_1, logicmap_akey->key_numb);
-        }
-    }
-    else
-    {
-        //KBD_SCAN_REINIT_6KRO(ans_2);//初始化ans_2
-        KBD_SCAN_CALCU_KEY_6KRO(ans_1, ans_2, gpio_map);
-        KBD_SCAN_REINIT_6KRO(ans_1);
-        if (ans_2->index_fkey != logicmap_fkey->key_numb)
-        {
-            KBD_SCAN_ADD_FKEY_6KRO(gpio_map, logicmap_fkey, ans_2, logicmap_fkey->key_numb);
-        }
-        if (ans_2->index_skey != logicmap_skey->key_numb)
-        {
-            KBD_SCAN_ADD_SKEY_6KRO(gpio_map, logicmap_skey, ans_2, logicmap_skey->key_numb);
-        }
-        if (ans_2->index_akey != logicmap_akey->key_numb)
-        {
-            KBD_SCAN_ADD_AKEY_6KRO(gpio_map, logicmap_akey, ans_2, logicmap_akey->key_numb);
-        }
-    }
-#else
-#endif
 }

@@ -141,42 +141,62 @@ Section Cross References
     stm32f1xx_it.o(i.SysTick_Handler) refers to stm32f1xx_hal.o(i.HAL_IncTick) for HAL_IncTick
     stm32f1xx_it.o(i.USB_LP_CAN1_RX0_IRQHandler) refers to stm32f1xx_hal_pcd.o(i.HAL_PCD_IRQHandler) for HAL_PCD_IRQHandler
     stm32f1xx_it.o(i.USB_LP_CAN1_RX0_IRQHandler) refers to usbd_conf.o(.bss) for hpcd_USB_FS
-    kbd_func.o(i.KBD_USB_SEND) refers to usb_device.o(.bss) for hUsbDeviceFS
+    kbd_debug.o(i.KBD_DBG_KEY) refers to printf1.o(i.__0printf$1) for __2printf
+    kbd_debug.o(i.KBD_DBG_REP_6KRO) refers to memcpya.o(.text) for __aeabi_memcpy4
+    kbd_debug.o(i.KBD_DBG_REP_6KRO) refers to stm32f1xx_hal_uart.o(i.HAL_UART_Transmit) for HAL_UART_Transmit
+    kbd_debug.o(i.KBD_DBG_REP_6KRO) refers to usart.o(.bss) for huart1
+    kbd_debug.o(i.KBD_DBG_RMJ) refers to printf1.o(i.__0printf$1) for __2printf
+    kbd_debug.o(i.KBD_DBG_SCAN_CALU_NUM) refers to printf1.o(i.__0printf$1) for __2printf
+    kbd_debug.o(i.fputc) refers to stm32f1xx_hal_uart.o(i.HAL_UART_Transmit) for HAL_UART_Transmit
+    kbd_debug.o(i.fputc) refers to usart.o(.bss) for huart1
     kbd_func.o(i.pinDown) refers to stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
     kbd_func.o(i.pinRead) refers to stm32f1xx_hal_gpio.o(i.HAL_GPIO_ReadPin) for HAL_GPIO_ReadPin
     kbd_func.o(i.pinUp) refers to stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
     kbd_param.o(.data) refers to kbd_param.o(.data) for map_key_phy
-    kbd_param.o(.data) refers to kbd_param.o(.data) for kbd_map_fkey
-    kbd_param.o(.data) refers to kbd_param.o(.data) for kbd_map_skey
+    kbd_param.o(.data) refers to kbd_param.o(.bss) for kbd_map_fkey
+    kbd_param.o(.data) refers to kbd_param.o(.bss) for kbd_map_skey
     kbd_param.o(.data) refers to kbd_param.o(.data) for kbd_map_akey
+    kbd_param.o(.data) refers to kbd_param.o(.data) for kbd_map_keywords_key
     kbd_scan.o(i.KBD_SCAN_ADD_AKEY_6KRO) refers to kbd_func.o(i.pinUp) for pinUp
     kbd_scan.o(i.KBD_SCAN_ADD_AKEY_6KRO) refers to kbd_func.o(i.pinDown) for pinDown
     kbd_scan.o(i.KBD_SCAN_ADD_AKEY_6KRO) refers to kbd_func.o(i.pinRead) for pinRead
-    kbd_scan.o(i.KBD_SCAN_ADD_AKEY_6KRO) refers to kbd_scan.o(i.KBD_SCAN_CHECK_KEY_6KRO) for KBD_SCAN_CHECK_KEY_6KRO
     kbd_scan.o(i.KBD_SCAN_ADD_FKEY_6KRO) refers to kbd_func.o(i.pinUp) for pinUp
     kbd_scan.o(i.KBD_SCAN_ADD_FKEY_6KRO) refers to kbd_func.o(i.pinRead) for pinRead
-    kbd_scan.o(i.KBD_SCAN_ADD_FKEY_6KRO) refers to kbd_scan.o(i.KBD_SCAN_CHECK_KEY_6KRO) for KBD_SCAN_CHECK_KEY_6KRO
     kbd_scan.o(i.KBD_SCAN_ADD_FKEY_6KRO) refers to kbd_func.o(i.pinDown) for pinDown
     kbd_scan.o(i.KBD_SCAN_ADD_SKEY_6KRO) refers to kbd_func.o(i.pinUp) for pinUp
     kbd_scan.o(i.KBD_SCAN_ADD_SKEY_6KRO) refers to kbd_func.o(i.pinRead) for pinRead
-    kbd_scan.o(i.KBD_SCAN_ADD_SKEY_6KRO) refers to kbd_scan.o(i.KBD_SCAN_CHECK_KEY_6KRO) for KBD_SCAN_CHECK_KEY_6KRO
     kbd_scan.o(i.KBD_SCAN_ADD_SKEY_6KRO) refers to kbd_func.o(i.pinDown) for pinDown
-    kbd_scan.o(i.KBD_SCAN_CALCU_KEY_6KRO) refers to kbd_func.o(i.pinUp) for pinUp
-    kbd_scan.o(i.KBD_SCAN_CALCU_KEY_6KRO) refers to kbd_func.o(i.pinRead) for pinRead
-    kbd_scan.o(i.KBD_SCAN_CALCU_KEY_6KRO) refers to kbd_scan.o(i.KBD_SCAN_REINIT_6KRO) for KBD_SCAN_REINIT_6KRO
+    kbd_scan.o(i.KBD_SCAN_CALU_AKEY_6KRO) refers to kbd_func.o(i.pinUp) for pinUp
+    kbd_scan.o(i.KBD_SCAN_CALU_AKEY_6KRO) refers to kbd_func.o(i.pinRead) for pinRead
+    kbd_scan.o(i.KBD_SCAN_CALU_AKEY_6KRO) refers to kbd_debug.o(i.KBD_DBG_SCAN_CALU_NUM) for KBD_DBG_SCAN_CALU_NUM
+    kbd_scan.o(i.KBD_SCAN_CALU_AKEY_6KRO) refers to kbd_func.o(i.pinDown) for pinDown
+    kbd_scan.o(i.KBD_SCAN_CALU_FKEY_6KRO) refers to kbd_func.o(i.pinUp) for pinUp
+    kbd_scan.o(i.KBD_SCAN_CALU_FKEY_6KRO) refers to kbd_func.o(i.pinRead) for pinRead
+    kbd_scan.o(i.KBD_SCAN_CALU_FKEY_6KRO) refers to kbd_debug.o(i.KBD_DBG_SCAN_CALU_NUM) for KBD_DBG_SCAN_CALU_NUM
+    kbd_scan.o(i.KBD_SCAN_CALU_FKEY_6KRO) refers to kbd_func.o(i.pinDown) for pinDown
+    kbd_scan.o(i.KBD_SCAN_CALU_KEY_6KRO) refers to kbd_scan.o(i.KBD_SCAN_CALU_FKEY_6KRO) for KBD_SCAN_CALU_FKEY_6KRO
+    kbd_scan.o(i.KBD_SCAN_CALU_KEY_6KRO) refers to kbd_scan.o(i.KBD_SCAN_CALU_SKEY_6KRO) for KBD_SCAN_CALU_SKEY_6KRO
+    kbd_scan.o(i.KBD_SCAN_CALU_KEY_6KRO) refers to kbd_scan.o(i.KBD_SCAN_CALU_AKEY_6KRO) for KBD_SCAN_CALU_AKEY_6KRO
+    kbd_scan.o(i.KBD_SCAN_CALU_KEY_6KRO) refers to kbd_param.o(.data) for logicmap_fkey
+    kbd_scan.o(i.KBD_SCAN_CALU_KEY_6KRO) refers to kbd_param.o(.data) for logicmap_skey
+    kbd_scan.o(i.KBD_SCAN_CALU_KEY_6KRO) refers to kbd_param.o(.data) for logicmap_akey
+    kbd_scan.o(i.KBD_SCAN_CALU_SKEY_6KRO) refers to kbd_func.o(i.pinUp) for pinUp
+    kbd_scan.o(i.KBD_SCAN_CALU_SKEY_6KRO) refers to kbd_func.o(i.pinRead) for pinRead
+    kbd_scan.o(i.KBD_SCAN_CALU_SKEY_6KRO) refers to kbd_debug.o(i.KBD_DBG_SCAN_CALU_NUM) for KBD_DBG_SCAN_CALU_NUM
+    kbd_scan.o(i.KBD_SCAN_CALU_SKEY_6KRO) refers to kbd_func.o(i.pinDown) for pinDown
+    kbd_scan.o(i.KBD_SCAN_INIT_6KRO) refers to memseta.o(.text) for __aeabi_memset
     kbd_scan.o(i.KBD_SCAN_INIT_6KRO) refers to kbd_scan.o(.bss) for .bss
     kbd_scan.o(i.KBD_SCAN_INIT_6KRO) refers to kbd_scan.o(.data) for .data
-    kbd_scan.o(i.KBD_SCAN_MAIN) refers to kbd_scan.o(i.KBD_SCAN_CALCU_KEY_6KRO) for KBD_SCAN_CALCU_KEY_6KRO
-    kbd_scan.o(i.KBD_SCAN_MAIN) refers to kbd_scan.o(i.KBD_SCAN_REINIT_6KRO) for KBD_SCAN_REINIT_6KRO
-    kbd_scan.o(i.KBD_SCAN_MAIN) refers to kbd_scan.o(i.KBD_SCAN_ADD_FKEY_6KRO) for KBD_SCAN_ADD_FKEY_6KRO
-    kbd_scan.o(i.KBD_SCAN_MAIN) refers to kbd_scan.o(i.KBD_SCAN_ADD_SKEY_6KRO) for KBD_SCAN_ADD_SKEY_6KRO
-    kbd_scan.o(i.KBD_SCAN_MAIN) refers to kbd_scan.o(i.KBD_SCAN_ADD_AKEY_6KRO) for KBD_SCAN_ADD_AKEY_6KRO
-    kbd_scan.o(i.KBD_SCAN_MAIN) refers to kbd_scan.o(.data) for .data
-    kbd_scan.o(i.KBD_SCAN_MAIN) refers to kbd_param.o(.data) for logicmap_fkey
-    kbd_scan.o(i.KBD_SCAN_MAIN) refers to kbd_param.o(.data) for logicmap_skey
-    kbd_scan.o(i.KBD_SCAN_MAIN) refers to kbd_param.o(.data) for logicmap_akey
-    kbd_scan.o(i.KBD_SCAN_MAIN) refers to kbd_param.o(.data) for gpio_map
     kbd_scan.o(i.KBD_SCAN_REINIT_6KRO) refers to memseta.o(.text) for __aeabi_memset
+    kbd_scan.o(i.KBD_SCAN_RMJ_AKEY) refers to kbd_func.o(i.pinUp) for pinUp
+    kbd_scan.o(i.KBD_SCAN_RMJ_AKEY) refers to kbd_func.o(i.pinRead) for pinRead
+    kbd_scan.o(i.KBD_SCAN_RMJ_AKEY) refers to kbd_func.o(i.pinDown) for pinDown
+    kbd_scan.o(i.KBD_SCAN_RMJ_FKEY) refers to kbd_func.o(i.pinUp) for pinUp
+    kbd_scan.o(i.KBD_SCAN_RMJ_FKEY) refers to kbd_func.o(i.pinRead) for pinRead
+    kbd_scan.o(i.KBD_SCAN_RMJ_FKEY) refers to kbd_func.o(i.pinDown) for pinDown
+    kbd_scan.o(i.KBD_SCAN_RMJ_SKEY) refers to kbd_func.o(i.pinUp) for pinUp
+    kbd_scan.o(i.KBD_SCAN_RMJ_SKEY) refers to kbd_func.o(i.pinRead) for pinRead
+    kbd_scan.o(i.KBD_SCAN_RMJ_SKEY) refers to kbd_func.o(i.pinDown) for pinDown
     stm32f1xx_hal_pcd.o(i.HAL_PCD_ActivateRemoteWakeup) refers to stm32f1xx_ll_usb.o(i.USB_ActivateRemoteWakeup) for USB_ActivateRemoteWakeup
     stm32f1xx_hal_pcd.o(i.HAL_PCD_DeActivateRemoteWakeup) refers to stm32f1xx_ll_usb.o(i.USB_DeActivateRemoteWakeup) for USB_DeActivateRemoteWakeup
     stm32f1xx_hal_pcd.o(i.HAL_PCD_DeInit) refers to stm32f1xx_hal_pcd.o(i.HAL_PCD_Stop) for HAL_PCD_Stop
@@ -736,6 +756,242 @@ Section Cross References
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry9a.o(.ARM.Collect$$$$0000000B) for _main_init
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry2.o(.ARM.Collect$$$$00000001) for _main_stk
+    printfb.o(i.__0fprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0fprintf$bare) refers to kbd_debug.o(i.fputc) for fputc
+    printfb.o(i.__0printf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0printf$bare) refers to kbd_debug.o(i.fputc) for fputc
+    printfb.o(i.__0printf$bare) refers to stdout.o(.data) for __stdout
+    printfb.o(i.__0snprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0snprintf$bare) refers to printfb.o(i._snputc) for _snputc
+    printfb.o(i.__0sprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0sprintf$bare) refers to printfb.o(i._sputc) for _sputc
+    printfb.o(i.__0vfprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vfprintf$bare) refers to kbd_debug.o(i.fputc) for fputc
+    printfb.o(i.__0vprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vprintf$bare) refers to kbd_debug.o(i.fputc) for fputc
+    printfb.o(i.__0vprintf$bare) refers to stdout.o(.data) for __stdout
+    printfb.o(i.__0vsnprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vsnprintf$bare) refers to printfb.o(i._snputc) for _snputc
+    printfb.o(i.__0vsprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vsprintf$bare) refers to printfb.o(i._sputc) for _sputc
+    printf0.o(i.__0fprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0fprintf$0) refers to kbd_debug.o(i.fputc) for fputc
+    printf0.o(i.__0printf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0printf$0) refers to kbd_debug.o(i.fputc) for fputc
+    printf0.o(i.__0printf$0) refers to stdout.o(.data) for __stdout
+    printf0.o(i.__0snprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0snprintf$0) refers to printf0.o(i._snputc) for _snputc
+    printf0.o(i.__0sprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0sprintf$0) refers to printf0.o(i._sputc) for _sputc
+    printf0.o(i.__0vfprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vfprintf$0) refers to kbd_debug.o(i.fputc) for fputc
+    printf0.o(i.__0vprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vprintf$0) refers to kbd_debug.o(i.fputc) for fputc
+    printf0.o(i.__0vprintf$0) refers to stdout.o(.data) for __stdout
+    printf0.o(i.__0vsnprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vsnprintf$0) refers to printf0.o(i._snputc) for _snputc
+    printf0.o(i.__0vsprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vsprintf$0) refers to printf0.o(i._sputc) for _sputc
+    printf1.o(i.__0fprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0fprintf$1) refers to kbd_debug.o(i.fputc) for fputc
+    printf1.o(i.__0printf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0printf$1) refers to kbd_debug.o(i.fputc) for fputc
+    printf1.o(i.__0printf$1) refers to stdout.o(.data) for __stdout
+    printf1.o(i.__0snprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0snprintf$1) refers to printf1.o(i._snputc) for _snputc
+    printf1.o(i.__0sprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0sprintf$1) refers to printf1.o(i._sputc) for _sputc
+    printf1.o(i.__0vfprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vfprintf$1) refers to kbd_debug.o(i.fputc) for fputc
+    printf1.o(i.__0vprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vprintf$1) refers to kbd_debug.o(i.fputc) for fputc
+    printf1.o(i.__0vprintf$1) refers to stdout.o(.data) for __stdout
+    printf1.o(i.__0vsnprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vsnprintf$1) refers to printf1.o(i._snputc) for _snputc
+    printf1.o(i.__0vsprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vsprintf$1) refers to printf1.o(i._sputc) for _sputc
+    printf1.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printf2.o(i.__0fprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0fprintf$2) refers to kbd_debug.o(i.fputc) for fputc
+    printf2.o(i.__0printf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0printf$2) refers to kbd_debug.o(i.fputc) for fputc
+    printf2.o(i.__0printf$2) refers to stdout.o(.data) for __stdout
+    printf2.o(i.__0snprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0snprintf$2) refers to printf2.o(i._snputc) for _snputc
+    printf2.o(i.__0sprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0sprintf$2) refers to printf2.o(i._sputc) for _sputc
+    printf2.o(i.__0vfprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vfprintf$2) refers to kbd_debug.o(i.fputc) for fputc
+    printf2.o(i.__0vprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vprintf$2) refers to kbd_debug.o(i.fputc) for fputc
+    printf2.o(i.__0vprintf$2) refers to stdout.o(.data) for __stdout
+    printf2.o(i.__0vsnprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vsnprintf$2) refers to printf2.o(i._snputc) for _snputc
+    printf2.o(i.__0vsprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vsprintf$2) refers to printf2.o(i._sputc) for _sputc
+    printf3.o(i.__0fprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0fprintf$3) refers to kbd_debug.o(i.fputc) for fputc
+    printf3.o(i.__0printf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0printf$3) refers to kbd_debug.o(i.fputc) for fputc
+    printf3.o(i.__0printf$3) refers to stdout.o(.data) for __stdout
+    printf3.o(i.__0snprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0snprintf$3) refers to printf3.o(i._snputc) for _snputc
+    printf3.o(i.__0sprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0sprintf$3) refers to printf3.o(i._sputc) for _sputc
+    printf3.o(i.__0vfprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vfprintf$3) refers to kbd_debug.o(i.fputc) for fputc
+    printf3.o(i.__0vprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vprintf$3) refers to kbd_debug.o(i.fputc) for fputc
+    printf3.o(i.__0vprintf$3) refers to stdout.o(.data) for __stdout
+    printf3.o(i.__0vsnprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vsnprintf$3) refers to printf3.o(i._snputc) for _snputc
+    printf3.o(i.__0vsprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vsprintf$3) refers to printf3.o(i._sputc) for _sputc
+    printf3.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printf4.o(i.__0fprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0fprintf$4) refers to kbd_debug.o(i.fputc) for fputc
+    printf4.o(i.__0printf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0printf$4) refers to kbd_debug.o(i.fputc) for fputc
+    printf4.o(i.__0printf$4) refers to stdout.o(.data) for __stdout
+    printf4.o(i.__0snprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0snprintf$4) refers to printf4.o(i._snputc) for _snputc
+    printf4.o(i.__0sprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0sprintf$4) refers to printf4.o(i._sputc) for _sputc
+    printf4.o(i.__0vfprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vfprintf$4) refers to kbd_debug.o(i.fputc) for fputc
+    printf4.o(i.__0vprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vprintf$4) refers to kbd_debug.o(i.fputc) for fputc
+    printf4.o(i.__0vprintf$4) refers to stdout.o(.data) for __stdout
+    printf4.o(i.__0vsnprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vsnprintf$4) refers to printf4.o(i._snputc) for _snputc
+    printf4.o(i.__0vsprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vsprintf$4) refers to printf4.o(i._sputc) for _sputc
+    printf4.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf5.o(i.__0fprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0fprintf$5) refers to kbd_debug.o(i.fputc) for fputc
+    printf5.o(i.__0printf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0printf$5) refers to kbd_debug.o(i.fputc) for fputc
+    printf5.o(i.__0printf$5) refers to stdout.o(.data) for __stdout
+    printf5.o(i.__0snprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0snprintf$5) refers to printf5.o(i._snputc) for _snputc
+    printf5.o(i.__0sprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0sprintf$5) refers to printf5.o(i._sputc) for _sputc
+    printf5.o(i.__0vfprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vfprintf$5) refers to kbd_debug.o(i.fputc) for fputc
+    printf5.o(i.__0vprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vprintf$5) refers to kbd_debug.o(i.fputc) for fputc
+    printf5.o(i.__0vprintf$5) refers to stdout.o(.data) for __stdout
+    printf5.o(i.__0vsnprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vsnprintf$5) refers to printf5.o(i._snputc) for _snputc
+    printf5.o(i.__0vsprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vsprintf$5) refers to printf5.o(i._sputc) for _sputc
+    printf5.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf6.o(i.__0fprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0fprintf$6) refers to kbd_debug.o(i.fputc) for fputc
+    printf6.o(i.__0printf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0printf$6) refers to kbd_debug.o(i.fputc) for fputc
+    printf6.o(i.__0printf$6) refers to stdout.o(.data) for __stdout
+    printf6.o(i.__0snprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0snprintf$6) refers to printf6.o(i._snputc) for _snputc
+    printf6.o(i.__0sprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0sprintf$6) refers to printf6.o(i._sputc) for _sputc
+    printf6.o(i.__0vfprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vfprintf$6) refers to kbd_debug.o(i.fputc) for fputc
+    printf6.o(i.__0vprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vprintf$6) refers to kbd_debug.o(i.fputc) for fputc
+    printf6.o(i.__0vprintf$6) refers to stdout.o(.data) for __stdout
+    printf6.o(i.__0vsnprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vsnprintf$6) refers to printf6.o(i._snputc) for _snputc
+    printf6.o(i.__0vsprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vsprintf$6) refers to printf6.o(i._sputc) for _sputc
+    printf6.o(i._printf_core) refers to printf6.o(i._printf_pre_padding) for _printf_pre_padding
+    printf6.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printf6.o(i._printf_core) refers to printf6.o(i._printf_post_padding) for _printf_post_padding
+    printf7.o(i.__0fprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0fprintf$7) refers to kbd_debug.o(i.fputc) for fputc
+    printf7.o(i.__0printf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0printf$7) refers to kbd_debug.o(i.fputc) for fputc
+    printf7.o(i.__0printf$7) refers to stdout.o(.data) for __stdout
+    printf7.o(i.__0snprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0snprintf$7) refers to printf7.o(i._snputc) for _snputc
+    printf7.o(i.__0sprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0sprintf$7) refers to printf7.o(i._sputc) for _sputc
+    printf7.o(i.__0vfprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vfprintf$7) refers to kbd_debug.o(i.fputc) for fputc
+    printf7.o(i.__0vprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vprintf$7) refers to kbd_debug.o(i.fputc) for fputc
+    printf7.o(i.__0vprintf$7) refers to stdout.o(.data) for __stdout
+    printf7.o(i.__0vsnprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vsnprintf$7) refers to printf7.o(i._snputc) for _snputc
+    printf7.o(i.__0vsprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vsprintf$7) refers to printf7.o(i._sputc) for _sputc
+    printf7.o(i._printf_core) refers to printf7.o(i._printf_pre_padding) for _printf_pre_padding
+    printf7.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf7.o(i._printf_core) refers to printf7.o(i._printf_post_padding) for _printf_post_padding
+    printf8.o(i.__0fprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0fprintf$8) refers to kbd_debug.o(i.fputc) for fputc
+    printf8.o(i.__0printf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0printf$8) refers to kbd_debug.o(i.fputc) for fputc
+    printf8.o(i.__0printf$8) refers to stdout.o(.data) for __stdout
+    printf8.o(i.__0snprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0snprintf$8) refers to printf8.o(i._snputc) for _snputc
+    printf8.o(i.__0sprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0sprintf$8) refers to printf8.o(i._sputc) for _sputc
+    printf8.o(i.__0vfprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vfprintf$8) refers to kbd_debug.o(i.fputc) for fputc
+    printf8.o(i.__0vprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vprintf$8) refers to kbd_debug.o(i.fputc) for fputc
+    printf8.o(i.__0vprintf$8) refers to stdout.o(.data) for __stdout
+    printf8.o(i.__0vsnprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vsnprintf$8) refers to printf8.o(i._snputc) for _snputc
+    printf8.o(i.__0vsprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vsprintf$8) refers to printf8.o(i._sputc) for _sputc
+    printf8.o(i._printf_core) refers to printf8.o(i._printf_pre_padding) for _printf_pre_padding
+    printf8.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf8.o(i._printf_core) refers to printf8.o(i._printf_post_padding) for _printf_post_padding
+    printfa.o(i.__0fprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0fprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0fprintf) refers to kbd_debug.o(i.fputc) for fputc
+    printfa.o(i.__0printf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0printf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0printf) refers to kbd_debug.o(i.fputc) for fputc
+    printfa.o(i.__0printf) refers to stdout.o(.data) for __stdout
+    printfa.o(i.__0snprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0snprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0snprintf) refers to printfa.o(i._snputc) for _snputc
+    printfa.o(i.__0sprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0sprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0sprintf) refers to printfa.o(i._sputc) for _sputc
+    printfa.o(i.__0vfprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vfprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vfprintf) refers to kbd_debug.o(i.fputc) for fputc
+    printfa.o(i.__0vprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vprintf) refers to kbd_debug.o(i.fputc) for fputc
+    printfa.o(i.__0vprintf) refers to stdout.o(.data) for __stdout
+    printfa.o(i.__0vsnprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vsnprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vsnprintf) refers to printfa.o(i._snputc) for _snputc
+    printfa.o(i.__0vsprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vsprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vsprintf) refers to printfa.o(i._sputc) for _sputc
+    printfa.o(i._fp_digits) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._fp_digits) refers to dmul.o(.text) for __aeabi_dmul
+    printfa.o(i._fp_digits) refers to ddiv.o(.text) for __aeabi_ddiv
+    printfa.o(i._fp_digits) refers to cdrcmple.o(.text) for __aeabi_cdrcmple
+    printfa.o(i._fp_digits) refers to dadd.o(.text) for __aeabi_dadd
+    printfa.o(i._fp_digits) refers to dfixul.o(.text) for __aeabi_d2ulz
+    printfa.o(i._fp_digits) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printfa.o(i._printf_core) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._printf_core) refers to printfa.o(i._printf_pre_padding) for _printf_pre_padding
+    printfa.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printfa.o(i._printf_core) refers to printfa.o(i._printf_post_padding) for _printf_post_padding
+    printfa.o(i._printf_core) refers to printfa.o(i._fp_digits) for _fp_digits
+    printfa.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printfa.o(i._printf_post_padding) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._printf_pre_padding) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._snputc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._sputc) refers (Special) to iusefp.o(.text) for __I$use$fp
     entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
     entry2.o(.ARM.Collect$$$$00002712) refers to startup_stm32f103xb.o(STACK) for __initial_sp
     entry2.o(__vectab_stack_and_reset_area) refers to startup_stm32f103xb.o(STACK) for __initial_sp
@@ -743,7 +999,18 @@ Section Cross References
     entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
     entry9a.o(.ARM.Collect$$$$0000000B) refers to main.o(i.main) for main
     entry9b.o(.ARM.Collect$$$$0000000C) refers to main.o(i.main) for main
+    uldiv.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+    uldiv.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    dadd.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    dadd.o(.text) refers to llsshr.o(.text) for __aeabi_lasr
+    dadd.o(.text) refers to depilogue.o(.text) for _double_epilogue
+    dmul.o(.text) refers to depilogue.o(.text) for _double_epilogue
+    ddiv.o(.text) refers to depilogue.o(.text) for _double_round
+    dfixul.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+    dfixul.o(.text) refers to llshl.o(.text) for __aeabi_llsl
     init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
+    depilogue.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    depilogue.o(.text) refers to llushr.o(.text) for __aeabi_llsr
 
 
 ==============================================================================
@@ -797,10 +1064,17 @@ Removing Unused input sections from the image.
     Removing stm32f1xx_hal_msp.o(.rev16_text), (4 bytes).
     Removing stm32f1xx_hal_msp.o(.revsh_text), (4 bytes).
     Removing stm32f1xx_hal_msp.o(.rrx_text), (6 bytes).
+    Removing kbd_debug.o(.rev16_text), (4 bytes).
+    Removing kbd_debug.o(.revsh_text), (4 bytes).
+    Removing kbd_debug.o(.rrx_text), (6 bytes).
+    Removing kbd_debug.o(i.KBD_DBG_KEY), (40 bytes).
+    Removing kbd_debug.o(i.KBD_DBG_REP_6KRO), (148 bytes).
+    Removing kbd_debug.o(i.KBD_DBG_RMJ), (32 bytes).
+    Removing kbd_debug.o(i.KBD_DBG_SCAN_CALU_NUM), (44 bytes).
+    Removing kbd_debug.o(i.fputc), (24 bytes).
     Removing kbd_func.o(.rev16_text), (4 bytes).
     Removing kbd_func.o(.revsh_text), (4 bytes).
     Removing kbd_func.o(.rrx_text), (6 bytes).
-    Removing kbd_func.o(i.KBD_USB_SEND), (16 bytes).
     Removing kbd_func.o(i.memset), (20 bytes).
     Removing kbd_func.o(i.pinDown), (8 bytes).
     Removing kbd_func.o(i.pinRead), (16 bytes).
@@ -808,27 +1082,37 @@ Removing Unused input sections from the image.
     Removing kbd_param.o(.rev16_text), (4 bytes).
     Removing kbd_param.o(.revsh_text), (4 bytes).
     Removing kbd_param.o(.rrx_text), (6 bytes).
+    Removing kbd_param.o(.bss), (35 bytes).
+    Removing kbd_param.o(.bss), (35 bytes).
+    Removing kbd_param.o(.bss), (34 bytes).
     Removing kbd_param.o(.data), (208 bytes).
     Removing kbd_param.o(.data), (4 bytes).
-    Removing kbd_param.o(.data), (2 bytes).
     Removing kbd_param.o(.data), (4 bytes).
-    Removing kbd_param.o(.data), (2 bytes).
     Removing kbd_param.o(.data), (4 bytes).
-    Removing kbd_param.o(.data), (25 bytes).
+    Removing kbd_param.o(.data), (26 bytes).
+    Removing kbd_param.o(.data), (4 bytes).
+    Removing kbd_param.o(.data), (20 bytes).
     Removing kbd_param.o(.data), (4 bytes).
     Removing kbd_scan.o(.rev16_text), (4 bytes).
     Removing kbd_scan.o(.revsh_text), (4 bytes).
     Removing kbd_scan.o(.rrx_text), (6 bytes).
-    Removing kbd_scan.o(i.KBD_SCAN_ADD_AKEY_6KRO), (156 bytes).
-    Removing kbd_scan.o(i.KBD_SCAN_ADD_FKEY_6KRO), (138 bytes).
-    Removing kbd_scan.o(i.KBD_SCAN_ADD_SKEY_6KRO), (138 bytes).
-    Removing kbd_scan.o(i.KBD_SCAN_CALCU_KEY_6KRO), (320 bytes).
-    Removing kbd_scan.o(i.KBD_SCAN_CHECK_KEY_6KRO), (36 bytes).
-    Removing kbd_scan.o(i.KBD_SCAN_INIT_6KRO), (28 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_ADD_AKEY_6KRO), (180 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_ADD_FKEY_6KRO), (140 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_ADD_SKEY_6KRO), (144 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_CALU_AKEY_6KRO), (168 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_CALU_FKEY_6KRO), (134 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_CALU_KEY_6KRO), (76 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_CALU_SKEY_6KRO), (160 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_CHECK_AKEY_6KRO), (40 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_CHECK_FKEY_6KRO), (36 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_CHECK_SKEY_6KRO), (40 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_INIT_6KRO), (132 bytes).
     Removing kbd_scan.o(i.KBD_SCAN_INIT_NKRO), (2 bytes).
-    Removing kbd_scan.o(i.KBD_SCAN_MAIN), (172 bytes).
-    Removing kbd_scan.o(i.KBD_SCAN_REINIT_6KRO), (30 bytes).
-    Removing kbd_scan.o(.bss), (42 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_REINIT_6KRO), (56 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_RMJ_AKEY), (86 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_RMJ_FKEY), (78 bytes).
+    Removing kbd_scan.o(i.KBD_SCAN_RMJ_SKEY), (86 bytes).
+    Removing kbd_scan.o(.bss), (216 bytes).
     Removing kbd_scan.o(.data), (8 bytes).
     Removing stm32f1xx_hal_gpio_ex.o(.rev16_text), (4 bytes).
     Removing stm32f1xx_hal_gpio_ex.o(.revsh_text), (4 bytes).
@@ -1315,5 +1599,11 @@ Removing Unused input sections from the image.
     Removing usbd_customhid.o(.revsh_text), (4 bytes).
     Removing usbd_customhid.o(.rrx_text), (6 bytes).
     Removing usbd_customhid.o(i.USBD_CUSTOM_HID_SendReport), (40 bytes).
+    Removing dadd.o(.text), (334 bytes).
+    Removing dmul.o(.text), (228 bytes).
+    Removing ddiv.o(.text), (222 bytes).
+    Removing dfixul.o(.text), (48 bytes).
+    Removing cdrcmple.o(.text), (48 bytes).
+    Removing depilogue.o(.text), (186 bytes).
 
-565 unused section(s) (total 29029 bytes) removed from the image.
+588 unused section(s) (total 31218 bytes) removed from the image.

@@ -44,4 +44,5 @@ ghost_stm32_v0.7\kbd_scan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ghost_stm32_v0.7\kbd_scan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ghost_stm32_v0.7\kbd_scan.o: ../Inc/kbd_keyword.h
 ghost_stm32_v0.7\kbd_scan.o: ../Inc/kbd_func.h
-ghost_stm32_v0.7\kbd_scan.o: ../Inc/kbd_scan.h
+ghost_stm32_v0.7\kbd_scan.o: ../Inc/kbd_debug.h
+ghost_stm32_v0.7\kbd_scan.o: ../Inc/usart.h

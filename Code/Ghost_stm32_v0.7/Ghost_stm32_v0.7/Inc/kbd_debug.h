@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-10 15:57:05
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-28 21:49:35
+ * @LastEditTime: 2020-08-02 09:17:45
  */ 
 #ifndef __KBD_DEBUG_H
 #define __KBD_DEBUG_H
@@ -14,6 +14,8 @@
 #include <stdbool.h>
 #include "kbd_config.h"
 #include <stdlib.h>
+
+#include "usart.h"
 
 /**
  * @name: Oreo097
@@ -38,4 +40,7 @@ void KBD_DBG_ANS_6KRO(kbd_scan_ans_t *ans);
 void KBD_DBG_RMJ(uint8_t row, uint8_t col);
 
 void KBD_DBG_REP_6KRO(uint8_t *report);
+
+void KBD_DBG_SCAN_CALU_NUM(uint8_t row,uint8_t col);
+
 #endif

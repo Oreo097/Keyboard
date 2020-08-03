@@ -15,6 +15,7 @@
 "ghost_stm32_v0.7\kbd_func.o"
 "ghost_stm32_v0.7\kbd_param.o"
 "ghost_stm32_v0.7\kbd_scan.o"
+"ghost_stm32_v0.7\kbd_report.o"
 "ghost_stm32_v0.7\stm32f1xx_hal_gpio_ex.o"
 "ghost_stm32_v0.7\stm32f1xx_hal_pcd.o"
 "ghost_stm32_v0.7\stm32f1xx_hal_pcd_ex.o"

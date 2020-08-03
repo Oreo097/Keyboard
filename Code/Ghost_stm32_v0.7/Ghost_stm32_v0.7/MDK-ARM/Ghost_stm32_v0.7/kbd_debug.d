@@ -43,3 +43,4 @@ ghost_stm32_v0.7\kbd_debug.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ghost_stm32_v0.7\kbd_debug.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ghost_stm32_v0.7\kbd_debug.o: ../Inc/kbd_keyword.h
 ghost_stm32_v0.7\kbd_debug.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+ghost_stm32_v0.7\kbd_debug.o: ../Inc/usart.h

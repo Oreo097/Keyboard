@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-10 15:56:31
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-28 20:41:01
+ * @LastEditTime: 2020-08-02 09:13:07
  */
 #include "kbd_debug.h"
 
@@ -41,20 +41,20 @@ void KBD_DBG_KEY(uint8_t row, uint8_t col, bool status)
  * @param {kbd_scan_ans_t * 答案名称} 
  * @return: void
  */
-void KBD_DBG_ANS_6KRO(kbd_scan_ans_t *ans)
-{
-    printf("%d keys ware pressed down\n", ans->index_akey);
-    printf("FKEY ANS:\n");
-    for (uint8_t index=0;index< ans->index_fkey; index++)
-    {
-        if (ans->array[index][0] == 0xff)
-        {
-            continue;
-        }
-        printf("%d,%d\n", ans->array[index][0], ans->array[index][1]);
-    }
-    printf("*FKEY END*\n");
-}
+// void KBD_DBG_ANS_6KRO(kbd_scan_ans_t *ans)
+// {
+//     printf("%d keys ware pressed down\n", ans->index_akey);
+//     printf("FKEY ANS:\n");
+//     for (uint8_t index=0;index< ans->index_fkey; index++)
+//     {
+//         if (ans->array[index][0] == 0xff)
+//         {
+//             continue;
+//         }
+//         printf("%d,%d\n", ans->array[index][0], ans->array[index][1]);
+//     }
+//     printf("*FKEY END*\n");
+// }
 
 /**
  * @name: Oreo097
@@ -88,3 +88,22 @@ void KBD_DBG_REP_6KRO(uint8_t *report)
     send(map);
     send(end);
 }
+
+/**
+ * @name: Oreo097
+ * @msg: 
+ * @param {type} 
+ * @return: 
+ */
+void KBD_DBG_SCAN_CALU_NUM(uint8_t row,uint8_t col)
+{
+    printf("%d ,%d key is still pressed\n",row,col);
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 
+ * @param {type} 
+ * @return: 
+ */
+void KBD_DBG_SCAN_FKEY();

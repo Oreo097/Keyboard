@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 22:28:21
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-08-01 19:50:17
+ * @LastEditTime: 2020-08-02 09:14:03
  */
 
 #include "kbd_param.h"
@@ -58,6 +58,7 @@ kbd_map_skey_logic_t *logicmap_skey = &kbd_map_skey;
  * @return: 
  */
 kbd_map_akey_logic_t kbd_map_akey = {
+    17,
     {4,
      4,
      3,
@@ -85,7 +86,7 @@ kbd_map_keywords_t kbd_map_keywords_key = {
         {Keypad_0_and_Insert, Keypad_Dian_and_Delete}
     }
 };
-kbd_map_keywords_t * kbd_map_keywords_key_ptr=kbd_map_keywords_key;
+kbd_map_keywords_t * kbd_map_keywords_key_ptr=&kbd_map_keywords_key;
 
 /**
  * @name: Oreo097
@@ -93,4 +94,4 @@ kbd_map_keywords_t * kbd_map_keywords_key_ptr=kbd_map_keywords_key;
  * @param {type} 
  * @return: 
  */
-kbd_map_keyword_t kbd_map_keyword_fkey[FKEY_MAX][2];
+kbd_map_keyword_t kbd_map_keyword_fkey[KEY_MAX][2];

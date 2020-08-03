@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-07-09 11:45:26
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-07-18 17:19:36
+ * @LastEditTime: 2020-08-02 09:20:13
  */ 
 
 
@@ -53,10 +53,10 @@ void pinDown(kbd_gpio_t gpio)
  * @param {type} 
  * @return: 
  */
-void KBD_USB_SEND(uint8_t * report)
-{
-    USBD_HID_SendReport(&hUsbDeviceFS,report,8);
-}
+// void KBD_USB_SEND(uint8_t * report)
+// {
+//     USBD_HID_SendReport(&hUsbDeviceFS,report,8);
+// }
 
 /**
  * @name: Oreo097
