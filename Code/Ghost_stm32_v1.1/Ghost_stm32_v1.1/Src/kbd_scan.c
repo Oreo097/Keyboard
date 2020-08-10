@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-08-02 09:33:05
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-08-03 20:07:42
+ * @LastEditTime: 2020-08-10 22:34:12
  */
 
 #include "kbd_scan.h"
@@ -56,6 +56,26 @@ bool KBD_SCAN_RMJ_DELAY(uint8_t time,kbd_gpio_t gpio)
 
 /**
  * @name: Oreo097
+ * @msg: 键层的数组
+ * @param {type} 
+ * @return {type} 
+ */
+ kbd_keymap_layer_t layer[4];
+ kbd_keymap_layer_t * layer_ptr;//指向键层的指针
+
+/**
+ * @name: Oreo097
+ * @msg: 扫描初始化函数,主要用于加载相关键层进入内存；
+ * @param {type} 
+ * @return {type} 
+ */
+void KBD_SCAN_INIT()
+{
+    layer_ptr=&layer;//指针指向相关数组
+}
+
+/**
+ * @name: Oreo097
  * @msg: 扫描功能键（关于功能键，现在先写两种切换方式，一种是按住切换，一种是循环切换，目前打算做4个键层）
  * @param {kbd_gpio_map_t gpio_map,kbd_logicmap_fkey_t fkey_logic_map} 
  * @return {kbd_ans_fkey_t} 
@@ -73,11 +93,10 @@ kbd_ans_fkey_t KBD_SCAN_SCAN_FKEY(kbd_gpio_map_t gpio_map, kbd_logicmap_fkey_t l
            if(KBD_SCAN_RMJ_DELAY(kbd_scan_config.rmj_time,gpio_map.gpio_col[logic_map.gpio_map[index][0]][logic_map.gpio_map[index][1]])==true)
            {
                fkey_ans.ans[fkey_ans.index]=logic_map.keyword[index];
-               fkey_ans.idnex++;
+               fkey_ans.index++;
            }
-
         }
     }
-
     return fkey_ans;
 }
+

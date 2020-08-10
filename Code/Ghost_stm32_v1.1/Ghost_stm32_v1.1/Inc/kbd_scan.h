@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-08-02 09:33:12
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-08-04 10:29:33
+ * @LastEditTime: 2020-08-10 22:09:58
  */ 
 #ifndef __KBD_SCAN_H
 #define __KBD_SCAN_H
@@ -18,26 +18,12 @@
 
 /**
  * @name: Oreo097
- * @msg: 
+ * @msg: 定义键盘相关参数
  * @param {type} 
  * @return {type} 
  */
 #define KEY_MAX 17
-
-/**
- * @name: Oreo097
- * @msg: 定义键盘的行数
- * @param {type} 
- * @return: 
- */
 #define ROW_MAX 5
-
-/**
- * @name: Oreo097
- * @msg: 定义键盘的列数
- * @param {type} 
- * @return: 
- */
 #define COL_MAX 4
 
 
@@ -90,6 +76,7 @@ typedef struct
     keyword_t keyword[KEY_MAX];//用来储存键值
 }kbd_logicmap_fkey_t;
 
+
 /**
  * @name: Oreo097
  * @msg: 功能键的扫描结果
@@ -105,16 +92,56 @@ typedef struct
 
 /**
  * @name: Oreo097
- * @msg: 
+ * @msg: 定义防抖相关参数
  * @param {type} 
  * @return {type} 
  */
 typedef struct 
 {
     uint8_t rmj_time;
+    uint_
 }kbd_scan_config_t;
 
+/**
+ * @name: Oreo097
+ * @msg: 定义键层结构体
+ * @param {type} 
+ * @return {type} 
+ */
+typedef struct
+{
+    kbd_logicmap_fkey_t fkey_map;
+    kbd_ans_fkey_t fkey_ans;
+    kbd_logicmap_skey_t skey_map;
 
+    kbd_logicmap_akey_t akey_map;
+    
+}kbd_keymap_layer_t;
 
+/**
+ * @name: Oreo097
+ * @msg: 特殊功能键的结构体
+ * @param {type} 
+ * @return {type} 
+ */
+typedef struct
+{
+    uint8_t number;//特殊功能键的个数
+    uint8_t gpio_map;[keymax][2];//扫描按键位置的图
+    keyword_t keyword[KEY_MAX];//键值
+}kbd_logicmap_skey_t;
+
+/**
+ * @name: Oreo097
+ * @msg: 普通按键结构体
+ * @param {type} 
+ * @return {type} 
+ */
+typedef struct
+{
+    uint8_t row[ROW_MAX];//行
+    uint8_t col[ROW_MAX][COL_MAX];//列
+    keyword_t keyword[ROW_MAX][COL_MAX];//键值
+}kbd_logicmap_akey_t;
 
 #endif
