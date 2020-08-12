@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-08-02 09:33:05
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-08-10 22:34:12
+ * @LastEditTime: 2020-08-11 20:11:52
  */
 
 #include "kbd_scan.h"
@@ -24,7 +24,7 @@ kbd_gpio_map_t kbd_gpio_map = {
 
 /**
  * @name: Oreo097
- * @msg: 功能键的扫描逻辑表
+ * @msg: 功能键的扫描逻辑表目前只使用一个键层所以只设置一个功能键
  * @param {type} 
  * @return {type} 
  */
@@ -76,7 +76,7 @@ void KBD_SCAN_INIT()
 
 /**
  * @name: Oreo097
- * @msg: 扫描功能键（关于功能键，现在先写两种切换方式，一种是按住切换，一种是循环切换，目前打算做4个键层）
+ * @msg: 扫描功能键（关于功能键，现在先写两种切换方式，一种是按住切换，一种是循环切换，目前打算做2个键层，所以只使用按下切换）
  * @param {kbd_gpio_map_t gpio_map,kbd_logicmap_fkey_t fkey_logic_map} 
  * @return {kbd_ans_fkey_t} 
  */
@@ -93,10 +93,34 @@ kbd_ans_fkey_t KBD_SCAN_SCAN_FKEY(kbd_gpio_map_t gpio_map, kbd_logicmap_fkey_t l
            if(KBD_SCAN_RMJ_DELAY(kbd_scan_config.rmj_time,gpio_map.gpio_col[logic_map.gpio_map[index][0]][logic_map.gpio_map[index][1]])==true)
            {
                fkey_ans.ans[fkey_ans.index]=logic_map.keyword[index];
-               fkey_ans.index++;
+               //fkey_ans.index++;
+               break;
            }
         }
     }
     return fkey_ans;
 }
 
+/**
+ * @name: Oreo097
+ * @msg: 切换键层的程序，由于只使用按下切换
+ * @param {type} 
+ * @return {type} 
+ */
+void KBD_SCAN_SWITCH_LAYER(kbd_ans_fkey_t fkey_ans)
+{
+    if(fkey_ans.index>0)
+    {
+        
+    }
+}
+
+
+
+/**
+ * @name: Oreo097
+ * @msg: 扫描特殊按键
+ * @param {type} 
+ * @return {type} 
+ */
+kbd

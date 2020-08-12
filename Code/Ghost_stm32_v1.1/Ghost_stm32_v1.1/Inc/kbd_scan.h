@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-08-02 09:33:12
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-08-10 22:09:58
+ * @LastEditTime: 2020-08-11 19:34:17
  */ 
 #ifndef __KBD_SCAN_H
 #define __KBD_SCAN_H
@@ -99,7 +99,6 @@ typedef struct
 typedef struct 
 {
     uint8_t rmj_time;
-    uint_
 }kbd_scan_config_t;
 
 /**
@@ -144,4 +143,22 @@ typedef struct
     keyword_t keyword[ROW_MAX][COL_MAX];//键值
 }kbd_logicmap_akey_t;
 
+/**
+ * @name: Oreo097
+ * @msg: 特殊键的扫描结果
+ * @param {type} 
+ * @return {type} 
+ */
+typedef struct
+{
+    uint8_t index;
+    uint8_t ans[KEY_MAX];
+};
+
+/**
+ * @name: Oreo097
+ * @msg: 
+ * @param {type} 
+ * @return {type} 
+ */
 #endif
