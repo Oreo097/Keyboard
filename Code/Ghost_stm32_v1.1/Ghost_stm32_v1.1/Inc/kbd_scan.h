@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-08-02 09:33:12
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-08-11 19:34:17
+ * @LastEditTime: 2020-08-16 14:38:30
  */ 
 #ifndef __KBD_SCAN_H
 #define __KBD_SCAN_H
@@ -34,12 +34,23 @@
  * @return: 
  */
 #define GPIO_GROUP GPIO_TypeDef //GPIO组的数据类型
-typedef struct kbd_gpio
+typedef struct
 {
     GPIO_GROUP *gpio_group; //gpio组
     uint8_t gpio_pin;       //引脚地址偏移量
 } kbd_gpio_t;
 
+/**
+ * @name: Oreo097
+ * @msg: 单个按键的gpio信息
+ * @param {type} 
+ * @return {type} 
+ */
+typedef struct
+{
+    uint8_t row;//行的GPIO
+    uint8_t col;//列的GPIO
+}kbd_key_gpio_t;
 
 /**
  * @name: Oreo097
@@ -65,21 +76,35 @@ typedef uint8_t keyword_t;
 
 /**
  * @name: Oreo097
- * @msg: 功能键的扫描
- * @param {type} 
+ * @msg: 单个按键组成的按键逻辑扫描
+ * @param {unit8_t number,
+ * kbd_key_gpio_t gpio_map[keymax],
+ * keyword_t keyword[key_max]} 
  * @return: 
  */
 typedef struct
 {
     uint8_t number;
-    uint8_t gpio_map[KEY_MAX][2];//用来储存GPIO扫描的逻辑表
+    kbd_key_gpio_t gpio_map[KEY_MAX];//用来储存GPIO扫描的逻辑表
     keyword_t keyword[KEY_MAX];//用来储存键值
-}kbd_logicmap_fkey_t;
-
+}kbd_logicmap_group_t;
 
 /**
  * @name: Oreo097
- * @msg: 功能键的扫描结果
+ * @msg: 矩阵型按键组组成的按键逻辑扫描矩阵
+ * @param {type} 
+ * @return {type} 
+ */
+typedef struct
+{
+    uint8_t col_number[ROW_MAX];
+    kbd_key_gpio_t row[ROW_MAX];
+    kbd_key_gpio_t col[ROW_MAX][COL_MAX];
+}kbd_logicmap_matrix_t;
+
+/**
+ * @name: Oreo097
+ * @msg: 按键组扫描结果
  * @param {type} 
  * @return {type} 
  */
@@ -87,7 +112,7 @@ typedef struct
 {
     uint8_t index;
     uint8_t ans[KEY_MAX];
-}kbd_ans_fkey_t;
+}kbd_ans_t;
 
 
 /**
