@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-08-05 06:52:20
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-08-16 14:55:52
+ * @LastEditTime: 2020-08-17 13:45:10
  */
 
 #include "kbd_scan.h"
@@ -84,16 +84,17 @@ kbd_ans_t KBD_SCAN_SKEY(kbd_logicmap_group_t *logicmap)
         pinUp(gpio_map->gpio_row[logicmap->gpio_map[index].row]);
         if (pinRead(gpio_map->gpio_col[logicmap->gpio_map[index].row][logicmap->gpio_map[index].col]) == 1)
         {
-            KBD_DELAY()
+            KBD_DELAY(1);//防抖延迟1ms
             if (pinRead(gpio_map->gpio_col[logicmap->gpio_map[index].row][logicmap->gpio_map[index].col]) == 1)
             {
+                //生成报告
                 ans.ans[ans.index] = logicmap->keyword[index];
                 ans.index++;
             }
         }
-
         pinDown(gpio_map->gpio_row[logicmap->gpio_map[index].row]);
     }
+    return ans;
 }
 
 /**
@@ -104,14 +105,25 @@ kbd_ans_t KBD_SCAN_SKEY(kbd_logicmap_group_t *logicmap)
  */
 kbd_ans_t KBD_SCAN_AKEY(kbd_logicmap_matrix_t *logicmap)
 {
+    kbd_ans_t ans;
+    ans.index=0;
     for (uint8_t index; index < ROW_MAX; index++)
     {
         pinUp(gpio_map->gpio_row[index]);
         for (uint8_t index_col; index_col < logicmap->col_number[index]; index++)
         {
-            if (pinRead(gpio_map->gpio_col[logicmap->col[index][index_col].row][logicmap->col[index][index_col].col]))
+            if (pinRead(gpio_map->gpio_col[logicmap->col[index][index_col].row][logicmap->col[index][index_col].col])==1)
             {
+                KBD_DELAY(1);//防抖延迟1ms
+                if (pinRead(gpio_map->gpio_col[logicmap->col[index][index_col].row][logicmap->col[index][index_col].col])==1)
+                {
+                    ans.ans[ans.index]=logicmap->keyword[index][index_col];
+                    ans.index++;
+                }
             }
         }
+        pinDown(gpio_map->gpio_row[index]);
     }
+    return ans;
 }
+

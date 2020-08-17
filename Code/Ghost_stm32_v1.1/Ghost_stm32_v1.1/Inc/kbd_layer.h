@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-08-02 09:34:40
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-08-02 09:34:40
+ * @LastEditTime: 2020-08-17 14:10:28
  */ 
 #ifndef __KBD_LAYER_H
 #define __KBD_LAYER_H
@@ -20,9 +20,9 @@
  */
 typedef struct
 {
-     kbd_key_gpio_t fkey;
+     kbd_key_gpio_t fkey;//fkey的逻辑位置
      kbd_key_gpio_t skey[KEY_MAX];
-     kbd_key_
+     kbd_key_gpio_t akey[ROW_MAX][COL_MAX];//普通按键的逻辑扫描
 }kbd_layer_t;
 
 

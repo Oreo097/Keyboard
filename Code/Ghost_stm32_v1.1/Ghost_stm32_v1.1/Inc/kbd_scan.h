@@ -4,7 +4,7 @@
  * @Author: Oreo097
  * @Date: 2020-08-02 09:33:12
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-08-16 14:38:30
+ * @LastEditTime: 2020-08-17 13:37:46
  */ 
 #ifndef __KBD_SCAN_H
 #define __KBD_SCAN_H
@@ -100,6 +100,7 @@ typedef struct
     uint8_t col_number[ROW_MAX];
     kbd_key_gpio_t row[ROW_MAX];
     kbd_key_gpio_t col[ROW_MAX][COL_MAX];
+    keyword_t keyword[ROW_MAX][COL_MAX];
 }kbd_logicmap_matrix_t;
 
 /**
@@ -168,17 +169,6 @@ typedef struct
     keyword_t keyword[ROW_MAX][COL_MAX];//键值
 }kbd_logicmap_akey_t;
 
-/**
- * @name: Oreo097
- * @msg: 特殊键的扫描结果
- * @param {type} 
- * @return {type} 
- */
-typedef struct
-{
-    uint8_t index;
-    uint8_t ans[KEY_MAX];
-};
 
 /**
  * @name: Oreo097
