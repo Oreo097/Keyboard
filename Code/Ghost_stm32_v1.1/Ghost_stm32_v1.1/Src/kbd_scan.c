@@ -1,126 +1,129 @@
 /*
- * @Descripttion: 键盘的按键扫描部分
+ * @Descripttion: 这是键盘扫描的功能模块，包含相关函数的定义和相关主要逻辑
  * @version: 
  * @Author: Oreo097
- * @Date: 2020-08-02 09:33:05
+ * @Date: 2020-08-05 06:52:20
  * @LastEditors: Oreo097
- * @LastEditTime: 2020-08-11 20:11:52
+ * @LastEditTime: 2020-08-17 13:45:10
  */
 
 #include "kbd_scan.h"
+#include "kbd_func.h"
 
-kbd_gpio_map_t kbd_gpio_map = {
-    {{ROW0_G, ROW0_P}, {ROW1_G, ROW1_P}, {ROW2_G, ROW2_P}, {ROW3_G, ROW3_P}, {ROW4_G, ROW4_P}},
-    {4,
-     4,
-     3,
-     4,
-     2},
-    {{{COL0_G, COL0_P}, {COL1_G, COL1_P}, {COL2_G, COL2_P}, {COL3_G, COL3_P}},
-     {{COL0_G, COL0_P}, {COL1_G, COL1_P}, {COL2_G, COL2_P}, {COL3_G, COL3_P}},
-     {{COL0_G, COL0_P}, {COL1_G, COL1_P}, {COL2_G, COL2_P}},
-     {{COL0_G, COL0_P}, {COL1_G, COL1_P}, {COL2_G, COL2_P}, {COL3_G, COL3_P}},
-     {{COL0_G, COL0_P}, {COL1_G, COL1_P}}}};
+extern kbd_gpio_map_t *gpio_map;
 
 /**
  * @name: Oreo097
- * @msg: 功能键的扫描逻辑表目前只使用一个键层所以只设置一个功能键
+ * @msg: 键盘扫描额主要逻辑
  * @param {type} 
  * @return {type} 
  */
-kbd_logicmap_fkey_t kbd_logicmap_fkey = {
-    1,
-    {{0, 0}},
-    {0}};
-
-/**
- * @name: Oreo097
- * @msg: 键盘扫描相关设置
- * @param {type} 
- * @return {type} 
- */
-kbd_scan_config_t kbd_scan_config = {
-    1};
-
-/**
- * @name: Oreo097
- * @msg: 防抖函数
- * @param {type} 
- * @return {type} 
- */
-bool KBD_SCAN_RMJ_DELAY(uint8_t time,kbd_gpio_t gpio)
+void KBD_SCAN_MAIN()
 {
-    KBD_DELAY(time);
-    return pinRead(gpio);
+    /**
+     * 扫描的主要逻辑如下
+     * 先扫描第一个键层的功能键（目前只设计一个功能键）
+     * 如果功能按键被按下
+     * 延迟防抖
+     * 扫描第二个键层的特殊键
+     * 扫描第二个键层的普通键
+     * 延迟防抖
+     * 如果第一个键层的功能键没有被按下
+     * 扫描第一个键层的特殊键
+     * 扫描第一个键层的普通键
+     * 延迟防抖
+     * 生成报告
+     * 发送报告
+     */
 }
 
 /**
  * @name: Oreo097
- * @msg: 键层的数组
- * @param {type} 
- * @return {type} 
+ * @msg: 扫描单个按键的函数
+ * @param {kbd_key_gpio_t key 要检测单个按键的GPIO信息} 
+ * @return {bool，如果按下则返回true，如果没按下则返回false} 
  */
- kbd_keymap_layer_t layer[4];
- kbd_keymap_layer_t * layer_ptr;//指向键层的指针
-
-/**
- * @name: Oreo097
- * @msg: 扫描初始化函数,主要用于加载相关键层进入内存；
- * @param {type} 
- * @return {type} 
- */
-void KBD_SCAN_INIT()
+bool KBD_SCAN_ONEKEY(kbd_key_gpio_t *key)
 {
-    layer_ptr=&layer;//指针指向相关数组
-}
-
-/**
- * @name: Oreo097
- * @msg: 扫描功能键（关于功能键，现在先写两种切换方式，一种是按住切换，一种是循环切换，目前打算做2个键层，所以只使用按下切换）
- * @param {kbd_gpio_map_t gpio_map,kbd_logicmap_fkey_t fkey_logic_map} 
- * @return {kbd_ans_fkey_t} 
- */
-kbd_ans_fkey_t KBD_SCAN_SCAN_FKEY(kbd_gpio_map_t gpio_map, kbd_logicmap_fkey_t logic_map)
-{
-    kbd_ans_fkey_t fkey_ans;
-    fkey_ans.index=0;
-    for (int index = 0; index < logic_map.number; index++)
+    pinUp(gpio_map->gpio_row[key->row]);
+    if (pinRead(gpio_map->gpio_col[key->row][key->col]) == 1)
     {
-        pinUp(gpio_map.gpio_row[logic_map.gpio_map[index][0]]);
-        
-        if(pinRead(gpio_map.gpio_col[logic_map.gpio_map[index][0]][logic_map.gpio_map[index][1]])==true)
+        pinDown(gpio_map->gpio_row[key->row]);
+        return true;
+    }
+    return false;
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 扫描第一个键层的FKEY
+ * @param {kbd_logicmap_fkey_t * key_logicmap,要扫描按键的逻辑扫描表} 
+ * @return {void} 
+ */
+void KBD_SCAN_FKEY(kbd_logicmap_group_t *logicmap)
+{
+    if (KBD_SCAN_ONEKEY(&logicmap->gpio_map[0]) == true) //目前只使用扫描一个按键的功能
+    {
+        //切换键层
+        return;
+    }
+}
+
+/**
+ * @name: Oreo097
+ * @msg: 扫描SKEY
+ * @param {kbd_logicmap_sgroup_t * logicmap SKEY的逻辑扫描图} 
+ * @return {kbd_ans_skey_t} 
+ */
+kbd_ans_t KBD_SCAN_SKEY(kbd_logicmap_group_t *logicmap)
+{
+    kbd_ans_t ans;
+    ans.index = 0;
+    for (uint8_t index; index < logicmap->number; index++)
+    {
+        pinUp(gpio_map->gpio_row[logicmap->gpio_map[index].row]);
+        if (pinRead(gpio_map->gpio_col[logicmap->gpio_map[index].row][logicmap->gpio_map[index].col]) == 1)
         {
-           if(KBD_SCAN_RMJ_DELAY(kbd_scan_config.rmj_time,gpio_map.gpio_col[logic_map.gpio_map[index][0]][logic_map.gpio_map[index][1]])==true)
-           {
-               fkey_ans.ans[fkey_ans.index]=logic_map.keyword[index];
-               //fkey_ans.index++;
-               break;
-           }
+            KBD_DELAY(1);//防抖延迟1ms
+            if (pinRead(gpio_map->gpio_col[logicmap->gpio_map[index].row][logicmap->gpio_map[index].col]) == 1)
+            {
+                //生成报告
+                ans.ans[ans.index] = logicmap->keyword[index];
+                ans.index++;
+            }
         }
+        pinDown(gpio_map->gpio_row[logicmap->gpio_map[index].row]);
     }
-    return fkey_ans;
+    return ans;
 }
 
 /**
  * @name: Oreo097
- * @msg: 切换键层的程序，由于只使用按下切换
+ * @msg: 扫描普通按键
  * @param {type} 
  * @return {type} 
  */
-void KBD_SCAN_SWITCH_LAYER(kbd_ans_fkey_t fkey_ans)
+kbd_ans_t KBD_SCAN_AKEY(kbd_logicmap_matrix_t *logicmap)
 {
-    if(fkey_ans.index>0)
+    kbd_ans_t ans;
+    ans.index=0;
+    for (uint8_t index; index < ROW_MAX; index++)
     {
-        
+        pinUp(gpio_map->gpio_row[index]);
+        for (uint8_t index_col; index_col < logicmap->col_number[index]; index++)
+        {
+            if (pinRead(gpio_map->gpio_col[logicmap->col[index][index_col].row][logicmap->col[index][index_col].col])==1)
+            {
+                KBD_DELAY(1);//防抖延迟1ms
+                if (pinRead(gpio_map->gpio_col[logicmap->col[index][index_col].row][logicmap->col[index][index_col].col])==1)
+                {
+                    ans.ans[ans.index]=logicmap->keyword[index][index_col];
+                    ans.index++;
+                }
+            }
+        }
+        pinDown(gpio_map->gpio_row[index]);
     }
+    return ans;
 }
 
-
-
-/**
- * @name: Oreo097
- * @msg: 扫描特殊按键
- * @param {type} 
- * @return {type} 
- */
-kbd

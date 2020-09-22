@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: Oreo097
+ * @Date: 2020-08-05 06:52:20
+ * @LastEditors: Oreo097
+ * @LastEditTime: 2020-08-16 14:55:02
+ */
 #include "kbd_func.h"
 
 extern USBD hUsbDeviceFS;
@@ -63,5 +71,4 @@ void* memset(void* s, int c, size_t n)
 
     return s;
 }
-
 
