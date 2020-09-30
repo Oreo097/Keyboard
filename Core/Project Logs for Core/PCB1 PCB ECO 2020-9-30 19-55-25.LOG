@@ -1,0 +1,4 @@
+Added Pin To Net: NetName=P15 Pin=C1-2
+Added Pin To Net: NetName=P15 Pin=C2-2
+Added Member To Class: ClassName=Core_1 Member=Component C2 220pF (221) 10% 50V
+Added Room: Name=Core_1

@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=GND Pin=C1-2
+Removed Pin From Net: NetName=GND Pin=C2-2
+Added Pin To Net: NetName=P15 Pin=-15
+Added Net: Name=P15
+Added Pin To Net: NetName=P16 Pin=C1-2
+Added Pin To Net: NetName=P16 Pin=C2-2
+Added Net: Name=P16
+Added Member To Class: ClassName=Core_1 Member=Component  32U4 MCU
+Added Room: Name=Core_1
