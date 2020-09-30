@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=D_N Pin=GF-39
+Removed Pin From Net: NetName=D_P Pin=GF-41
+Added Pin To Net: NetName=D_P Pin=GF-39
+Added Pin To Net: NetName=D_N Pin=GF-41
+Added Room: Name=Core_1

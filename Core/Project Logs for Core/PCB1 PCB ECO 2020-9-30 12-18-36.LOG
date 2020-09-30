@@ -1,0 +1,3 @@
+Added Pin To Net: NetName=GND Pin=-35
+Added Member To Class: ClassName=Core_1 Member=Component  32U4 MCU
+Added Room: Name=Core_1

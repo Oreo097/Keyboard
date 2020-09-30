@@ -1,0 +1,4 @@
+Change Pin Designator/Name:  Old Designator=25 Old Name=PD4(ICP1/ADC8) New Designator =PF1(ADC1) New Name=40
+Change Pin Designator/Name:  Old Designator=26 Old Name=PD6(T1/OC4D#/ADC9) New Designator =PF0(ADC0) New Name=41
+Change Pin Designator/Name:  Old Designator=40 Old Name=PF1(ADC1) New Designator =PD4(ICP1/ADC8) New Name=25
+Change Pin Designator/Name:  Old Designator=41 Old Name=PF0(ADC0) New Designator =PD6(T1/OC4D#/ADC9) New Name=26

@@ -1,0 +1,6 @@
+Replace Part 16MHz ¾§Õñ in D:\Code\ProjectKeyBoard\Core\Core_1.SchDoc with ¾§Õñ from laptop.IntLib
+Replace Part C1 1206 220pF (221) 10% 50V in D:\Code\ProjectKeyBoard\Core\Core_1.SchDoc with 1206 220pF (221) 10% 50V from Miscellaneous Devices LC.IntLib
+Replace Part C2 1206 220pF (221) 10% 50V in D:\Code\ProjectKeyBoard\Core\Core_1.SchDoc with 1206 220pF (221) 10% 50V from Miscellaneous Devices LC.IntLib
+Replace Part C3 1206 1uF (105) 10% 50V in D:\Code\ProjectKeyBoard\Core\Core_1.SchDoc with 1206 1uF (105) 10% 50V from Miscellaneous Devices LC.IntLib
+Replace Part GF1 Core GoldFinger in D:\Code\ProjectKeyBoard\Core\Core_1.SchDoc with Core GoldFinger from keyboradLib.IntLib
+Replace Part R1 1206 10K¦¸ (1002) 1% in D:\Code\ProjectKeyBoard\Core\Core_1.SchDoc with 1206 10K¦¸ (1002) 1% from Miscellaneous Devices LC.IntLib

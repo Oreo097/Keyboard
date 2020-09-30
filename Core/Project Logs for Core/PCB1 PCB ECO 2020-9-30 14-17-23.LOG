@@ -1,0 +1,163 @@
+Added Component: Designator=16MHz(HC-49S)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C1(1206_C)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "供应商链接"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.szlcsc.com/product/details_2206.html"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Notepad"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "1206"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = "LC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SuppliersPartNumber"; Value = "C1854"; VariantName = "[No Variations]"
+Added Component: Designator=C2(1206_C)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "供应商链接"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.szlcsc.com/product/details_2206.html"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Notepad"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "1206"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = "LC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SuppliersPartNumber"; Value = "C1854"; VariantName = "[No Variations]"
+Added Component: Designator=C3(1206_C)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "供应商链接"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.szlcsc.com/product/details_2200.html"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Notepad"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "1206"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = "LC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SuppliersPartNumber"; Value = "C1848"; VariantName = "[No Variations]"
+Added Component: Designator=GF(Core GoldFinger)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R1(1206_R)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "供应商链接"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.szlcsc.com/product/details_18590.html"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Notepad"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "1206"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = "LC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SuppliersPartNumber"; Value = "C17902"; VariantName = "[No Variations]"
+Added Component: Designator=(32U4)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=+5 Pin=-2
+Added Pin To Net: NetName=+5 Pin=-14
+Added Pin To Net: NetName=+5 Pin=-24
+Added Pin To Net: NetName=+5 Pin=-34
+Added Pin To Net: NetName=+5 Pin=-44
+Added Net: Name=+5
+Added Pin To Net: NetName=CLED Pin=-36
+Added Pin To Net: NetName=CLED Pin=GF-35
+Added Net: Name=CLED
+Added Pin To Net: NetName=COL1 Pin=-18
+Added Pin To Net: NetName=COL1 Pin=GF-2
+Added Net: Name=COL1
+Added Pin To Net: NetName=COL2 Pin=-19
+Added Pin To Net: NetName=COL2 Pin=GF-4
+Added Net: Name=COL2
+Added Pin To Net: NetName=COL3 Pin=-20
+Added Pin To Net: NetName=COL3 Pin=GF-6
+Added Net: Name=COL3
+Added Pin To Net: NetName=COL4 Pin=-21
+Added Pin To Net: NetName=COL4 Pin=GF-8
+Added Net: Name=COL4
+Added Pin To Net: NetName=COL5 Pin=-25
+Added Pin To Net: NetName=COL5 Pin=GF-10
+Added Net: Name=COL5
+Added Pin To Net: NetName=COL6 Pin=-22
+Added Pin To Net: NetName=COL6 Pin=GF-12
+Added Net: Name=COL6
+Added Pin To Net: NetName=COL7 Pin=-26
+Added Pin To Net: NetName=COL7 Pin=GF-14
+Added Net: Name=COL7
+Added Pin To Net: NetName=COL8 Pin=-27
+Added Pin To Net: NetName=COL8 Pin=GF-16
+Added Net: Name=COL8
+Added Pin To Net: NetName=COL9 Pin=-31
+Added Pin To Net: NetName=COL9 Pin=GF-18
+Added Net: Name=COL9
+Added Pin To Net: NetName=COL10 Pin=-32
+Added Pin To Net: NetName=COL10 Pin=GF-20
+Added Net: Name=COL10
+Added Pin To Net: NetName=COL11 Pin=-41
+Added Pin To Net: NetName=COL11 Pin=GF-22
+Added Net: Name=COL11
+Added Pin To Net: NetName=COL12 Pin=-40
+Added Pin To Net: NetName=COL12 Pin=GF-24
+Added Net: Name=COL12
+Added Pin To Net: NetName=COL13 Pin=-39
+Added Pin To Net: NetName=COL13 Pin=GF-26
+Added Net: Name=COL13
+Added Pin To Net: NetName=COL14 Pin=-38
+Added Pin To Net: NetName=COL14 Pin=GF-28
+Added Net: Name=COL14
+Added Pin To Net: NetName=COL15 Pin=-37
+Added Pin To Net: NetName=COL15 Pin=GF-30
+Added Net: Name=COL15
+Added Pin To Net: NetName=D_N Pin=-3
+Added Pin To Net: NetName=D_N Pin=GF-41
+Added Net: Name=D_N
+Added Pin To Net: NetName=D_P Pin=-4
+Added Pin To Net: NetName=D_P Pin=GF-39
+Added Net: Name=D_P
+Added Pin To Net: NetName=GND Pin=-5
+Added Pin To Net: NetName=GND Pin=-15
+Added Pin To Net: NetName=GND Pin=-23
+Added Pin To Net: NetName=GND Pin=-35
+Added Pin To Net: NetName=GND Pin=-43
+Added Pin To Net: NetName=GND Pin=C1-2
+Added Pin To Net: NetName=GND Pin=C2-2
+Added Pin To Net: NetName=GND Pin=C3-1
+Added Pin To Net: NetName=GND Pin=GF-67
+Added Pin To Net: NetName=GND Pin=GF-69
+Added Pin To Net: NetName=GND Pin=GF-71
+Added Pin To Net: NetName=GND Pin=GF-73
+Added Pin To Net: NetName=GND Pin=GF-75
+Added Pin To Net: NetName=GND Pin=R1-2
+Added Net: Name=GND
+Added Pin To Net: NetName=KLED Pin=-29
+Added Pin To Net: NetName=KLED Pin=GF-52
+Added Net: Name=KLED
+Added Pin To Net: NetName=Net_6 Pin=-6
+Added Pin To Net: NetName=Net_6 Pin=C3-2
+Added Net: Name=Net_6
+Added Pin To Net: NetName=Net_33 Pin=-33
+Added Pin To Net: NetName=Net_33 Pin=R1-1
+Added Net: Name=Net_33
+Added Pin To Net: NetName=RESET Pin=-13
+Added Pin To Net: NetName=RESET Pin=GF-37
+Added Net: Name=RESET
+Added Pin To Net: NetName=ROW1 Pin=-8
+Added Pin To Net: NetName=ROW1 Pin=GF-1
+Added Net: Name=ROW1
+Added Pin To Net: NetName=ROW2 Pin=-9
+Added Pin To Net: NetName=ROW2 Pin=GF-3
+Added Net: Name=ROW2
+Added Pin To Net: NetName=ROW3 Pin=-10
+Added Pin To Net: NetName=ROW3 Pin=GF-5
+Added Net: Name=ROW3
+Added Pin To Net: NetName=ROW4 Pin=-11
+Added Pin To Net: NetName=ROW4 Pin=GF-7
+Added Net: Name=ROW4
+Added Pin To Net: NetName=ROW5 Pin=-28
+Added Pin To Net: NetName=ROW5 Pin=GF-9
+Added Net: Name=ROW5
+Added Pin To Net: NetName=ROW6 Pin=-30
+Added Pin To Net: NetName=ROW6 Pin=GF-11
+Added Net: Name=ROW6
+Added Pin To Net: NetName=ROW7 Pin=-12
+Added Pin To Net: NetName=ROW7 Pin=GF-13
+Added Net: Name=ROW7
+Added Pin To Net: NetName=VCC Pin=GF-68
+Added Pin To Net: NetName=VCC Pin=GF-70
+Added Pin To Net: NetName=VCC Pin=GF-72
+Added Pin To Net: NetName=VCC Pin=GF-74
+Added Net: Name=VCC
+Added Pin To Net: NetName=X_N Pin=-17
+Added Pin To Net: NetName=X_N Pin=16MHz-2
+Added Pin To Net: NetName=X_N Pin=C2-1
+Added Net: Name=X_N
+Added Pin To Net: NetName=X_P Pin=-16
+Added Pin To Net: NetName=X_P Pin=16MHz-1
+Added Pin To Net: NetName=X_P Pin=C1-1
+Added Net: Name=X_P
+Added Class: Name=Core_1
+Added Differential Pair: Name=D
+Added Differential Pair: Name=X
+Added Room: Name=Core_1

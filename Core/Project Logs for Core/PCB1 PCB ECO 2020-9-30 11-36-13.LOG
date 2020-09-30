@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=Net16MHz_2 Pin=-17
+Change Component Designator: OldDesignator= NewDesignator=C1
+Change Net Name : Old Net Name=Net16MHz_1 New Net Name=XP
+Change Net Name : Old Net Name=Net32U4_6 New Net Name=Net_6
+Change Net Name : Old Net Name=Net32U4_33 New Net Name=Net_33
+Added Pin To Net: NetName=XN Pin=-17
+Added Net: Name=XN
+Added Member To Class: ClassName=Core_1 Member=Component C1 Core GoldFinger
+Added Room: Name=Core_1

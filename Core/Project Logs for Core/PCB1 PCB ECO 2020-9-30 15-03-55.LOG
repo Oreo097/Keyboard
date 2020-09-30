@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=ROW7 Pin=-40
+Removed Pin From Net: NetName=ROW6 Pin=-41
+Added Pin To Net: NetName=ROW6 Pin=-40
+Added Pin To Net: NetName=ROW7 Pin=-41

@@ -1,0 +1,6 @@
+Change Component Designator: OldDesignator= NewDesignator=GF
+Added Pin To Net: NetName=+5 Pin=GF-68
+Added Pin To Net: NetName=+5 Pin=GF-70
+Added Pin To Net: NetName=+5 Pin=GF-72
+Added Pin To Net: NetName=+5 Pin=GF-74
+Added Member To Class: ClassName=Core_1 Member=Component GF Core GoldFinger

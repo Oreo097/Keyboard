@@ -1,0 +1,25 @@
+Removed Pin From Net: NetName=RESET Pin=GF-33
+Removed Pin From Net: NetName=GND Pin=GF-35
+Removed Pin From Net: NetName=GND Pin=GF-45
+Removed Pin From Net: NetName=GND Pin=GF-51
+Removed Pin From Net: NetName=GND Pin=GF-54
+Removed Pin From Net: NetName=GND Pin=GF-57
+Removed Pin From Net: NetName=+5 Pin=GF-67
+Removed Pin From Net: NetName=KLED Pin=GF-68
+Removed Pin From Net: NetName=CLED Pin=GF-70
+Removed Pin From Net: NetName=D- Pin=GF-71
+Removed Pin From Net: NetName=D+ Pin=GF-73
+Added Pin To Net: NetName=CLED Pin=GF-35
+Added Pin To Net: NetName=RESET Pin=GF-37
+Added Pin To Net: NetName=D- Pin=GF-39
+Added Pin To Net: NetName=D+ Pin=GF-41
+Added Pin To Net: NetName=KLED Pin=GF-52
+Added Pin To Net: NetName=GND Pin=GF-67
+Added Pin To Net: NetName=GND Pin=GF-71
+Added Pin To Net: NetName=GND Pin=GF-73
+Added Pin To Net: NetName=VCC Pin=GF-68
+Added Pin To Net: NetName=VCC Pin=GF-70
+Added Pin To Net: NetName=VCC Pin=GF-72
+Added Pin To Net: NetName=VCC Pin=GF-74
+Added Net: Name=VCC
+Added Room: Name=Core_1

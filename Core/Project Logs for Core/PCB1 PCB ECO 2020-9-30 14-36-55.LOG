@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=ROW1 Pin=-8
+Removed Pin From Net: NetName=ROW2 Pin=-9
+Removed Pin From Net: NetName=ROW3 Pin=-10
+Removed Pin From Net: NetName=ROW4 Pin=-11
+Added Pin To Net: NetName=ROW4 Pin=-8
+Added Pin To Net: NetName=ROW3 Pin=-9
+Added Pin To Net: NetName=ROW2 Pin=-10
+Added Pin To Net: NetName=ROW1 Pin=-11
+Added Room: Name=Core_1

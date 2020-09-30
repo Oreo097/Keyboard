@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=COL6 Pin=-25
+Removed Pin From Net: NetName=COL7 Pin=-26
+Removed Pin From Net: NetName=ROW6 Pin=-40
+Removed Pin From Net: NetName=ROW7 Pin=-41
+Added Pin To Net: NetName=ROW6 Pin=-25
+Added Pin To Net: NetName=ROW7 Pin=-26
+Added Pin To Net: NetName=COL6 Pin=-40
+Added Pin To Net: NetName=COL7 Pin=-41
