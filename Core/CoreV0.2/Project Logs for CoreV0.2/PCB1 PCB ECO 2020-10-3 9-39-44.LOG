@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=COL16 Pin=MCU1-31
+Removed Pin From Net: NetName=COL14 Pin=MCU1-33
+Added Pin To Net: NetName=COL14 Pin=MCU1-31
+Added Pin To Net: NetName=COL16 Pin=MCU1-33
